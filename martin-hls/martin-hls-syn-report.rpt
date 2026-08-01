@@ -1,0 +1,1379 @@
+
+
+================================================================
+== Synthesis Summary Report of 'mine'
+================================================================
++ General Information: 
+    * Date:           Sat Aug  1 19:55:10 2026
+    * Version:        2025.2 (Build 6295257 on Nov 14 2025)
+    * Project:        mine
+    * Solution:       hls (Vitis Kernel Flow Target)
+    * Product family: zynquplus
+    * Target device:  xck26-sfvc784-2LV-c
+    
+
+* Performance & Resource Estimates: 
++-------------------------------------------------+------+---------------------+----------+-----------+---------+----------+-----------+-----------+------+---------+----+-------------+-------------+-----+
+|                     Modules                     | Issue|                     | Iteration|           |   Trip  |          |        Latency        |      |         |    |             |             |     |
+|                     & Loops                     | Type |    Violation Type   |  Latency |  Interval |  Count  | Pipelined|  (cycles) |    (ns)   | Slack|  BRAM   | DSP|      FF     |     LUT     | URAM|
++-------------------------------------------------+------+---------------------+----------+-----------+---------+----------+-----------+-----------+------+---------+----+-------------+-------------+-----+
+|+ mine                                           |     -|                    -|         -|  103809604|        -|        no|  103809603|  5.190e+08|  0.00|  24 (8%)|   -|  29936 (12%)|  62575 (53%)|    -|
+| + mine_Pipeline_COPY_HEADER                     |     -|                    -|         -|          -|        -|       yes|         83|    415.000|  0.00|        -|   -|    278 (~0%)|    116 (~0%)|    -|
+|  o COPY_HEADER                                  |     -|                    -|         3|          1|       80|       yes|         81|    405.000|  4.50|        -|   -|            -|            -|    -|
+| + mine_Pipeline_COPY_TARGET                     |     -|                    -|         -|          -|        -|       yes|         34|    170.000|  3.04|        -|   -|    265 (~0%)|     65 (~0%)|    -|
+|  o COPY_TARGET                                  |     -|                    -|         1|          1|       32|       yes|         32|    160.000|  4.50|        -|   -|            -|            -|    -|
+| + mine_Pipeline_INIT_MIDSTATE                   |     -|                    -|         -|          -|        -|       yes|         10|     50.000|  2.85|        -|   -|     43 (~0%)|     66 (~0%)|    -|
+|  o INIT_MIDSTATE                                |     -|                    -|         2|          1|        8|       yes|          8|     40.000|  4.50|        -|   -|            -|            -|    -|
+| + mine_Pipeline_BUILD_TARGET_WORDS              |     -|                    -|         -|          -|        -|       yes|         10|     50.000|  2.85|        -|   -|     11 (~0%)|     62 (~0%)|    -|
+|  o BUILD_TARGET_WORDS                           |     -|                    -|         2|          1|        8|       yes|          8|     40.000|  4.50|        -|   -|            -|            -|    -|
+| + mine_Pipeline_COPY_INVARIANT_BLOCK            |     -|                    -|         -|          -|        -|       yes|         66|    330.000|  2.87|        -|   -|     16 (~0%)|     67 (~0%)|    -|
+|  o COPY_INVARIANT_BLOCK                         |     -|                    -|         2|          1|       64|       yes|         64|    320.000|  4.50|        -|   -|            -|            -|    -|
+| + sha256_compress                               |     -|                    -|         -|         96|        -|        no|         96|    480.000|  0.87|  1 (~0%)|   -|   1123 (~0%)|    2183 (1%)|    -|
+|  + sha256_compress_Pipeline_LOAD_INITIAL_WORDS  |     -|                    -|         -|          -|        -|       yes|         18|     90.000|  2.86|        -|   -|     12 (~0%)|     63 (~0%)|    -|
+|   o LOAD_INITIAL_WORDS                          |     -|                    -|         2|          1|       16|       yes|         16|     80.000|  4.50|        -|   -|            -|            -|    -|
+|  + sha256_compress_Pipeline_SHA256_ROUNDS       |     -|                    -|         -|          -|        -|       yes|         69|    345.000|  0.87|  1 (~0%)|   -|    459 (~0%)|    1295 (1%)|    -|
+|   o SHA256_ROUNDS                               |     -|                    -|         4|          1|       64|       yes|         67|    335.000|  4.50|        -|   -|            -|            -|    -|
+| + mine_Pipeline_NONCE_LOOP                      |     -|                    -|         -|  103809125|        -|        no|  103809125|  5.190e+08|  0.21|        -|   -|  23893 (10%)|  54812 (46%)|    -|
+|  o NONCE_LOOP                                   |    II|  Resource Limitation|        99|         99|  1048576|       yes|  103809122|  5.190e+08|  4.50|        -|   -|            -|            -|    -|
+|   + sha256d_80_from_midstate_words              |     -|                    -|         -|          4|        -|       yes|         96|    480.000|  0.21|        -|   -|  23435 (10%)|  53501 (45%)|    -|
+|    + sha256_compress_words                      |     -|                    -|         -|          1|        -|       yes|         44|    220.000|  0.21|        -|   -|   22638 (9%)|  53151 (45%)|    -|
++-------------------------------------------------+------+---------------------+----------+-----------+---------+----------+-----------+-----------+------+---------+----+-------------+-------------+-----+
+    II Violation Information: docs.amd.com/access/sources/dita/topic?Doc_Version=2025.2%20English&url=ug1448-hls-guidance&resourceid=200-880.html
+    Name Prefix: '+' for module, 'o' for loop, '*' for dataflow
+
+
+================================================================
+== HW Interfaces
+================================================================
+* M_AXI
++-------------+------------+------------+---------------+---------+--------+----------+-----------+--------------+--------------+-------------+-------------+-------------------+
+| Interface   | Read/Write | Data Width | Address Width | Latency | Offset | Register | Max Widen | Max Read     | Max Write    | Num Read    | Num Write   | Resource Estimate |
+|             |            | (SW->HW)   |               |         |        |          | Bitwidth  | Burst Length | Burst Length | Outstanding | Outstanding |                   |
++-------------+------------+------------+---------------+---------+--------+----------+-----------+--------------+--------------+-------------+-------------+-------------------+
+| m_axi_gmem0 | READ_ONLY  | 8 -> 128   | 64            | 64      | slave  | 0        | 512       | 16           | 16           | 16          | 16          | BRAM=8            |
+| m_axi_gmem1 | READ_ONLY  | 8 -> 256   | 64            | 64      | slave  | 0        | 512       | 16           | 16           | 16          | 16          | BRAM=15           |
+| m_axi_gmem2 | WRITE_ONLY | 32 -> 32   | 64            | 64      | slave  | 0        | 512       | 16           | 16           | 16          | 16          |                   |
++-------------+------------+------------+---------------+---------+--------+----------+-----------+--------------+--------------+-------------+-------------+-------------------+
+
+* S_AXILITE Interfaces
++---------------+------------+---------------+--------+----------+
+| Interface     | Data Width | Address Width | Offset | Register |
++---------------+------------+---------------+--------+----------+
+| s_axi_control | 32         | 7             | 16     | 0        |
++---------------+------------+---------------+--------+----------+
+
+* S_AXILITE Registers
++---------------+---------------+--------+-------+--------+----------------------------------+------------------------------------------------------------------------------------+
+| Interface     | Register      | Offset | Width | Access | Description                      | Bit Fields                                                                         |
++---------------+---------------+--------+-------+--------+----------------------------------+------------------------------------------------------------------------------------+
+| s_axi_control | CTRL          | 0x00   | 32    | RW     | Control signals                  | 0=AP_START 1=AP_DONE 2=AP_IDLE 3=AP_READY 4=AP_CONTINUE 7=AUTO_RESTART 9=INTERRUPT |
+| s_axi_control | GIER          | 0x04   | 32    | RW     | Global Interrupt Enable Register | 0=Enable                                                                           |
+| s_axi_control | IP_IER        | 0x08   | 32    | RW     | IP Interrupt Enable Register     | 0=CHAN0_INT_EN 1=CHAN1_INT_EN                                                      |
+| s_axi_control | IP_ISR        | 0x0c   | 32    | RW     | IP Interrupt Status Register     | 0=CHAN0_INT_ST 1=CHAN1_INT_ST                                                      |
+| s_axi_control | header_1      | 0x10   | 32    | W      | Data signal of header            |                                                                                    |
+| s_axi_control | header_2      | 0x14   | 32    | W      | Data signal of header            |                                                                                    |
+| s_axi_control | target_1      | 0x1c   | 32    | W      | Data signal of target            |                                                                                    |
+| s_axi_control | target_2      | 0x20   | 32    | W      | Data signal of target            |                                                                                    |
+| s_axi_control | nonce_start   | 0x28   | 32    | W      | Data signal of nonce_start       |                                                                                    |
+| s_axi_control | nonce_count   | 0x30   | 32    | W      | Data signal of nonce_count       |                                                                                    |
+| s_axi_control | found_nonce_1 | 0x38   | 32    | W      | Data signal of found_nonce       |                                                                                    |
+| s_axi_control | found_nonce_2 | 0x3c   | 32    | W      | Data signal of found_nonce       |                                                                                    |
+| s_axi_control | found_1       | 0x44   | 32    | W      | Data signal of found             |                                                                                    |
+| s_axi_control | found_2       | 0x48   | 32    | W      | Data signal of found             |                                                                                    |
++---------------+---------------+--------+-------+--------+----------------------------------+------------------------------------------------------------------------------------+
+
+* TOP LEVEL CONTROL
++-----------+---------------+-----------+
+| Interface | Type          | Ports     |
++-----------+---------------+-----------+
+| ap_clk    | clock         | ap_clk    |
+| ap_rst_n  | reset         | ap_rst_n  |
+| interrupt | interrupt     | interrupt |
+| ap_ctrl   | ap_ctrl_chain |           |
++-----------+---------------+-----------+
+
+
+================================================================
+== SW I/O Information
+================================================================
+* Top Function Arguments
++-------------+-----------+-----------------------+
+| Argument    | Direction | Datatype              |
++-------------+-----------+-----------------------+
+| header      | in        | unsigned char const * |
+| target      | in        | unsigned char const * |
+| nonce_start | in        | unsigned int          |
+| nonce_count | in        | unsigned int          |
+| found_nonce | out       | unsigned int*         |
+| found       | out       | int*                  |
++-------------+-----------+-----------------------+
+
+* SW-to-HW Mapping
++-------------+---------------+-----------+----------+-----------------------------------------+
+| Argument    | HW Interface  | HW Type   | HW Usage | HW Info                                 |
++-------------+---------------+-----------+----------+-----------------------------------------+
+| header      | m_axi_gmem0   | interface |          | channel=0                               |
+| header      | s_axi_control | register  | offset   | name=header_1 offset=0x10 range=32      |
+| header      | s_axi_control | register  | offset   | name=header_2 offset=0x14 range=32      |
+| target      | m_axi_gmem1   | interface |          | channel=0                               |
+| target      | s_axi_control | register  | offset   | name=target_1 offset=0x1c range=32      |
+| target      | s_axi_control | register  | offset   | name=target_2 offset=0x20 range=32      |
+| nonce_start | s_axi_control | register  |          | name=nonce_start offset=0x28 range=32   |
+| nonce_count | s_axi_control | register  |          | name=nonce_count offset=0x30 range=32   |
+| found_nonce | m_axi_gmem2   | interface |          | channel=0                               |
+| found_nonce | s_axi_control | register  | offset   | name=found_nonce_1 offset=0x38 range=32 |
+| found_nonce | s_axi_control | register  | offset   | name=found_nonce_2 offset=0x3c range=32 |
+| found       | m_axi_gmem2   | interface |          | channel=0                               |
+| found       | s_axi_control | register  | offset   | name=found_1 offset=0x44 range=32       |
+| found       | s_axi_control | register  | offset   | name=found_2 offset=0x48 range=32       |
++-------------+---------------+-----------+----------+-----------------------------------------+
+
+
+================================================================
+== M_AXI Burst Information
+================================================================
+ Note: All burst requests might be further partitioned into multiple requests during RTL generation based on max_read_burst_length or max_write_burst_length settings.
+
+* Inferred Burst Summary
++--------------+-----------+--------+-------+
+| HW Interface | Direction | Length | Width |
++--------------+-----------+--------+-------+
+| m_axi_gmem0  | read      | 5      | 128   |
++--------------+-----------+--------+-------+
+
+* All M_AXI Variable Accesses
++--------------+----------+------------------------------------------------------------------------------------+-----------+--------------+--------+-------------+-----------------------------------------------------------------------------------+
+| HW Interface | Variable | Access Location                                                                    | Direction | Burst Status | Length | Loop        | Loop Location                                                                     |
++--------------+----------+------------------------------------------------------------------------------------+-----------+--------------+--------+-------------+-----------------------------------------------------------------------------------+
+| m_axi_gmem0  | header   | BitcoinMining/4601-hardware-acceleration-design-project/martin-hls/mine.cpp:518:18 | read      | Widened      | 5      | COPY_HEADER | BitcoinMining/4601-hardware-acceleration-design-project/martin-hls/mine.cpp:517:5 |
+| m_axi_gmem0  | header   | BitcoinMining/4601-hardware-acceleration-design-project/martin-hls/mine.cpp:518:18 | read      | Inferred     | 80     | COPY_HEADER | BitcoinMining/4601-hardware-acceleration-design-project/martin-hls/mine.cpp:517:5 |
+| m_axi_gmem1  | target   | BitcoinMining/4601-hardware-acceleration-design-project/martin-hls/mine.cpp:525:18 | read      | Widened      | 1      | COPY_TARGET | BitcoinMining/4601-hardware-acceleration-design-project/martin-hls/mine.cpp:524:5 |
+| m_axi_gmem1  | target   | BitcoinMining/4601-hardware-acceleration-design-project/martin-hls/mine.cpp:525:18 | read      | Inferred     | 32     | COPY_TARGET | BitcoinMining/4601-hardware-acceleration-design-project/martin-hls/mine.cpp:524:5 |
++--------------+----------+------------------------------------------------------------------------------------+-----------+--------------+--------+-------------+-----------------------------------------------------------------------------------+
+
+
+================================================================
+== Bind Op Report
+================================================================
++-------------------------------------------------+-----+--------+---------------+-----------+--------------------------+---------+
+| Name                                            | DSP | Pragma | Variable      | Op        | Impl                     | Latency |
++-------------------------------------------------+-----+--------+---------------+-----------+--------------------------+---------+
+| + mine                                          | 0   |        |               |           |                          |         |
+|   icmp_ln588_fu_623_p2                          |     |        | icmp_ln588    | seteq     | auto                     | 0       |
+|  + mine_Pipeline_COPY_HEADER                    | 0   |        |               |           |                          |         |
+|    icmp_ln517_fu_120_p2                         |     |        | icmp_ln517    | seteq     | auto                     | 0       |
+|    add_ln517_fu_126_p2                          |     |        | add_ln517     | add       | fabric                   | 0       |
+|    icmp_ln518_fu_136_p2                         |     |        | icmp_ln518    | seteq     | auto                     | 0       |
+|  + mine_Pipeline_COPY_TARGET                    | 0   |        |               |           |                          |         |
+|    icmp_ln524_fu_97_p2                          |     |        | icmp_ln524    | seteq     | auto                     | 0       |
+|    add_ln524_fu_103_p2                          |     |        | add_ln524     | add       | fabric                   | 0       |
+|  + mine_Pipeline_INIT_MIDSTATE                  | 0   |        |               |           |                          |         |
+|    icmp_ln571_fu_69_p2                          |     |        | icmp_ln571    | seteq     | auto                     | 0       |
+|    add_ln571_fu_75_p2                           |     |        | add_ln571     | add       | fabric                   | 0       |
+|  + mine_Pipeline_BUILD_TARGET_WORDS             | 0   |        |               |           |                          |         |
+|    icmp_ln549_fu_113_p2                         |     |        | icmp_ln549    | seteq     | auto                     | 0       |
+|    add_ln549_fu_119_p2                          |     |        | add_ln549     | add       | fabric                   | 0       |
+|  + mine_Pipeline_COPY_INVARIANT_BLOCK           | 0   |        |               |           |                          |         |
+|    icmp_ln564_fu_89_p2                          |     |        | icmp_ln564    | seteq     | auto                     | 0       |
+|    add_ln564_fu_95_p2                           |     |        | add_ln564     | add       | fabric                   | 0       |
+|  + sha256_compress                              | 0   |        |               |           |                          |         |
+|    add_ln129_fu_207_p2                          |     |        | add_ln129     | add       | fabric                   | 0       |
+|    add_ln130_fu_213_p2                          |     |        | add_ln130     | add       | fabric                   | 0       |
+|    add_ln131_fu_225_p2                          |     |        | add_ln131     | add       | fabric                   | 0       |
+|    add_ln132_fu_231_p2                          |     |        | add_ln132     | add       | fabric                   | 0       |
+|    add_ln133_fu_243_p2                          |     |        | add_ln133     | add       | fabric                   | 0       |
+|    add_ln134_fu_249_p2                          |     |        | add_ln134     | add       | fabric                   | 0       |
+|    add_ln135_fu_261_p2                          |     |        | add_ln135     | add       | fabric                   | 0       |
+|    add_ln136_fu_267_p2                          |     |        | add_ln136     | add       | fabric                   | 0       |
+|   + sha256_compress_Pipeline_LOAD_INITIAL_WORDS | 0   |        |               |           |                          |         |
+|     icmp_ln54_fu_170_p2                         |     |        | icmp_ln54     | seteq     | auto                     | 0       |
+|     add_ln54_fu_176_p2                          |     |        | add_ln54      | add       | fabric                   | 0       |
+|   + sha256_compress_Pipeline_SHA256_ROUNDS      | 0   |        |               |           |                          |         |
+|     icmp_ln72_fu_617_p2                         |     |        | icmp_ln72     | seteq     | auto                     | 0       |
+|     add_ln72_fu_623_p2                          |     |        | add_ln72      | add       | fabric                   | 0       |
+|     icmp_ln75_fu_643_p2                         |     |        | icmp_ln75     | seteq     | auto                     | 0       |
+|     add_ln80_fu_678_p2                          |     |        | add_ln80      | add       | fabric                   | 0       |
+|     sparsemux_9_2_32_1_1_U22                    |     |        | w15           | sparsemux | compactencoding_dontcare | 0       |
+|     add_ln81_fu_702_p2                          |     |        | add_ln81      | add       | fabric                   | 0       |
+|     sparsemux_9_2_32_1_1_U23                    |     |        | w2            | sparsemux | compactencoding_dontcare | 0       |
+|     sparsemux_9_2_32_1_1_U21                    |     |        | tmp           | sparsemux | compactencoding_dontcare | 0       |
+|     add_ln93_fu_726_p2                          |     |        | add_ln93      | add       | fabric                   | 0       |
+|     sparsemux_9_2_32_1_1_U24                    |     |        | tmp_4         | sparsemux | compactencoding_dontcare | 0       |
+|     xor_ln93_fu_940_p2                          |     |        | xor_ln93      | xor       | auto                     | 0       |
+|     xor_ln93_1_fu_946_p2                        |     |        | xor_ln93_1    | xor       | auto                     | 0       |
+|     xor_ln93_2_fu_960_p2                        |     |        | xor_ln93_2    | xor       | auto                     | 0       |
+|     xor_ln93_3_fu_966_p2                        |     |        | xor_ln93_3    | xor       | auto                     | 0       |
+|     add_ln93_1_fu_978_p2                        |     |        | add_ln93_1    | add       | fabric                   | 0       |
+|     sparsemux_9_2_32_1_1_U21                    |     |        | wt            | sparsemux | compactencoding_dontcare | 0       |
+|     xor_ln105_fu_1067_p2                        |     |        | xor_ln105     | xor       | auto                     | 0       |
+|     and_ln105_fu_1073_p2                        |     |        | and_ln105     | and       | auto                     | 0       |
+|     and_ln105_1_fu_1079_p2                      |     |        | and_ln105_1   | and       | auto                     | 0       |
+|     xor_ln105_1_fu_1101_p2                      |     |        | xor_ln105_1   | xor       | auto                     | 0       |
+|     xor_ln105_2_fu_1115_p2                      |     |        | xor_ln105_2   | xor       | auto                     | 0       |
+|     xor_ln105_3_fu_1121_p2                      |     |        | xor_ln105_3   | xor       | auto                     | 0       |
+|     e_64_fu_1193_p2                             |     |        | e_64          | add       | fabric                   | 0       |
+|     xor_ln126_fu_1199_p2                        |     |        | xor_ln126     | xor       | auto                     | 0       |
+|     and_ln126_fu_1205_p2                        |     |        | and_ln126     | and       | auto                     | 0       |
+|     and_ln126_1_fu_1211_p2                      |     |        | and_ln126_1   | and       | auto                     | 0       |
+|     xor_ln126_1_fu_1233_p2                      |     |        | xor_ln126_1   | xor       | auto                     | 0       |
+|     xor_ln126_2_fu_1247_p2                      |     |        | xor_ln126_2   | xor       | auto                     | 0       |
+|     xor_ln126_3_fu_1253_p2                      |     |        | xor_ln126_3   | xor       | auto                     | 0       |
+|  + mine_Pipeline_NONCE_LOOP                     | 0   |        |               |           |                          |         |
+|    icmp_ln588_fu_302_p2                         |     |        | icmp_ln588    | setlt     | auto                     | 0       |
+|    k_2_fu_307_p2                                |     |        | k_2           | add       | fabric                   | 0       |
+|    nonce_fu_313_p2                              |     |        | nonce         | add       | fabric                   | 0       |
+|    icmp_ln312_fu_392_p2                         |     |        | icmp_ln312    | setlt     | auto                     | 0       |
+|    icmp_ln316_fu_397_p2                         |     |        | icmp_ln316    | setgt     | auto                     | 0       |
+|    icmp_ln312_1_fu_444_p2                       |     |        | icmp_ln312_1  | setlt     | auto                     | 0       |
+|    icmp_ln316_1_fu_449_p2                       |     |        | icmp_ln316_1  | setgt     | auto                     | 0       |
+|    icmp_ln312_2_fu_496_p2                       |     |        | icmp_ln312_2  | setlt     | auto                     | 0       |
+|    icmp_ln316_2_fu_501_p2                       |     |        | icmp_ln316_2  | setgt     | auto                     | 0       |
+|    icmp_ln312_3_fu_548_p2                       |     |        | icmp_ln312_3  | setlt     | auto                     | 0       |
+|    icmp_ln316_3_fu_553_p2                       |     |        | icmp_ln316_3  | setgt     | auto                     | 0       |
+|    icmp_ln312_4_fu_600_p2                       |     |        | icmp_ln312_4  | setlt     | auto                     | 0       |
+|    icmp_ln316_4_fu_605_p2                       |     |        | icmp_ln316_4  | setgt     | auto                     | 0       |
+|    icmp_ln312_5_fu_652_p2                       |     |        | icmp_ln312_5  | setlt     | auto                     | 0       |
+|    icmp_ln316_5_fu_657_p2                       |     |        | icmp_ln316_5  | setgt     | auto                     | 0       |
+|    icmp_ln312_6_fu_704_p2                       |     |        | icmp_ln312_6  | setlt     | auto                     | 0       |
+|    icmp_ln316_6_fu_709_p2                       |     |        | icmp_ln316_6  | setgt     | auto                     | 0       |
+|    icmp_ln312_7_fu_756_p2                       |     |        | icmp_ln312_7  | setlt     | auto                     | 0       |
+|    phitmp_fu_761_p2                             |     |        | phitmp        | setgt     | auto                     | 0       |
+|    spec_select_i_fu_767_p2                      |     |        | spec_select_i | and       | auto                     | 0       |
+|   + sha256d_80_from_midstate_words              | 0   |        |               |           |                          |         |
+|    + sha256_compress_words                      | 0   |        |               |           |                          |         |
+|      xor_ln164_fu_432_p2                        |     |        | xor_ln164     | xor       | auto                     | 0       |
+|      xor_ln164_1_fu_438_p2                      |     |        | xor_ln164_1   | xor       | auto                     | 0       |
+|      w_fu_444_p2                                |     |        | w             | add       | fabric                   | 0       |
+|      xor_ln164_2_fu_528_p2                      |     |        | xor_ln164_2   | xor       | auto                     | 0       |
+|      xor_ln164_3_fu_534_p2                      |     |        | xor_ln164_3   | xor       | auto                     | 0       |
+|      xor_ln164_4_fu_540_p2                      |     |        | xor_ln164_4   | xor       | auto                     | 0       |
+|      xor_ln164_5_fu_670_p2                      |     |        | xor_ln164_5   | xor       | auto                     | 0       |
+|      xor_ln164_6_fu_676_p2                      |     |        | xor_ln164_6   | xor       | auto                     | 0       |
+|      xor_ln164_7_fu_690_p2                      |     |        | xor_ln164_7   | xor       | auto                     | 0       |
+|      xor_ln164_8_fu_696_p2                      |     |        | xor_ln164_8   | xor       | auto                     | 0       |
+|      xor_ln164_9_fu_822_p2                      |     |        | xor_ln164_9   | xor       | auto                     | 0       |
+|      xor_ln164_10_fu_828_p2                     |     |        | xor_ln164_10  | xor       | auto                     | 0       |
+|      xor_ln164_11_fu_842_p2                     |     |        | xor_ln164_11  | xor       | auto                     | 0       |
+|      xor_ln164_12_fu_848_p2                     |     |        | xor_ln164_12  | xor       | auto                     | 0       |
+|      xor_ln164_13_fu_974_p2                     |     |        | xor_ln164_13  | xor       | auto                     | 0       |
+|      xor_ln164_14_fu_980_p2                     |     |        | xor_ln164_14  | xor       | auto                     | 0       |
+|      xor_ln164_15_fu_994_p2                     |     |        | xor_ln164_15  | xor       | auto                     | 0       |
+|      xor_ln164_16_fu_1000_p2                    |     |        | xor_ln164_16  | xor       | auto                     | 0       |
+|      xor_ln164_17_fu_1126_p2                    |     |        | xor_ln164_17  | xor       | auto                     | 0       |
+|      xor_ln164_18_fu_1132_p2                    |     |        | xor_ln164_18  | xor       | auto                     | 0       |
+|      xor_ln164_19_fu_1146_p2                    |     |        | xor_ln164_19  | xor       | auto                     | 0       |
+|      xor_ln164_20_fu_1152_p2                    |     |        | xor_ln164_20  | xor       | auto                     | 0       |
+|      xor_ln164_21_fu_1278_p2                    |     |        | xor_ln164_21  | xor       | auto                     | 0       |
+|      xor_ln164_22_fu_1284_p2                    |     |        | xor_ln164_22  | xor       | auto                     | 0       |
+|      xor_ln164_23_fu_1298_p2                    |     |        | xor_ln164_23  | xor       | auto                     | 0       |
+|      xor_ln164_24_fu_1304_p2                    |     |        | xor_ln164_24  | xor       | auto                     | 0       |
+|      add_ln164_11_fu_1310_p2                    |     |        | add_ln164_11  | add       | fabric                   | 0       |
+|      xor_ln164_25_fu_1424_p2                    |     |        | xor_ln164_25  | xor       | auto                     | 0       |
+|      xor_ln164_26_fu_1430_p2                    |     |        | xor_ln164_26  | xor       | auto                     | 0       |
+|      xor_ln164_27_fu_1444_p2                    |     |        | xor_ln164_27  | xor       | auto                     | 0       |
+|      xor_ln164_28_fu_1450_p2                    |     |        | xor_ln164_28  | xor       | auto                     | 0       |
+|      add_ln164_14_fu_1456_p2                    |     |        | add_ln164_14  | add       | fabric                   | 0       |
+|      xor_ln164_29_fu_6716_p2                    |     |        | xor_ln164_29  | xor       | auto                     | 0       |
+|      xor_ln164_30_fu_6722_p2                    |     |        | xor_ln164_30  | xor       | auto                     | 0       |
+|      xor_ln164_31_fu_6786_p2                    |     |        | xor_ln164_31  | xor       | auto                     | 0       |
+|      xor_ln164_32_fu_6792_p2                    |     |        | xor_ln164_32  | xor       | auto                     | 0       |
+|      w_9_fu_6798_p2                             |     |        | w_9           | add       | fabric                   | 0       |
+|      xor_ln164_33_fu_7338_p2                    |     |        | xor_ln164_33  | xor       | auto                     | 0       |
+|      xor_ln164_34_fu_7344_p2                    |     |        | xor_ln164_34  | xor       | auto                     | 0       |
+|      w_10_fu_7350_p2                            |     |        | w_10          | add       | fabric                   | 0       |
+|      xor_ln164_35_fu_6861_p2                    |     |        | xor_ln164_35  | xor       | auto                     | 0       |
+|      xor_ln164_36_fu_6867_p2                    |     |        | xor_ln164_36  | xor       | auto                     | 0       |
+|      w_11_fu_6873_p2                            |     |        | w_11          | add       | fabric                   | 0       |
+|      xor_ln164_37_fu_7413_p2                    |     |        | xor_ln164_37  | xor       | auto                     | 0       |
+|      xor_ln164_38_fu_7419_p2                    |     |        | xor_ln164_38  | xor       | auto                     | 0       |
+|      w_12_fu_7425_p2                            |     |        | w_12          | add       | fabric                   | 0       |
+|      xor_ln164_39_fu_6936_p2                    |     |        | xor_ln164_39  | xor       | auto                     | 0       |
+|      xor_ln164_40_fu_6942_p2                    |     |        | xor_ln164_40  | xor       | auto                     | 0       |
+|      w_13_fu_6948_p2                            |     |        | w_13          | add       | fabric                   | 0       |
+|      xor_ln164_41_fu_1508_p2                    |     |        | xor_ln164_41  | xor       | auto                     | 0       |
+|      xor_ln164_42_fu_1514_p2                    |     |        | xor_ln164_42  | xor       | auto                     | 0       |
+|      xor_ln164_43_fu_7488_p2                    |     |        | xor_ln164_43  | xor       | auto                     | 0       |
+|      xor_ln164_44_fu_7494_p2                    |     |        | xor_ln164_44  | xor       | auto                     | 0       |
+|      xor_ln164_45_fu_9032_p2                    |     |        | xor_ln164_45  | xor       | auto                     | 0       |
+|      xor_ln164_46_fu_9038_p2                    |     |        | xor_ln164_46  | xor       | auto                     | 0       |
+|      xor_ln164_47_fu_9052_p2                    |     |        | xor_ln164_47  | xor       | auto                     | 0       |
+|      xor_ln164_48_fu_9058_p2                    |     |        | xor_ln164_48  | xor       | auto                     | 0       |
+|      add_ln164_26_fu_9068_p2                    |     |        | add_ln164_26  | add       | fabric                   | 0       |
+|      xor_ln164_49_fu_9183_p2                    |     |        | xor_ln164_49  | xor       | auto                     | 0       |
+|      xor_ln164_50_fu_9189_p2                    |     |        | xor_ln164_50  | xor       | auto                     | 0       |
+|      xor_ln164_51_fu_9203_p2                    |     |        | xor_ln164_51  | xor       | auto                     | 0       |
+|      xor_ln164_52_fu_9209_p2                    |     |        | xor_ln164_52  | xor       | auto                     | 0       |
+|      add_ln164_29_fu_9215_p2                    |     |        | add_ln164_29  | add       | fabric                   | 0       |
+|      xor_ln164_53_fu_9324_p2                    |     |        | xor_ln164_53  | xor       | auto                     | 0       |
+|      xor_ln164_54_fu_9330_p2                    |     |        | xor_ln164_54  | xor       | auto                     | 0       |
+|      xor_ln164_55_fu_9344_p2                    |     |        | xor_ln164_55  | xor       | auto                     | 0       |
+|      xor_ln164_56_fu_9350_p2                    |     |        | xor_ln164_56  | xor       | auto                     | 0       |
+|      add_ln164_32_fu_9356_p2                    |     |        | add_ln164_32  | add       | fabric                   | 0       |
+|      xor_ln164_57_fu_9750_p2                    |     |        | xor_ln164_57  | xor       | auto                     | 0       |
+|      xor_ln164_58_fu_9756_p2                    |     |        | xor_ln164_58  | xor       | auto                     | 0       |
+|      xor_ln164_59_fu_9770_p2                    |     |        | xor_ln164_59  | xor       | auto                     | 0       |
+|      xor_ln164_60_fu_9776_p2                    |     |        | xor_ln164_60  | xor       | auto                     | 0       |
+|      add_ln164_35_fu_9786_p2                    |     |        | add_ln164_35  | add       | fabric                   | 0       |
+|      xor_ln164_61_fu_10478_p2                   |     |        | xor_ln164_61  | xor       | auto                     | 0       |
+|      xor_ln164_62_fu_10484_p2                   |     |        | xor_ln164_62  | xor       | auto                     | 0       |
+|      xor_ln164_63_fu_10498_p2                   |     |        | xor_ln164_63  | xor       | auto                     | 0       |
+|      xor_ln164_64_fu_10504_p2                   |     |        | xor_ln164_64  | xor       | auto                     | 0       |
+|      add_ln164_38_fu_10514_p2                   |     |        | add_ln164_38  | add       | fabric                   | 0       |
+|      xor_ln164_65_fu_9901_p2                    |     |        | xor_ln164_65  | xor       | auto                     | 0       |
+|      xor_ln164_66_fu_9907_p2                    |     |        | xor_ln164_66  | xor       | auto                     | 0       |
+|      xor_ln164_67_fu_9921_p2                    |     |        | xor_ln164_67  | xor       | auto                     | 0       |
+|      xor_ln164_68_fu_9927_p2                    |     |        | xor_ln164_68  | xor       | auto                     | 0       |
+|      add_ln164_41_fu_9933_p2                    |     |        | add_ln164_41  | add       | fabric                   | 0       |
+|      xor_ln164_69_fu_10638_p2                   |     |        | xor_ln164_69  | xor       | auto                     | 0       |
+|      xor_ln164_70_fu_10644_p2                   |     |        | xor_ln164_70  | xor       | auto                     | 0       |
+|      xor_ln164_71_fu_10658_p2                   |     |        | xor_ln164_71  | xor       | auto                     | 0       |
+|      xor_ln164_72_fu_10664_p2                   |     |        | xor_ln164_72  | xor       | auto                     | 0       |
+|      add_ln164_44_fu_10670_p2                   |     |        | add_ln164_44  | add       | fabric                   | 0       |
+|      xor_ln164_73_fu_10779_p2                   |     |        | xor_ln164_73  | xor       | auto                     | 0       |
+|      xor_ln164_74_fu_10785_p2                   |     |        | xor_ln164_74  | xor       | auto                     | 0       |
+|      xor_ln164_75_fu_10799_p2                   |     |        | xor_ln164_75  | xor       | auto                     | 0       |
+|      xor_ln164_76_fu_10805_p2                   |     |        | xor_ln164_76  | xor       | auto                     | 0       |
+|      add_ln164_47_fu_10815_p2                   |     |        | add_ln164_47  | add       | fabric                   | 0       |
+|      xor_ln164_77_fu_12170_p2                   |     |        | xor_ln164_77  | xor       | auto                     | 0       |
+|      xor_ln164_78_fu_12176_p2                   |     |        | xor_ln164_78  | xor       | auto                     | 0       |
+|      xor_ln164_79_fu_12190_p2                   |     |        | xor_ln164_79  | xor       | auto                     | 0       |
+|      xor_ln164_80_fu_12196_p2                   |     |        | xor_ln164_80  | xor       | auto                     | 0       |
+|      add_ln164_50_fu_12202_p2                   |     |        | add_ln164_50  | add       | fabric                   | 0       |
+|      xor_ln164_81_fu_10930_p2                   |     |        | xor_ln164_81  | xor       | auto                     | 0       |
+|      xor_ln164_82_fu_10936_p2                   |     |        | xor_ln164_82  | xor       | auto                     | 0       |
+|      xor_ln164_83_fu_10950_p2                   |     |        | xor_ln164_83  | xor       | auto                     | 0       |
+|      xor_ln164_84_fu_10956_p2                   |     |        | xor_ln164_84  | xor       | auto                     | 0       |
+|      add_ln164_53_fu_10962_p2                   |     |        | add_ln164_53  | add       | fabric                   | 0       |
+|      xor_ln164_85_fu_12637_p2                   |     |        | xor_ln164_85  | xor       | auto                     | 0       |
+|      xor_ln164_86_fu_12643_p2                   |     |        | xor_ln164_86  | xor       | auto                     | 0       |
+|      xor_ln164_87_fu_12657_p2                   |     |        | xor_ln164_87  | xor       | auto                     | 0       |
+|      xor_ln164_88_fu_12663_p2                   |     |        | xor_ln164_88  | xor       | auto                     | 0       |
+|      add_ln164_56_fu_12669_p2                   |     |        | add_ln164_56  | add       | fabric                   | 0       |
+|      xor_ln164_89_fu_13072_p2                   |     |        | xor_ln164_89  | xor       | auto                     | 0       |
+|      xor_ln164_90_fu_13078_p2                   |     |        | xor_ln164_90  | xor       | auto                     | 0       |
+|      xor_ln164_91_fu_13092_p2                   |     |        | xor_ln164_91  | xor       | auto                     | 0       |
+|      xor_ln164_92_fu_13098_p2                   |     |        | xor_ln164_92  | xor       | auto                     | 0       |
+|      add_ln164_59_fu_13104_p2                   |     |        | add_ln164_59  | add       | fabric                   | 0       |
+|      xor_ln164_93_fu_13213_p2                   |     |        | xor_ln164_93  | xor       | auto                     | 0       |
+|      xor_ln164_94_fu_13219_p2                   |     |        | xor_ln164_94  | xor       | auto                     | 0       |
+|      xor_ln164_95_fu_13233_p2                   |     |        | xor_ln164_95  | xor       | auto                     | 0       |
+|      xor_ln164_96_fu_13239_p2                   |     |        | xor_ln164_96  | xor       | auto                     | 0       |
+|      add_ln164_62_fu_13245_p2                   |     |        | add_ln164_62  | add       | fabric                   | 0       |
+|      xor_ln164_97_fu_13791_p2                   |     |        | xor_ln164_97  | xor       | auto                     | 0       |
+|      xor_ln164_98_fu_13797_p2                   |     |        | xor_ln164_98  | xor       | auto                     | 0       |
+|      xor_ln164_99_fu_13811_p2                   |     |        | xor_ln164_99  | xor       | auto                     | 0       |
+|      xor_ln164_100_fu_13817_p2                  |     |        | xor_ln164_100 | xor       | auto                     | 0       |
+|      add_ln164_65_fu_13823_p2                   |     |        | add_ln164_65  | add       | fabric                   | 0       |
+|      xor_ln164_101_fu_14338_p2                  |     |        | xor_ln164_101 | xor       | auto                     | 0       |
+|      xor_ln164_102_fu_14344_p2                  |     |        | xor_ln164_102 | xor       | auto                     | 0       |
+|      xor_ln164_103_fu_14358_p2                  |     |        | xor_ln164_103 | xor       | auto                     | 0       |
+|      xor_ln164_104_fu_14364_p2                  |     |        | xor_ln164_104 | xor       | auto                     | 0       |
+|      add_ln164_68_fu_14374_p2                   |     |        | add_ln164_68  | add       | fabric                   | 0       |
+|      xor_ln164_105_fu_14489_p2                  |     |        | xor_ln164_105 | xor       | auto                     | 0       |
+|      xor_ln164_106_fu_14495_p2                  |     |        | xor_ln164_106 | xor       | auto                     | 0       |
+|      xor_ln164_107_fu_14509_p2                  |     |        | xor_ln164_107 | xor       | auto                     | 0       |
+|      xor_ln164_108_fu_14515_p2                  |     |        | xor_ln164_108 | xor       | auto                     | 0       |
+|      add_ln164_71_fu_14525_p2                   |     |        | add_ln164_71  | add       | fabric                   | 0       |
+|      xor_ln164_109_fu_14640_p2                  |     |        | xor_ln164_109 | xor       | auto                     | 0       |
+|      xor_ln164_110_fu_14646_p2                  |     |        | xor_ln164_110 | xor       | auto                     | 0       |
+|      xor_ln164_111_fu_14660_p2                  |     |        | xor_ln164_111 | xor       | auto                     | 0       |
+|      xor_ln164_112_fu_14666_p2                  |     |        | xor_ln164_112 | xor       | auto                     | 0       |
+|      add_ln164_74_fu_14672_p2                   |     |        | add_ln164_74  | add       | fabric                   | 0       |
+|      xor_ln164_113_fu_14781_p2                  |     |        | xor_ln164_113 | xor       | auto                     | 0       |
+|      xor_ln164_114_fu_14787_p2                  |     |        | xor_ln164_114 | xor       | auto                     | 0       |
+|      xor_ln164_115_fu_14801_p2                  |     |        | xor_ln164_115 | xor       | auto                     | 0       |
+|      xor_ln164_116_fu_14807_p2                  |     |        | xor_ln164_116 | xor       | auto                     | 0       |
+|      add_ln164_77_fu_14813_p2                   |     |        | add_ln164_77  | add       | fabric                   | 0       |
+|      xor_ln164_117_fu_15248_p2                  |     |        | xor_ln164_117 | xor       | auto                     | 0       |
+|      xor_ln164_118_fu_15254_p2                  |     |        | xor_ln164_118 | xor       | auto                     | 0       |
+|      xor_ln164_119_fu_15268_p2                  |     |        | xor_ln164_119 | xor       | auto                     | 0       |
+|      xor_ln164_120_fu_15274_p2                  |     |        | xor_ln164_120 | xor       | auto                     | 0       |
+|      add_ln164_80_fu_15284_p2                   |     |        | add_ln164_80  | add       | fabric                   | 0       |
+|      xor_ln164_121_fu_15894_p2                  |     |        | xor_ln164_121 | xor       | auto                     | 0       |
+|      xor_ln164_122_fu_15900_p2                  |     |        | xor_ln164_122 | xor       | auto                     | 0       |
+|      xor_ln164_123_fu_15914_p2                  |     |        | xor_ln164_123 | xor       | auto                     | 0       |
+|      xor_ln164_124_fu_15920_p2                  |     |        | xor_ln164_124 | xor       | auto                     | 0       |
+|      add_ln164_83_fu_15930_p2                   |     |        | add_ln164_83  | add       | fabric                   | 0       |
+|      xor_ln164_125_fu_15399_p2                  |     |        | xor_ln164_125 | xor       | auto                     | 0       |
+|      xor_ln164_126_fu_15405_p2                  |     |        | xor_ln164_126 | xor       | auto                     | 0       |
+|      xor_ln164_127_fu_15419_p2                  |     |        | xor_ln164_127 | xor       | auto                     | 0       |
+|      xor_ln164_128_fu_15425_p2                  |     |        | xor_ln164_128 | xor       | auto                     | 0       |
+|      add_ln164_86_fu_15431_p2                   |     |        | add_ln164_86  | add       | fabric                   | 0       |
+|      xor_ln164_129_fu_16054_p2                  |     |        | xor_ln164_129 | xor       | auto                     | 0       |
+|      xor_ln164_130_fu_16060_p2                  |     |        | xor_ln164_130 | xor       | auto                     | 0       |
+|      xor_ln164_131_fu_16074_p2                  |     |        | xor_ln164_131 | xor       | auto                     | 0       |
+|      xor_ln164_132_fu_16080_p2                  |     |        | xor_ln164_132 | xor       | auto                     | 0       |
+|      add_ln164_89_fu_16086_p2                   |     |        | add_ln164_89  | add       | fabric                   | 0       |
+|      xor_ln164_133_fu_16195_p2                  |     |        | xor_ln164_133 | xor       | auto                     | 0       |
+|      xor_ln164_134_fu_16201_p2                  |     |        | xor_ln164_134 | xor       | auto                     | 0       |
+|      xor_ln164_135_fu_16215_p2                  |     |        | xor_ln164_135 | xor       | auto                     | 0       |
+|      xor_ln164_136_fu_16221_p2                  |     |        | xor_ln164_136 | xor       | auto                     | 0       |
+|      add_ln164_92_fu_16231_p2                   |     |        | add_ln164_92  | add       | fabric                   | 0       |
+|      xor_ln164_137_fu_16993_p2                  |     |        | xor_ln164_137 | xor       | auto                     | 0       |
+|      xor_ln164_138_fu_16999_p2                  |     |        | xor_ln164_138 | xor       | auto                     | 0       |
+|      xor_ln164_139_fu_17013_p2                  |     |        | xor_ln164_139 | xor       | auto                     | 0       |
+|      xor_ln164_140_fu_17019_p2                  |     |        | xor_ln164_140 | xor       | auto                     | 0       |
+|      add_ln164_95_fu_17029_p2                   |     |        | add_ln164_95  | add       | fabric                   | 0       |
+|      xor_ln164_141_fu_16346_p2                  |     |        | xor_ln164_141 | xor       | auto                     | 0       |
+|      xor_ln164_142_fu_16352_p2                  |     |        | xor_ln164_142 | xor       | auto                     | 0       |
+|      xor_ln164_143_fu_16366_p2                  |     |        | xor_ln164_143 | xor       | auto                     | 0       |
+|      xor_ln164_144_fu_16372_p2                  |     |        | xor_ln164_144 | xor       | auto                     | 0       |
+|      add_ln164_98_fu_16378_p2                   |     |        | add_ln164_98  | add       | fabric                   | 0       |
+|      xor_ln164_145_fu_17153_p2                  |     |        | xor_ln164_145 | xor       | auto                     | 0       |
+|      xor_ln164_146_fu_17159_p2                  |     |        | xor_ln164_146 | xor       | auto                     | 0       |
+|      xor_ln164_147_fu_17173_p2                  |     |        | xor_ln164_147 | xor       | auto                     | 0       |
+|      xor_ln164_148_fu_17179_p2                  |     |        | xor_ln164_148 | xor       | auto                     | 0       |
+|      add_ln164_101_fu_17185_p2                  |     |        | add_ln164_101 | add       | fabric                   | 0       |
+|      xor_ln164_149_fu_17294_p2                  |     |        | xor_ln164_149 | xor       | auto                     | 0       |
+|      xor_ln164_150_fu_17300_p2                  |     |        | xor_ln164_150 | xor       | auto                     | 0       |
+|      xor_ln164_151_fu_17314_p2                  |     |        | xor_ln164_151 | xor       | auto                     | 0       |
+|      xor_ln164_152_fu_17320_p2                  |     |        | xor_ln164_152 | xor       | auto                     | 0       |
+|      add_ln164_104_fu_17330_p2                  |     |        | add_ln164_104 | add       | fabric                   | 0       |
+|      xor_ln164_153_fu_17870_p2                  |     |        | xor_ln164_153 | xor       | auto                     | 0       |
+|      xor_ln164_154_fu_17876_p2                  |     |        | xor_ln164_154 | xor       | auto                     | 0       |
+|      xor_ln164_155_fu_17890_p2                  |     |        | xor_ln164_155 | xor       | auto                     | 0       |
+|      xor_ln164_156_fu_17896_p2                  |     |        | xor_ln164_156 | xor       | auto                     | 0       |
+|      add_ln164_107_fu_17906_p2                  |     |        | add_ln164_107 | add       | fabric                   | 0       |
+|      xor_ln164_157_fu_17445_p2                  |     |        | xor_ln164_157 | xor       | auto                     | 0       |
+|      xor_ln164_158_fu_17451_p2                  |     |        | xor_ln164_158 | xor       | auto                     | 0       |
+|      xor_ln164_159_fu_17465_p2                  |     |        | xor_ln164_159 | xor       | auto                     | 0       |
+|      xor_ln164_160_fu_17471_p2                  |     |        | xor_ln164_160 | xor       | auto                     | 0       |
+|      add_ln164_110_fu_17477_p2                  |     |        | add_ln164_110 | add       | fabric                   | 0       |
+|      xor_ln164_161_fu_18030_p2                  |     |        | xor_ln164_161 | xor       | auto                     | 0       |
+|      xor_ln164_162_fu_18036_p2                  |     |        | xor_ln164_162 | xor       | auto                     | 0       |
+|      xor_ln164_163_fu_18050_p2                  |     |        | xor_ln164_163 | xor       | auto                     | 0       |
+|      xor_ln164_164_fu_18056_p2                  |     |        | xor_ln164_164 | xor       | auto                     | 0       |
+|      add_ln164_113_fu_18062_p2                  |     |        | add_ln164_113 | add       | fabric                   | 0       |
+|      xor_ln164_165_fu_18171_p2                  |     |        | xor_ln164_165 | xor       | auto                     | 0       |
+|      xor_ln164_166_fu_18177_p2                  |     |        | xor_ln164_166 | xor       | auto                     | 0       |
+|      xor_ln164_167_fu_18191_p2                  |     |        | xor_ln164_167 | xor       | auto                     | 0       |
+|      xor_ln164_168_fu_18197_p2                  |     |        | xor_ln164_168 | xor       | auto                     | 0       |
+|      add_ln164_116_fu_18207_p2                  |     |        | add_ln164_116 | add       | fabric                   | 0       |
+|      xor_ln184_fu_1572_p2                       |     |        | xor_ln184     | xor       | auto                     | 0       |
+|      and_ln184_fu_1578_p2                       |     |        | and_ln184     | and       | auto                     | 0       |
+|      and_ln184_1_fu_1584_p2                     |     |        | and_ln184_1   | and       | auto                     | 0       |
+|      xor_ln184_1_fu_1606_p2                     |     |        | xor_ln184_1   | xor       | auto                     | 0       |
+|      xor_ln184_2_fu_1620_p2                     |     |        | xor_ln184_2   | xor       | auto                     | 0       |
+|      xor_ln184_3_fu_1626_p2                     |     |        | xor_ln184_3   | xor       | auto                     | 0       |
+|      e_fu_1698_p2                               |     |        | e             | add       | fabric                   | 0       |
+|      and_ln205_fu_1987_p2                       |     |        | and_ln205     | and       | auto                     | 0       |
+|      and_ln205_1_fu_1991_p2                     |     |        | and_ln205_1   | and       | auto                     | 0       |
+|      and_ln205_2_fu_1995_p2                     |     |        | and_ln205_2   | and       | auto                     | 0       |
+|      xor_ln205_fu_1999_p2                       |     |        | xor_ln205     | xor       | auto                     | 0       |
+|      xor_ln205_1_fu_2005_p2                     |     |        | xor_ln205_1   | xor       | auto                     | 0       |
+|      xor_ln205_2_fu_1728_p2                     |     |        | xor_ln205_2   | xor       | auto                     | 0       |
+|      xor_ln205_3_fu_1734_p2                     |     |        | xor_ln205_3   | xor       | auto                     | 0       |
+|      xor_ln184_4_fu_1830_p2                     |     |        | xor_ln184_4   | xor       | auto                     | 0       |
+|      and_ln184_2_fu_1835_p2                     |     |        | and_ln184_2   | and       | auto                     | 0       |
+|      and_ln184_3_fu_1840_p2                     |     |        | and_ln184_3   | and       | auto                     | 0       |
+|      xor_ln184_5_fu_1844_p2                     |     |        | xor_ln184_5   | xor       | auto                     | 0       |
+|      xor_ln184_6_fu_1806_p2                     |     |        | xor_ln184_6   | xor       | auto                     | 0       |
+|      xor_ln184_7_fu_1812_p2                     |     |        | xor_ln184_7   | xor       | auto                     | 0       |
+|      e_1_fu_1860_p2                             |     |        | e_1           | add       | fabric                   | 0       |
+|      and_ln205_3_fu_2063_p2                     |     |        | and_ln205_3   | and       | auto                     | 0       |
+|      and_ln205_4_fu_2084_p2                     |     |        | and_ln205_4   | and       | auto                     | 0       |
+|      xor_ln205_4_fu_2097_p2                     |     |        | xor_ln205_4   | xor       | auto                     | 0       |
+|      xor_ln205_5_fu_2103_p2                     |     |        | xor_ln205_5   | xor       | auto                     | 0       |
+|      xor_ln205_6_fu_2109_p2                     |     |        | xor_ln205_6   | xor       | auto                     | 0       |
+|      xor_ln205_7_fu_2115_p2                     |     |        | xor_ln205_7   | xor       | auto                     | 0       |
+|      xor_ln184_8_fu_1907_p2                     |     |        | xor_ln184_8   | xor       | auto                     | 0       |
+|      and_ln184_4_fu_1913_p2                     |     |        | and_ln184_4   | and       | auto                     | 0       |
+|      and_ln184_5_fu_1918_p2                     |     |        | and_ln184_5   | and       | auto                     | 0       |
+|      xor_ln184_9_fu_1939_p2                     |     |        | xor_ln184_9   | xor       | auto                     | 0       |
+|      xor_ln184_10_fu_1953_p2                    |     |        | xor_ln184_10  | xor       | auto                     | 0       |
+|      xor_ln184_11_fu_1959_p2                    |     |        | xor_ln184_11  | xor       | auto                     | 0       |
+|      e_2_fu_2174_p2                             |     |        | e_2           | add       | fabric                   | 0       |
+|      and_ln205_5_fu_2336_p2                     |     |        | and_ln205_5   | and       | auto                     | 0       |
+|      and_ln205_6_fu_2340_p2                     |     |        | and_ln205_6   | and       | auto                     | 0       |
+|      xor_ln205_8_fu_2344_p2                     |     |        | xor_ln205_8   | xor       | auto                     | 0       |
+|      xor_ln205_9_fu_2349_p2                     |     |        | xor_ln205_9   | xor       | auto                     | 0       |
+|      xor_ln205_10_fu_2202_p2                    |     |        | xor_ln205_10  | xor       | auto                     | 0       |
+|      xor_ln205_11_fu_2208_p2                    |     |        | xor_ln205_11  | xor       | auto                     | 0       |
+|      xor_ln184_12_fu_2256_p2                    |     |        | xor_ln184_12  | xor       | auto                     | 0       |
+|      and_ln184_6_fu_2262_p2                     |     |        | and_ln184_6   | and       | auto                     | 0       |
+|      and_ln184_7_fu_2267_p2                     |     |        | and_ln184_7   | and       | auto                     | 0       |
+|      xor_ln184_13_fu_2288_p2                    |     |        | xor_ln184_13  | xor       | auto                     | 0       |
+|      xor_ln184_14_fu_2302_p2                    |     |        | xor_ln184_14  | xor       | auto                     | 0       |
+|      xor_ln184_15_fu_2308_p2                    |     |        | xor_ln184_15  | xor       | auto                     | 0       |
+|      e_3_fu_2407_p2                             |     |        | e_3           | add       | fabric                   | 0       |
+|      and_ln205_7_fu_2411_p2                     |     |        | and_ln205_7   | and       | auto                     | 0       |
+|      and_ln205_8_fu_2432_p2                     |     |        | and_ln205_8   | and       | auto                     | 0       |
+|      xor_ln205_12_fu_2445_p2                    |     |        | xor_ln205_12  | xor       | auto                     | 0       |
+|      xor_ln205_13_fu_2451_p2                    |     |        | xor_ln205_13  | xor       | auto                     | 0       |
+|      xor_ln205_14_fu_2457_p2                    |     |        | xor_ln205_14  | xor       | auto                     | 0       |
+|      xor_ln205_15_fu_2463_p2                    |     |        | xor_ln205_15  | xor       | auto                     | 0       |
+|      xor_ln184_16_fu_2522_p2                    |     |        | xor_ln184_16  | xor       | auto                     | 0       |
+|      and_ln184_8_fu_2528_p2                     |     |        | and_ln184_8   | and       | auto                     | 0       |
+|      and_ln184_9_fu_2533_p2                     |     |        | and_ln184_9   | and       | auto                     | 0       |
+|      xor_ln184_17_fu_2554_p2                    |     |        | xor_ln184_17  | xor       | auto                     | 0       |
+|      xor_ln184_18_fu_2568_p2                    |     |        | xor_ln184_18  | xor       | auto                     | 0       |
+|      xor_ln184_19_fu_2574_p2                    |     |        | xor_ln184_19  | xor       | auto                     | 0       |
+|      e_4_fu_2644_p2                             |     |        | e_4           | add       | fabric                   | 0       |
+|      and_ln205_9_fu_2763_p2                     |     |        | and_ln205_9   | and       | auto                     | 0       |
+|      and_ln205_10_fu_2767_p2                    |     |        | and_ln205_10  | and       | auto                     | 0       |
+|      xor_ln205_16_fu_2771_p2                    |     |        | xor_ln205_16  | xor       | auto                     | 0       |
+|      xor_ln205_17_fu_2776_p2                    |     |        | xor_ln205_17  | xor       | auto                     | 0       |
+|      xor_ln205_18_fu_2673_p2                    |     |        | xor_ln205_18  | xor       | auto                     | 0       |
+|      xor_ln205_19_fu_2679_p2                    |     |        | xor_ln205_19  | xor       | auto                     | 0       |
+|      xor_ln184_20_fu_2792_p2                    |     |        | xor_ln184_20  | xor       | auto                     | 0       |
+|      and_ln184_10_fu_2797_p2                    |     |        | and_ln184_10  | and       | auto                     | 0       |
+|      and_ln184_11_fu_2802_p2                    |     |        | and_ln184_11  | and       | auto                     | 0       |
+|      xor_ln184_21_fu_2806_p2                    |     |        | xor_ln184_21  | xor       | auto                     | 0       |
+|      xor_ln184_22_fu_2751_p2                    |     |        | xor_ln184_22  | xor       | auto                     | 0       |
+|      xor_ln184_23_fu_2757_p2                    |     |        | xor_ln184_23  | xor       | auto                     | 0       |
+|      e_5_fu_2875_p2                             |     |        | e_5           | add       | fabric                   | 0       |
+|      and_ln205_11_fu_3038_p2                    |     |        | and_ln205_11  | and       | auto                     | 0       |
+|      and_ln205_12_fu_3042_p2                    |     |        | and_ln205_12  | and       | auto                     | 0       |
+|      xor_ln205_20_fu_3046_p2                    |     |        | xor_ln205_20  | xor       | auto                     | 0       |
+|      xor_ln205_21_fu_3051_p2                    |     |        | xor_ln205_21  | xor       | auto                     | 0       |
+|      xor_ln205_22_fu_2904_p2                    |     |        | xor_ln205_22  | xor       | auto                     | 0       |
+|      xor_ln205_23_fu_2910_p2                    |     |        | xor_ln205_23  | xor       | auto                     | 0       |
+|      xor_ln184_24_fu_2958_p2                    |     |        | xor_ln184_24  | xor       | auto                     | 0       |
+|      and_ln184_12_fu_2964_p2                    |     |        | and_ln184_12  | and       | auto                     | 0       |
+|      and_ln184_13_fu_2969_p2                    |     |        | and_ln184_13  | and       | auto                     | 0       |
+|      xor_ln184_25_fu_2990_p2                    |     |        | xor_ln184_25  | xor       | auto                     | 0       |
+|      xor_ln184_26_fu_3004_p2                    |     |        | xor_ln184_26  | xor       | auto                     | 0       |
+|      xor_ln184_27_fu_3010_p2                    |     |        | xor_ln184_27  | xor       | auto                     | 0       |
+|      e_6_fu_3109_p2                             |     |        | e_6           | add       | fabric                   | 0       |
+|      and_ln205_13_fu_3113_p2                    |     |        | and_ln205_13  | and       | auto                     | 0       |
+|      and_ln205_14_fu_3134_p2                    |     |        | and_ln205_14  | and       | auto                     | 0       |
+|      xor_ln205_24_fu_3147_p2                    |     |        | xor_ln205_24  | xor       | auto                     | 0       |
+|      xor_ln205_25_fu_3153_p2                    |     |        | xor_ln205_25  | xor       | auto                     | 0       |
+|      xor_ln205_26_fu_3159_p2                    |     |        | xor_ln205_26  | xor       | auto                     | 0       |
+|      xor_ln205_27_fu_3165_p2                    |     |        | xor_ln205_27  | xor       | auto                     | 0       |
+|      xor_ln184_28_fu_3224_p2                    |     |        | xor_ln184_28  | xor       | auto                     | 0       |
+|      and_ln184_14_fu_3230_p2                    |     |        | and_ln184_14  | and       | auto                     | 0       |
+|      and_ln184_15_fu_3235_p2                    |     |        | and_ln184_15  | and       | auto                     | 0       |
+|      xor_ln184_29_fu_3256_p2                    |     |        | xor_ln184_29  | xor       | auto                     | 0       |
+|      xor_ln184_30_fu_3270_p2                    |     |        | xor_ln184_30  | xor       | auto                     | 0       |
+|      xor_ln184_31_fu_3276_p2                    |     |        | xor_ln184_31  | xor       | auto                     | 0       |
+|      e_7_fu_3346_p2                             |     |        | e_7           | add       | fabric                   | 0       |
+|      and_ln205_15_fu_3465_p2                    |     |        | and_ln205_15  | and       | auto                     | 0       |
+|      and_ln205_16_fu_3469_p2                    |     |        | and_ln205_16  | and       | auto                     | 0       |
+|      xor_ln205_28_fu_3473_p2                    |     |        | xor_ln205_28  | xor       | auto                     | 0       |
+|      xor_ln205_29_fu_3478_p2                    |     |        | xor_ln205_29  | xor       | auto                     | 0       |
+|      xor_ln205_30_fu_3375_p2                    |     |        | xor_ln205_30  | xor       | auto                     | 0       |
+|      xor_ln205_31_fu_3381_p2                    |     |        | xor_ln205_31  | xor       | auto                     | 0       |
+|      xor_ln184_32_fu_3494_p2                    |     |        | xor_ln184_32  | xor       | auto                     | 0       |
+|      and_ln184_16_fu_3499_p2                    |     |        | and_ln184_16  | and       | auto                     | 0       |
+|      and_ln184_17_fu_3504_p2                    |     |        | and_ln184_17  | and       | auto                     | 0       |
+|      xor_ln184_33_fu_3508_p2                    |     |        | xor_ln184_33  | xor       | auto                     | 0       |
+|      xor_ln184_34_fu_3453_p2                    |     |        | xor_ln184_34  | xor       | auto                     | 0       |
+|      xor_ln184_35_fu_3459_p2                    |     |        | xor_ln184_35  | xor       | auto                     | 0       |
+|      e_8_fu_3577_p2                             |     |        | e_8           | add       | fabric                   | 0       |
+|      and_ln205_17_fu_3582_p2                    |     |        | and_ln205_17  | and       | auto                     | 0       |
+|      and_ln205_18_fu_3603_p2                    |     |        | and_ln205_18  | and       | auto                     | 0       |
+|      xor_ln205_32_fu_3616_p2                    |     |        | xor_ln205_32  | xor       | auto                     | 0       |
+|      xor_ln205_33_fu_3622_p2                    |     |        | xor_ln205_33  | xor       | auto                     | 0       |
+|      xor_ln205_34_fu_3628_p2                    |     |        | xor_ln205_34  | xor       | auto                     | 0       |
+|      xor_ln205_35_fu_3634_p2                    |     |        | xor_ln205_35  | xor       | auto                     | 0       |
+|      xor_ln184_36_fu_3694_p2                    |     |        | xor_ln184_36  | xor       | auto                     | 0       |
+|      and_ln184_18_fu_3700_p2                    |     |        | and_ln184_18  | and       | auto                     | 0       |
+|      and_ln184_19_fu_3705_p2                    |     |        | and_ln184_19  | and       | auto                     | 0       |
+|      xor_ln184_37_fu_3726_p2                    |     |        | xor_ln184_37  | xor       | auto                     | 0       |
+|      xor_ln184_38_fu_3740_p2                    |     |        | xor_ln184_38  | xor       | auto                     | 0       |
+|      xor_ln184_39_fu_3746_p2                    |     |        | xor_ln184_39  | xor       | auto                     | 0       |
+|      add_ln184_37_fu_3757_p2                    |     |        | add_ln184_37  | add       | fabric                   | 0       |
+|      e_9_fu_3847_p2                             |     |        | e_9           | add       | fabric                   | 0       |
+|      and_ln205_19_fu_3968_p2                    |     |        | and_ln205_19  | and       | auto                     | 0       |
+|      and_ln205_20_fu_3972_p2                    |     |        | and_ln205_20  | and       | auto                     | 0       |
+|      xor_ln205_36_fu_3976_p2                    |     |        | xor_ln205_36  | xor       | auto                     | 0       |
+|      xor_ln205_37_fu_3981_p2                    |     |        | xor_ln205_37  | xor       | auto                     | 0       |
+|      xor_ln205_38_fu_3835_p2                    |     |        | xor_ln205_38  | xor       | auto                     | 0       |
+|      xor_ln205_39_fu_3841_p2                    |     |        | xor_ln205_39  | xor       | auto                     | 0       |
+|      xor_ln184_40_fu_3893_p2                    |     |        | xor_ln184_40  | xor       | auto                     | 0       |
+|      and_ln184_20_fu_3899_p2                    |     |        | and_ln184_20  | and       | auto                     | 0       |
+|      and_ln184_21_fu_3904_p2                    |     |        | and_ln184_21  | and       | auto                     | 0       |
+|      xor_ln184_41_fu_3925_p2                    |     |        | xor_ln184_41  | xor       | auto                     | 0       |
+|      xor_ln184_42_fu_3939_p2                    |     |        | xor_ln184_42  | xor       | auto                     | 0       |
+|      xor_ln184_43_fu_3945_p2                    |     |        | xor_ln184_43  | xor       | auto                     | 0       |
+|      add_ln184_40_fu_3956_p2                    |     |        | add_ln184_40  | add       | fabric                   | 0       |
+|      e_10_fu_4039_p2                            |     |        | e_10          | add       | fabric                   | 0       |
+|      and_ln205_21_fu_4043_p2                    |     |        | and_ln205_21  | and       | auto                     | 0       |
+|      and_ln205_22_fu_4064_p2                    |     |        | and_ln205_22  | and       | auto                     | 0       |
+|      xor_ln205_40_fu_4077_p2                    |     |        | xor_ln205_40  | xor       | auto                     | 0       |
+|      xor_ln205_41_fu_4083_p2                    |     |        | xor_ln205_41  | xor       | auto                     | 0       |
+|      xor_ln205_42_fu_4089_p2                    |     |        | xor_ln205_42  | xor       | auto                     | 0       |
+|      xor_ln205_43_fu_4095_p2                    |     |        | xor_ln205_43  | xor       | auto                     | 0       |
+|      xor_ln184_44_fu_4154_p2                    |     |        | xor_ln184_44  | xor       | auto                     | 0       |
+|      and_ln184_22_fu_4160_p2                    |     |        | and_ln184_22  | and       | auto                     | 0       |
+|      and_ln184_23_fu_4165_p2                    |     |        | and_ln184_23  | and       | auto                     | 0       |
+|      xor_ln184_45_fu_4186_p2                    |     |        | xor_ln184_45  | xor       | auto                     | 0       |
+|      xor_ln184_46_fu_4200_p2                    |     |        | xor_ln184_46  | xor       | auto                     | 0       |
+|      xor_ln184_47_fu_4206_p2                    |     |        | xor_ln184_47  | xor       | auto                     | 0       |
+|      add_ln184_43_fu_4217_p2                    |     |        | add_ln184_43  | add       | fabric                   | 0       |
+|      e_11_fu_4307_p2                            |     |        | e_11          | add       | fabric                   | 0       |
+|      and_ln205_23_fu_4311_p2                    |     |        | and_ln205_23  | and       | auto                     | 0       |
+|      and_ln205_24_fu_4315_p2                    |     |        | and_ln205_24  | and       | auto                     | 0       |
+|      xor_ln205_44_fu_4319_p2                    |     |        | xor_ln205_44  | xor       | auto                     | 0       |
+|      xor_ln205_45_fu_4324_p2                    |     |        | xor_ln205_45  | xor       | auto                     | 0       |
+|      xor_ln205_46_fu_4295_p2                    |     |        | xor_ln205_46  | xor       | auto                     | 0       |
+|      xor_ln205_47_fu_4301_p2                    |     |        | xor_ln205_47  | xor       | auto                     | 0       |
+|      xor_ln184_48_fu_4382_p2                    |     |        | xor_ln184_48  | xor       | auto                     | 0       |
+|      and_ln184_24_fu_4388_p2                    |     |        | and_ln184_24  | and       | auto                     | 0       |
+|      and_ln184_25_fu_4393_p2                    |     |        | and_ln184_25  | and       | auto                     | 0       |
+|      xor_ln184_49_fu_4414_p2                    |     |        | xor_ln184_49  | xor       | auto                     | 0       |
+|      xor_ln184_50_fu_4428_p2                    |     |        | xor_ln184_50  | xor       | auto                     | 0       |
+|      xor_ln184_51_fu_4434_p2                    |     |        | xor_ln184_51  | xor       | auto                     | 0       |
+|      add_ln184_46_fu_4445_p2                    |     |        | add_ln184_46  | add       | fabric                   | 0       |
+|      e_12_fu_4499_p2                            |     |        | e_12          | add       | fabric                   | 0       |
+|      and_ln205_25_fu_4504_p2                    |     |        | and_ln205_25  | and       | auto                     | 0       |
+|      and_ln205_26_fu_4525_p2                    |     |        | and_ln205_26  | and       | auto                     | 0       |
+|      xor_ln205_48_fu_4538_p2                    |     |        | xor_ln205_48  | xor       | auto                     | 0       |
+|      xor_ln205_49_fu_4544_p2                    |     |        | xor_ln205_49  | xor       | auto                     | 0       |
+|      xor_ln205_50_fu_4550_p2                    |     |        | xor_ln205_50  | xor       | auto                     | 0       |
+|      xor_ln205_51_fu_4556_p2                    |     |        | xor_ln205_51  | xor       | auto                     | 0       |
+|      xor_ln184_52_fu_4688_p2                    |     |        | xor_ln184_52  | xor       | auto                     | 0       |
+|      and_ln184_26_fu_4693_p2                    |     |        | and_ln184_26  | and       | auto                     | 0       |
+|      and_ln184_27_fu_4698_p2                    |     |        | and_ln184_27  | and       | auto                     | 0       |
+|      xor_ln184_53_fu_4718_p2                    |     |        | xor_ln184_53  | xor       | auto                     | 0       |
+|      xor_ln184_54_fu_4732_p2                    |     |        | xor_ln184_54  | xor       | auto                     | 0       |
+|      xor_ln184_55_fu_4738_p2                    |     |        | xor_ln184_55  | xor       | auto                     | 0       |
+|      add_ln184_49_fu_4750_p2                    |     |        | add_ln184_49  | add       | fabric                   | 0       |
+|      e_13_fu_4761_p2                            |     |        | e_13          | add       | fabric                   | 0       |
+|      and_ln205_27_fu_4852_p2                    |     |        | and_ln205_27  | and       | auto                     | 0       |
+|      and_ln205_28_fu_4856_p2                    |     |        | and_ln205_28  | and       | auto                     | 0       |
+|      xor_ln205_52_fu_4860_p2                    |     |        | xor_ln205_52  | xor       | auto                     | 0       |
+|      xor_ln205_53_fu_4865_p2                    |     |        | xor_ln205_53  | xor       | auto                     | 0       |
+|      xor_ln205_54_fu_4640_p2                    |     |        | xor_ln205_54  | xor       | auto                     | 0       |
+|      xor_ln205_55_fu_4646_p2                    |     |        | xor_ln205_55  | xor       | auto                     | 0       |
+|      xor_ln184_56_fu_4881_p2                    |     |        | xor_ln184_56  | xor       | auto                     | 0       |
+|      and_ln184_28_fu_4886_p2                    |     |        | and_ln184_28  | and       | auto                     | 0       |
+|      and_ln184_29_fu_4891_p2                    |     |        | and_ln184_29  | and       | auto                     | 0       |
+|      xor_ln184_57_fu_4895_p2                    |     |        | xor_ln184_57  | xor       | auto                     | 0       |
+|      xor_ln184_58_fu_4832_p2                    |     |        | xor_ln184_58  | xor       | auto                     | 0       |
+|      xor_ln184_59_fu_4838_p2                    |     |        | xor_ln184_59  | xor       | auto                     | 0       |
+|      add_ln184_52_fu_4844_p2                    |     |        | add_ln184_52  | add       | fabric                   | 0       |
+|      e_14_fu_4954_p2                            |     |        | e_14          | add       | fabric                   | 0       |
+|      and_ln205_29_fu_4959_p2                    |     |        | and_ln205_29  | and       | auto                     | 0       |
+|      and_ln205_30_fu_4980_p2                    |     |        | and_ln205_30  | and       | auto                     | 0       |
+|      xor_ln205_56_fu_4993_p2                    |     |        | xor_ln205_56  | xor       | auto                     | 0       |
+|      xor_ln205_57_fu_4999_p2                    |     |        | xor_ln205_57  | xor       | auto                     | 0       |
+|      xor_ln205_58_fu_5005_p2                    |     |        | xor_ln205_58  | xor       | auto                     | 0       |
+|      xor_ln205_59_fu_5011_p2                    |     |        | xor_ln205_59  | xor       | auto                     | 0       |
+|      xor_ln184_60_fu_5071_p2                    |     |        | xor_ln184_60  | xor       | auto                     | 0       |
+|      and_ln184_30_fu_5077_p2                    |     |        | and_ln184_30  | and       | auto                     | 0       |
+|      and_ln184_31_fu_5082_p2                    |     |        | and_ln184_31  | and       | auto                     | 0       |
+|      xor_ln184_61_fu_5103_p2                    |     |        | xor_ln184_61  | xor       | auto                     | 0       |
+|      xor_ln184_62_fu_5117_p2                    |     |        | xor_ln184_62  | xor       | auto                     | 0       |
+|      xor_ln184_63_fu_5123_p2                    |     |        | xor_ln184_63  | xor       | auto                     | 0       |
+|      e_15_fu_5230_p2                            |     |        | e_15          | add       | fabric                   | 0       |
+|      and_ln205_31_fu_5234_p2                    |     |        | and_ln205_31  | and       | auto                     | 0       |
+|      and_ln205_32_fu_5238_p2                    |     |        | and_ln205_32  | and       | auto                     | 0       |
+|      xor_ln205_60_fu_5242_p2                    |     |        | xor_ln205_60  | xor       | auto                     | 0       |
+|      xor_ln205_61_fu_5247_p2                    |     |        | xor_ln205_61  | xor       | auto                     | 0       |
+|      xor_ln205_62_fu_5218_p2                    |     |        | xor_ln205_62  | xor       | auto                     | 0       |
+|      xor_ln205_63_fu_5224_p2                    |     |        | xor_ln205_63  | xor       | auto                     | 0       |
+|      xor_ln184_64_fu_5305_p2                    |     |        | xor_ln184_64  | xor       | auto                     | 0       |
+|      and_ln184_32_fu_5311_p2                    |     |        | and_ln184_32  | and       | auto                     | 0       |
+|      and_ln184_33_fu_5316_p2                    |     |        | and_ln184_33  | and       | auto                     | 0       |
+|      xor_ln184_65_fu_5337_p2                    |     |        | xor_ln184_65  | xor       | auto                     | 0       |
+|      xor_ln184_66_fu_5351_p2                    |     |        | xor_ln184_66  | xor       | auto                     | 0       |
+|      xor_ln184_67_fu_5357_p2                    |     |        | xor_ln184_67  | xor       | auto                     | 0       |
+|      e_16_fu_5427_p2                            |     |        | e_16          | add       | fabric                   | 0       |
+|      and_ln205_33_fu_5432_p2                    |     |        | and_ln205_33  | and       | auto                     | 0       |
+|      and_ln205_34_fu_5453_p2                    |     |        | and_ln205_34  | and       | auto                     | 0       |
+|      xor_ln205_64_fu_5466_p2                    |     |        | xor_ln205_64  | xor       | auto                     | 0       |
+|      xor_ln205_65_fu_5472_p2                    |     |        | xor_ln205_65  | xor       | auto                     | 0       |
+|      xor_ln205_66_fu_5478_p2                    |     |        | xor_ln205_66  | xor       | auto                     | 0       |
+|      xor_ln205_67_fu_5484_p2                    |     |        | xor_ln205_67  | xor       | auto                     | 0       |
+|      xor_ln184_68_fu_5658_p2                    |     |        | xor_ln184_68  | xor       | auto                     | 0       |
+|      and_ln184_34_fu_5663_p2                    |     |        | and_ln184_34  | and       | auto                     | 0       |
+|      and_ln184_35_fu_5668_p2                    |     |        | and_ln184_35  | and       | auto                     | 0       |
+|      xor_ln184_69_fu_5672_p2                    |     |        | xor_ln184_69  | xor       | auto                     | 0       |
+|      xor_ln184_70_fu_5568_p2                    |     |        | xor_ln184_70  | xor       | auto                     | 0       |
+|      xor_ln184_71_fu_5574_p2                    |     |        | xor_ln184_71  | xor       | auto                     | 0       |
+|      e_17_fu_5699_p2                            |     |        | e_17          | add       | fabric                   | 0       |
+|      and_ln205_35_fu_5826_p2                    |     |        | and_ln205_35  | and       | auto                     | 0       |
+|      and_ln205_36_fu_5830_p2                    |     |        | and_ln205_36  | and       | auto                     | 0       |
+|      xor_ln205_68_fu_5834_p2                    |     |        | xor_ln205_68  | xor       | auto                     | 0       |
+|      xor_ln205_69_fu_5839_p2                    |     |        | xor_ln205_69  | xor       | auto                     | 0       |
+|      xor_ln205_70_fu_5646_p2                    |     |        | xor_ln205_70  | xor       | auto                     | 0       |
+|      xor_ln205_71_fu_5652_p2                    |     |        | xor_ln205_71  | xor       | auto                     | 0       |
+|      xor_ln184_72_fu_5746_p2                    |     |        | xor_ln184_72  | xor       | auto                     | 0       |
+|      and_ln184_36_fu_5752_p2                    |     |        | and_ln184_36  | and       | auto                     | 0       |
+|      and_ln184_37_fu_5757_p2                    |     |        | and_ln184_37  | and       | auto                     | 0       |
+|      xor_ln184_73_fu_5778_p2                    |     |        | xor_ln184_73  | xor       | auto                     | 0       |
+|      xor_ln184_74_fu_5792_p2                    |     |        | xor_ln184_74  | xor       | auto                     | 0       |
+|      xor_ln184_75_fu_5798_p2                    |     |        | xor_ln184_75  | xor       | auto                     | 0       |
+|      e_18_fu_5897_p2                            |     |        | e_18          | add       | fabric                   | 0       |
+|      and_ln205_37_fu_5901_p2                    |     |        | and_ln205_37  | and       | auto                     | 0       |
+|      and_ln205_38_fu_5922_p2                    |     |        | and_ln205_38  | and       | auto                     | 0       |
+|      xor_ln205_72_fu_5935_p2                    |     |        | xor_ln205_72  | xor       | auto                     | 0       |
+|      xor_ln205_73_fu_5941_p2                    |     |        | xor_ln205_73  | xor       | auto                     | 0       |
+|      xor_ln205_74_fu_5947_p2                    |     |        | xor_ln205_74  | xor       | auto                     | 0       |
+|      xor_ln205_75_fu_5953_p2                    |     |        | xor_ln205_75  | xor       | auto                     | 0       |
+|      xor_ln184_76_fu_6012_p2                    |     |        | xor_ln184_76  | xor       | auto                     | 0       |
+|      and_ln184_38_fu_6018_p2                    |     |        | and_ln184_38  | and       | auto                     | 0       |
+|      and_ln184_39_fu_6023_p2                    |     |        | and_ln184_39  | and       | auto                     | 0       |
+|      xor_ln184_77_fu_6044_p2                    |     |        | xor_ln184_77  | xor       | auto                     | 0       |
+|      xor_ln184_78_fu_6058_p2                    |     |        | xor_ln184_78  | xor       | auto                     | 0       |
+|      xor_ln184_79_fu_6064_p2                    |     |        | xor_ln184_79  | xor       | auto                     | 0       |
+|      e_19_fu_6134_p2                            |     |        | e_19          | add       | fabric                   | 0       |
+|      and_ln205_39_fu_6253_p2                    |     |        | and_ln205_39  | and       | auto                     | 0       |
+|      and_ln205_40_fu_6257_p2                    |     |        | and_ln205_40  | and       | auto                     | 0       |
+|      xor_ln205_76_fu_6261_p2                    |     |        | xor_ln205_76  | xor       | auto                     | 0       |
+|      xor_ln205_77_fu_6266_p2                    |     |        | xor_ln205_77  | xor       | auto                     | 0       |
+|      xor_ln205_78_fu_6163_p2                    |     |        | xor_ln205_78  | xor       | auto                     | 0       |
+|      xor_ln205_79_fu_6169_p2                    |     |        | xor_ln205_79  | xor       | auto                     | 0       |
+|      xor_ln184_80_fu_6282_p2                    |     |        | xor_ln184_80  | xor       | auto                     | 0       |
+|      and_ln184_40_fu_6287_p2                    |     |        | and_ln184_40  | and       | auto                     | 0       |
+|      and_ln184_41_fu_6292_p2                    |     |        | and_ln184_41  | and       | auto                     | 0       |
+|      xor_ln184_81_fu_6296_p2                    |     |        | xor_ln184_81  | xor       | auto                     | 0       |
+|      xor_ln184_82_fu_6241_p2                    |     |        | xor_ln184_82  | xor       | auto                     | 0       |
+|      xor_ln184_83_fu_6247_p2                    |     |        | xor_ln184_83  | xor       | auto                     | 0       |
+|      e_20_fu_6365_p2                            |     |        | e_20          | add       | fabric                   | 0       |
+|      and_ln205_41_fu_6370_p2                    |     |        | and_ln205_41  | and       | auto                     | 0       |
+|      and_ln205_42_fu_6391_p2                    |     |        | and_ln205_42  | and       | auto                     | 0       |
+|      xor_ln205_80_fu_6404_p2                    |     |        | xor_ln205_80  | xor       | auto                     | 0       |
+|      xor_ln205_81_fu_6410_p2                    |     |        | xor_ln205_81  | xor       | auto                     | 0       |
+|      xor_ln205_82_fu_6416_p2                    |     |        | xor_ln205_82  | xor       | auto                     | 0       |
+|      xor_ln205_83_fu_6422_p2                    |     |        | xor_ln205_83  | xor       | auto                     | 0       |
+|      xor_ln184_84_fu_6482_p2                    |     |        | xor_ln184_84  | xor       | auto                     | 0       |
+|      and_ln184_42_fu_6488_p2                    |     |        | and_ln184_42  | and       | auto                     | 0       |
+|      and_ln184_43_fu_6493_p2                    |     |        | and_ln184_43  | and       | auto                     | 0       |
+|      xor_ln184_85_fu_6514_p2                    |     |        | xor_ln184_85  | xor       | auto                     | 0       |
+|      xor_ln184_86_fu_6528_p2                    |     |        | xor_ln184_86  | xor       | auto                     | 0       |
+|      xor_ln184_87_fu_6534_p2                    |     |        | xor_ln184_87  | xor       | auto                     | 0       |
+|      e_21_fu_6954_p2                            |     |        | e_21          | add       | fabric                   | 0       |
+|      and_ln205_43_fu_6958_p2                    |     |        | and_ln205_43  | and       | auto                     | 0       |
+|      and_ln205_44_fu_6962_p2                    |     |        | and_ln205_44  | and       | auto                     | 0       |
+|      xor_ln205_84_fu_6966_p2                    |     |        | xor_ln205_84  | xor       | auto                     | 0       |
+|      xor_ln205_85_fu_6971_p2                    |     |        | xor_ln205_85  | xor       | auto                     | 0       |
+|      xor_ln205_86_fu_6628_p2                    |     |        | xor_ln205_86  | xor       | auto                     | 0       |
+|      xor_ln205_87_fu_6634_p2                    |     |        | xor_ln205_87  | xor       | auto                     | 0       |
+|      xor_ln184_88_fu_7029_p2                    |     |        | xor_ln184_88  | xor       | auto                     | 0       |
+|      and_ln184_44_fu_7035_p2                    |     |        | and_ln184_44  | and       | auto                     | 0       |
+|      and_ln184_45_fu_7040_p2                    |     |        | and_ln184_45  | and       | auto                     | 0       |
+|      xor_ln184_89_fu_7061_p2                    |     |        | xor_ln184_89  | xor       | auto                     | 0       |
+|      xor_ln184_90_fu_7075_p2                    |     |        | xor_ln184_90  | xor       | auto                     | 0       |
+|      xor_ln184_91_fu_7081_p2                    |     |        | xor_ln184_91  | xor       | auto                     | 0       |
+|      e_22_fu_7152_p2                            |     |        | e_22          | add       | fabric                   | 0       |
+|      and_ln205_45_fu_7500_p2                    |     |        | and_ln205_45  | and       | auto                     | 0       |
+|      and_ln205_46_fu_7504_p2                    |     |        | and_ln205_46  | and       | auto                     | 0       |
+|      xor_ln205_88_fu_7508_p2                    |     |        | xor_ln205_88  | xor       | auto                     | 0       |
+|      xor_ln205_89_fu_7513_p2                    |     |        | xor_ln205_89  | xor       | auto                     | 0       |
+|      xor_ln205_90_fu_7181_p2                    |     |        | xor_ln205_90  | xor       | auto                     | 0       |
+|      xor_ln205_91_fu_7187_p2                    |     |        | xor_ln205_91  | xor       | auto                     | 0       |
+|      xor_ln184_92_fu_7529_p2                    |     |        | xor_ln184_92  | xor       | auto                     | 0       |
+|      and_ln184_46_fu_7534_p2                    |     |        | and_ln184_46  | and       | auto                     | 0       |
+|      and_ln184_47_fu_7539_p2                    |     |        | and_ln184_47  | and       | auto                     | 0       |
+|      xor_ln184_93_fu_7543_p2                    |     |        | xor_ln184_93  | xor       | auto                     | 0       |
+|      xor_ln184_94_fu_7259_p2                    |     |        | xor_ln184_94  | xor       | auto                     | 0       |
+|      xor_ln184_95_fu_7265_p2                    |     |        | xor_ln184_95  | xor       | auto                     | 0       |
+|      e_23_fu_7612_p2                            |     |        | e_23          | add       | fabric                   | 0       |
+|      and_ln205_47_fu_7617_p2                    |     |        | and_ln205_47  | and       | auto                     | 0       |
+|      and_ln205_48_fu_7638_p2                    |     |        | and_ln205_48  | and       | auto                     | 0       |
+|      xor_ln205_92_fu_7651_p2                    |     |        | xor_ln205_92  | xor       | auto                     | 0       |
+|      xor_ln205_93_fu_7657_p2                    |     |        | xor_ln205_93  | xor       | auto                     | 0       |
+|      xor_ln205_94_fu_7663_p2                    |     |        | xor_ln205_94  | xor       | auto                     | 0       |
+|      xor_ln205_95_fu_7669_p2                    |     |        | xor_ln205_95  | xor       | auto                     | 0       |
+|      xor_ln184_96_fu_7729_p2                    |     |        | xor_ln184_96  | xor       | auto                     | 0       |
+|      and_ln184_48_fu_7735_p2                    |     |        | and_ln184_48  | and       | auto                     | 0       |
+|      and_ln184_49_fu_7740_p2                    |     |        | and_ln184_49  | and       | auto                     | 0       |
+|      xor_ln184_97_fu_7761_p2                    |     |        | xor_ln184_97  | xor       | auto                     | 0       |
+|      xor_ln184_98_fu_7775_p2                    |     |        | xor_ln184_98  | xor       | auto                     | 0       |
+|      xor_ln184_99_fu_7781_p2                    |     |        | xor_ln184_99  | xor       | auto                     | 0       |
+|      e_24_fu_7888_p2                            |     |        | e_24          | add       | fabric                   | 0       |
+|      and_ln205_49_fu_7892_p2                    |     |        | and_ln205_49  | and       | auto                     | 0       |
+|      and_ln205_50_fu_7896_p2                    |     |        | and_ln205_50  | and       | auto                     | 0       |
+|      xor_ln205_96_fu_7900_p2                    |     |        | xor_ln205_96  | xor       | auto                     | 0       |
+|      xor_ln205_97_fu_7905_p2                    |     |        | xor_ln205_97  | xor       | auto                     | 0       |
+|      xor_ln205_98_fu_7876_p2                    |     |        | xor_ln205_98  | xor       | auto                     | 0       |
+|      xor_ln205_99_fu_7882_p2                    |     |        | xor_ln205_99  | xor       | auto                     | 0       |
+|      xor_ln184_100_fu_7963_p2                   |     |        | xor_ln184_100 | xor       | auto                     | 0       |
+|      and_ln184_50_fu_7969_p2                    |     |        | and_ln184_50  | and       | auto                     | 0       |
+|      and_ln184_51_fu_7974_p2                    |     |        | and_ln184_51  | and       | auto                     | 0       |
+|      xor_ln184_101_fu_7995_p2                   |     |        | xor_ln184_101 | xor       | auto                     | 0       |
+|      xor_ln184_102_fu_8009_p2                   |     |        | xor_ln184_102 | xor       | auto                     | 0       |
+|      xor_ln184_103_fu_8015_p2                   |     |        | xor_ln184_103 | xor       | auto                     | 0       |
+|      e_25_fu_8085_p2                            |     |        | e_25          | add       | fabric                   | 0       |
+|      and_ln205_51_fu_8090_p2                    |     |        | and_ln205_51  | and       | auto                     | 0       |
+|      and_ln205_52_fu_8111_p2                    |     |        | and_ln205_52  | and       | auto                     | 0       |
+|      xor_ln205_100_fu_8124_p2                   |     |        | xor_ln205_100 | xor       | auto                     | 0       |
+|      xor_ln205_101_fu_8130_p2                   |     |        | xor_ln205_101 | xor       | auto                     | 0       |
+|      xor_ln205_102_fu_8136_p2                   |     |        | xor_ln205_102 | xor       | auto                     | 0       |
+|      xor_ln205_103_fu_8142_p2                   |     |        | xor_ln205_103 | xor       | auto                     | 0       |
+|      xor_ln184_104_fu_8316_p2                   |     |        | xor_ln184_104 | xor       | auto                     | 0       |
+|      and_ln184_52_fu_8321_p2                    |     |        | and_ln184_52  | and       | auto                     | 0       |
+|      and_ln184_53_fu_8326_p2                    |     |        | and_ln184_53  | and       | auto                     | 0       |
+|      xor_ln184_105_fu_8330_p2                   |     |        | xor_ln184_105 | xor       | auto                     | 0       |
+|      xor_ln184_106_fu_8226_p2                   |     |        | xor_ln184_106 | xor       | auto                     | 0       |
+|      xor_ln184_107_fu_8232_p2                   |     |        | xor_ln184_107 | xor       | auto                     | 0       |
+|      e_26_fu_8357_p2                            |     |        | e_26          | add       | fabric                   | 0       |
+|      and_ln205_53_fu_8484_p2                    |     |        | and_ln205_53  | and       | auto                     | 0       |
+|      and_ln205_54_fu_8488_p2                    |     |        | and_ln205_54  | and       | auto                     | 0       |
+|      xor_ln205_104_fu_8492_p2                   |     |        | xor_ln205_104 | xor       | auto                     | 0       |
+|      xor_ln205_105_fu_8497_p2                   |     |        | xor_ln205_105 | xor       | auto                     | 0       |
+|      xor_ln205_106_fu_8304_p2                   |     |        | xor_ln205_106 | xor       | auto                     | 0       |
+|      xor_ln205_107_fu_8310_p2                   |     |        | xor_ln205_107 | xor       | auto                     | 0       |
+|      xor_ln184_108_fu_8404_p2                   |     |        | xor_ln184_108 | xor       | auto                     | 0       |
+|      and_ln184_54_fu_8410_p2                    |     |        | and_ln184_54  | and       | auto                     | 0       |
+|      and_ln184_55_fu_8415_p2                    |     |        | and_ln184_55  | and       | auto                     | 0       |
+|      xor_ln184_109_fu_8436_p2                   |     |        | xor_ln184_109 | xor       | auto                     | 0       |
+|      xor_ln184_110_fu_8450_p2                   |     |        | xor_ln184_110 | xor       | auto                     | 0       |
+|      xor_ln184_111_fu_8456_p2                   |     |        | xor_ln184_111 | xor       | auto                     | 0       |
+|      e_27_fu_8555_p2                            |     |        | e_27          | add       | fabric                   | 0       |
+|      and_ln205_55_fu_8559_p2                    |     |        | and_ln205_55  | and       | auto                     | 0       |
+|      and_ln205_56_fu_8580_p2                    |     |        | and_ln205_56  | and       | auto                     | 0       |
+|      xor_ln205_108_fu_8593_p2                   |     |        | xor_ln205_108 | xor       | auto                     | 0       |
+|      xor_ln205_109_fu_8599_p2                   |     |        | xor_ln205_109 | xor       | auto                     | 0       |
+|      xor_ln205_110_fu_8605_p2                   |     |        | xor_ln205_110 | xor       | auto                     | 0       |
+|      xor_ln205_111_fu_8611_p2                   |     |        | xor_ln205_111 | xor       | auto                     | 0       |
+|      xor_ln184_112_fu_8670_p2                   |     |        | xor_ln184_112 | xor       | auto                     | 0       |
+|      and_ln184_56_fu_8676_p2                    |     |        | and_ln184_56  | and       | auto                     | 0       |
+|      and_ln184_57_fu_8681_p2                    |     |        | and_ln184_57  | and       | auto                     | 0       |
+|      xor_ln184_113_fu_8702_p2                   |     |        | xor_ln184_113 | xor       | auto                     | 0       |
+|      xor_ln184_114_fu_8716_p2                   |     |        | xor_ln184_114 | xor       | auto                     | 0       |
+|      xor_ln184_115_fu_8722_p2                   |     |        | xor_ln184_115 | xor       | auto                     | 0       |
+|      e_28_fu_8792_p2                            |     |        | e_28          | add       | fabric                   | 0       |
+|      and_ln205_57_fu_9362_p2                    |     |        | and_ln205_57  | and       | auto                     | 0       |
+|      and_ln205_58_fu_9366_p2                    |     |        | and_ln205_58  | and       | auto                     | 0       |
+|      xor_ln205_112_fu_9370_p2                   |     |        | xor_ln205_112 | xor       | auto                     | 0       |
+|      xor_ln205_113_fu_9375_p2                   |     |        | xor_ln205_113 | xor       | auto                     | 0       |
+|      xor_ln205_114_fu_8821_p2                   |     |        | xor_ln205_114 | xor       | auto                     | 0       |
+|      xor_ln205_115_fu_8827_p2                   |     |        | xor_ln205_115 | xor       | auto                     | 0       |
+|      xor_ln184_116_fu_9391_p2                   |     |        | xor_ln184_116 | xor       | auto                     | 0       |
+|      and_ln184_58_fu_9396_p2                    |     |        | and_ln184_58  | and       | auto                     | 0       |
+|      and_ln184_59_fu_9401_p2                    |     |        | and_ln184_59  | and       | auto                     | 0       |
+|      xor_ln184_117_fu_9405_p2                   |     |        | xor_ln184_117 | xor       | auto                     | 0       |
+|      xor_ln184_118_fu_8899_p2                   |     |        | xor_ln184_118 | xor       | auto                     | 0       |
+|      xor_ln184_119_fu_8905_p2                   |     |        | xor_ln184_119 | xor       | auto                     | 0       |
+|      e_29_fu_9474_p2                            |     |        | e_29          | add       | fabric                   | 0       |
+|      and_ln205_59_fu_9939_p2                    |     |        | and_ln205_59  | and       | auto                     | 0       |
+|      and_ln205_60_fu_9943_p2                    |     |        | and_ln205_60  | and       | auto                     | 0       |
+|      xor_ln205_116_fu_9947_p2                   |     |        | xor_ln205_116 | xor       | auto                     | 0       |
+|      xor_ln205_117_fu_9952_p2                   |     |        | xor_ln205_117 | xor       | auto                     | 0       |
+|      xor_ln205_118_fu_9503_p2                   |     |        | xor_ln205_118 | xor       | auto                     | 0       |
+|      xor_ln205_119_fu_9509_p2                   |     |        | xor_ln205_119 | xor       | auto                     | 0       |
+|      xor_ln184_120_fu_9557_p2                   |     |        | xor_ln184_120 | xor       | auto                     | 0       |
+|      and_ln184_60_fu_9563_p2                    |     |        | and_ln184_60  | and       | auto                     | 0       |
+|      and_ln184_61_fu_9568_p2                    |     |        | and_ln184_61  | and       | auto                     | 0       |
+|      xor_ln184_121_fu_9589_p2                   |     |        | xor_ln184_121 | xor       | auto                     | 0       |
+|      xor_ln184_122_fu_9603_p2                   |     |        | xor_ln184_122 | xor       | auto                     | 0       |
+|      xor_ln184_123_fu_9609_p2                   |     |        | xor_ln184_123 | xor       | auto                     | 0       |
+|      e_30_fu_10010_p2                           |     |        | e_30          | add       | fabric                   | 0       |
+|      and_ln205_61_fu_10014_p2                   |     |        | and_ln205_61  | and       | auto                     | 0       |
+|      and_ln205_62_fu_10035_p2                   |     |        | and_ln205_62  | and       | auto                     | 0       |
+|      xor_ln205_120_fu_10048_p2                  |     |        | xor_ln205_120 | xor       | auto                     | 0       |
+|      xor_ln205_121_fu_10054_p2                  |     |        | xor_ln205_121 | xor       | auto                     | 0       |
+|      xor_ln205_122_fu_10060_p2                  |     |        | xor_ln205_122 | xor       | auto                     | 0       |
+|      xor_ln205_123_fu_10066_p2                  |     |        | xor_ln205_123 | xor       | auto                     | 0       |
+|      xor_ln184_124_fu_10125_p2                  |     |        | xor_ln184_124 | xor       | auto                     | 0       |
+|      and_ln184_62_fu_10131_p2                   |     |        | and_ln184_62  | and       | auto                     | 0       |
+|      and_ln184_63_fu_10136_p2                   |     |        | and_ln184_63  | and       | auto                     | 0       |
+|      xor_ln184_125_fu_10157_p2                  |     |        | xor_ln184_125 | xor       | auto                     | 0       |
+|      xor_ln184_126_fu_10171_p2                  |     |        | xor_ln184_126 | xor       | auto                     | 0       |
+|      xor_ln184_127_fu_10177_p2                  |     |        | xor_ln184_127 | xor       | auto                     | 0       |
+|      e_31_fu_10247_p2                           |     |        | e_31          | add       | fabric                   | 0       |
+|      and_ln205_63_fu_10968_p2                   |     |        | and_ln205_63  | and       | auto                     | 0       |
+|      and_ln205_64_fu_10972_p2                   |     |        | and_ln205_64  | and       | auto                     | 0       |
+|      xor_ln205_124_fu_10976_p2                  |     |        | xor_ln205_124 | xor       | auto                     | 0       |
+|      xor_ln205_125_fu_10981_p2                  |     |        | xor_ln205_125 | xor       | auto                     | 0       |
+|      xor_ln205_126_fu_10276_p2                  |     |        | xor_ln205_126 | xor       | auto                     | 0       |
+|      xor_ln205_127_fu_10282_p2                  |     |        | xor_ln205_127 | xor       | auto                     | 0       |
+|      xor_ln184_128_fu_10997_p2                  |     |        | xor_ln184_128 | xor       | auto                     | 0       |
+|      and_ln184_64_fu_11002_p2                   |     |        | and_ln184_64  | and       | auto                     | 0       |
+|      and_ln184_65_fu_11007_p2                   |     |        | and_ln184_65  | and       | auto                     | 0       |
+|      xor_ln184_129_fu_11011_p2                  |     |        | xor_ln184_129 | xor       | auto                     | 0       |
+|      xor_ln184_130_fu_10354_p2                  |     |        | xor_ln184_130 | xor       | auto                     | 0       |
+|      xor_ln184_131_fu_10360_p2                  |     |        | xor_ln184_131 | xor       | auto                     | 0       |
+|      e_32_fu_11080_p2                           |     |        | e_32          | add       | fabric                   | 0       |
+|      and_ln205_65_fu_11244_p2                   |     |        | and_ln205_65  | and       | auto                     | 0       |
+|      and_ln205_66_fu_11248_p2                   |     |        | and_ln205_66  | and       | auto                     | 0       |
+|      xor_ln205_128_fu_11252_p2                  |     |        | xor_ln205_128 | xor       | auto                     | 0       |
+|      xor_ln205_129_fu_11257_p2                  |     |        | xor_ln205_129 | xor       | auto                     | 0       |
+|      xor_ln205_130_fu_11109_p2                  |     |        | xor_ln205_130 | xor       | auto                     | 0       |
+|      xor_ln205_131_fu_11115_p2                  |     |        | xor_ln205_131 | xor       | auto                     | 0       |
+|      xor_ln184_132_fu_11163_p2                  |     |        | xor_ln184_132 | xor       | auto                     | 0       |
+|      and_ln184_66_fu_11169_p2                   |     |        | and_ln184_66  | and       | auto                     | 0       |
+|      and_ln184_67_fu_11174_p2                   |     |        | and_ln184_67  | and       | auto                     | 0       |
+|      xor_ln184_133_fu_11195_p2                  |     |        | xor_ln184_133 | xor       | auto                     | 0       |
+|      xor_ln184_134_fu_11209_p2                  |     |        | xor_ln184_134 | xor       | auto                     | 0       |
+|      xor_ln184_135_fu_11215_p2                  |     |        | xor_ln184_135 | xor       | auto                     | 0       |
+|      e_33_fu_11315_p2                           |     |        | e_33          | add       | fabric                   | 0       |
+|      and_ln205_67_fu_11319_p2                   |     |        | and_ln205_67  | and       | auto                     | 0       |
+|      and_ln205_68_fu_11340_p2                   |     |        | and_ln205_68  | and       | auto                     | 0       |
+|      xor_ln205_132_fu_11353_p2                  |     |        | xor_ln205_132 | xor       | auto                     | 0       |
+|      xor_ln205_133_fu_11359_p2                  |     |        | xor_ln205_133 | xor       | auto                     | 0       |
+|      xor_ln205_134_fu_11365_p2                  |     |        | xor_ln205_134 | xor       | auto                     | 0       |
+|      xor_ln205_135_fu_11371_p2                  |     |        | xor_ln205_135 | xor       | auto                     | 0       |
+|      xor_ln184_136_fu_11430_p2                  |     |        | xor_ln184_136 | xor       | auto                     | 0       |
+|      and_ln184_68_fu_11436_p2                   |     |        | and_ln184_68  | and       | auto                     | 0       |
+|      and_ln184_69_fu_11441_p2                   |     |        | and_ln184_69  | and       | auto                     | 0       |
+|      xor_ln184_137_fu_11462_p2                  |     |        | xor_ln184_137 | xor       | auto                     | 0       |
+|      xor_ln184_138_fu_11476_p2                  |     |        | xor_ln184_138 | xor       | auto                     | 0       |
+|      xor_ln184_139_fu_11482_p2                  |     |        | xor_ln184_139 | xor       | auto                     | 0       |
+|      e_34_fu_11552_p2                           |     |        | e_34          | add       | fabric                   | 0       |
+|      and_ln205_69_fu_11671_p2                   |     |        | and_ln205_69  | and       | auto                     | 0       |
+|      and_ln205_70_fu_11675_p2                   |     |        | and_ln205_70  | and       | auto                     | 0       |
+|      xor_ln205_136_fu_11679_p2                  |     |        | xor_ln205_136 | xor       | auto                     | 0       |
+|      xor_ln205_137_fu_11684_p2                  |     |        | xor_ln205_137 | xor       | auto                     | 0       |
+|      xor_ln205_138_fu_11581_p2                  |     |        | xor_ln205_138 | xor       | auto                     | 0       |
+|      xor_ln205_139_fu_11587_p2                  |     |        | xor_ln205_139 | xor       | auto                     | 0       |
+|      xor_ln184_140_fu_11700_p2                  |     |        | xor_ln184_140 | xor       | auto                     | 0       |
+|      and_ln184_70_fu_11705_p2                   |     |        | and_ln184_70  | and       | auto                     | 0       |
+|      and_ln184_71_fu_11710_p2                   |     |        | and_ln184_71  | and       | auto                     | 0       |
+|      xor_ln184_141_fu_11714_p2                  |     |        | xor_ln184_141 | xor       | auto                     | 0       |
+|      xor_ln184_142_fu_11659_p2                  |     |        | xor_ln184_142 | xor       | auto                     | 0       |
+|      xor_ln184_143_fu_11665_p2                  |     |        | xor_ln184_143 | xor       | auto                     | 0       |
+|      e_35_fu_11783_p2                           |     |        | e_35          | add       | fabric                   | 0       |
+|      and_ln205_71_fu_11788_p2                   |     |        | and_ln205_71  | and       | auto                     | 0       |
+|      and_ln205_72_fu_11809_p2                   |     |        | and_ln205_72  | and       | auto                     | 0       |
+|      xor_ln205_140_fu_11822_p2                  |     |        | xor_ln205_140 | xor       | auto                     | 0       |
+|      xor_ln205_141_fu_11828_p2                  |     |        | xor_ln205_141 | xor       | auto                     | 0       |
+|      xor_ln205_142_fu_11834_p2                  |     |        | xor_ln205_142 | xor       | auto                     | 0       |
+|      xor_ln205_143_fu_11840_p2                  |     |        | xor_ln205_143 | xor       | auto                     | 0       |
+|      xor_ln184_144_fu_11900_p2                  |     |        | xor_ln184_144 | xor       | auto                     | 0       |
+|      and_ln184_72_fu_11906_p2                   |     |        | and_ln184_72  | and       | auto                     | 0       |
+|      and_ln184_73_fu_11911_p2                   |     |        | and_ln184_73  | and       | auto                     | 0       |
+|      xor_ln184_145_fu_11932_p2                  |     |        | xor_ln184_145 | xor       | auto                     | 0       |
+|      xor_ln184_146_fu_11946_p2                  |     |        | xor_ln184_146 | xor       | auto                     | 0       |
+|      xor_ln184_147_fu_11952_p2                  |     |        | xor_ln184_147 | xor       | auto                     | 0       |
+|      e_36_fu_12208_p2                           |     |        | e_36          | add       | fabric                   | 0       |
+|      and_ln205_73_fu_12212_p2                   |     |        | and_ln205_73  | and       | auto                     | 0       |
+|      and_ln205_74_fu_12216_p2                   |     |        | and_ln205_74  | and       | auto                     | 0       |
+|      xor_ln205_144_fu_12220_p2                  |     |        | xor_ln205_144 | xor       | auto                     | 0       |
+|      xor_ln205_145_fu_12225_p2                  |     |        | xor_ln205_145 | xor       | auto                     | 0       |
+|      xor_ln205_146_fu_12046_p2                  |     |        | xor_ln205_146 | xor       | auto                     | 0       |
+|      xor_ln205_147_fu_12052_p2                  |     |        | xor_ln205_147 | xor       | auto                     | 0       |
+|      xor_ln184_148_fu_12283_p2                  |     |        | xor_ln184_148 | xor       | auto                     | 0       |
+|      and_ln184_74_fu_12289_p2                   |     |        | and_ln184_74  | and       | auto                     | 0       |
+|      and_ln184_75_fu_12294_p2                   |     |        | and_ln184_75  | and       | auto                     | 0       |
+|      xor_ln184_149_fu_12315_p2                  |     |        | xor_ln184_149 | xor       | auto                     | 0       |
+|      xor_ln184_150_fu_12329_p2                  |     |        | xor_ln184_150 | xor       | auto                     | 0       |
+|      xor_ln184_151_fu_12335_p2                  |     |        | xor_ln184_151 | xor       | auto                     | 0       |
+|      e_37_fu_12406_p2                           |     |        | e_37          | add       | fabric                   | 0       |
+|      and_ln205_75_fu_12675_p2                   |     |        | and_ln205_75  | and       | auto                     | 0       |
+|      and_ln205_76_fu_12679_p2                   |     |        | and_ln205_76  | and       | auto                     | 0       |
+|      xor_ln205_148_fu_12683_p2                  |     |        | xor_ln205_148 | xor       | auto                     | 0       |
+|      xor_ln205_149_fu_12688_p2                  |     |        | xor_ln205_149 | xor       | auto                     | 0       |
+|      xor_ln205_150_fu_12435_p2                  |     |        | xor_ln205_150 | xor       | auto                     | 0       |
+|      xor_ln205_151_fu_12441_p2                  |     |        | xor_ln205_151 | xor       | auto                     | 0       |
+|      xor_ln184_152_fu_12704_p2                  |     |        | xor_ln184_152 | xor       | auto                     | 0       |
+|      and_ln184_76_fu_12709_p2                   |     |        | and_ln184_76  | and       | auto                     | 0       |
+|      and_ln184_77_fu_12714_p2                   |     |        | and_ln184_77  | and       | auto                     | 0       |
+|      xor_ln184_153_fu_12718_p2                  |     |        | xor_ln184_153 | xor       | auto                     | 0       |
+|      xor_ln184_154_fu_12513_p2                  |     |        | xor_ln184_154 | xor       | auto                     | 0       |
+|      xor_ln184_155_fu_12519_p2                  |     |        | xor_ln184_155 | xor       | auto                     | 0       |
+|      e_38_fu_12787_p2                           |     |        | e_38          | add       | fabric                   | 0       |
+|      and_ln205_77_fu_13251_p2                   |     |        | and_ln205_77  | and       | auto                     | 0       |
+|      and_ln205_78_fu_13255_p2                   |     |        | and_ln205_78  | and       | auto                     | 0       |
+|      xor_ln205_152_fu_13259_p2                  |     |        | xor_ln205_152 | xor       | auto                     | 0       |
+|      xor_ln205_153_fu_13264_p2                  |     |        | xor_ln205_153 | xor       | auto                     | 0       |
+|      xor_ln205_154_fu_12816_p2                  |     |        | xor_ln205_154 | xor       | auto                     | 0       |
+|      xor_ln205_155_fu_12822_p2                  |     |        | xor_ln205_155 | xor       | auto                     | 0       |
+|      xor_ln184_156_fu_12870_p2                  |     |        | xor_ln184_156 | xor       | auto                     | 0       |
+|      and_ln184_78_fu_12876_p2                   |     |        | and_ln184_78  | and       | auto                     | 0       |
+|      and_ln184_79_fu_12881_p2                   |     |        | and_ln184_79  | and       | auto                     | 0       |
+|      xor_ln184_157_fu_12902_p2                  |     |        | xor_ln184_157 | xor       | auto                     | 0       |
+|      xor_ln184_158_fu_12916_p2                  |     |        | xor_ln184_158 | xor       | auto                     | 0       |
+|      xor_ln184_159_fu_12922_p2                  |     |        | xor_ln184_159 | xor       | auto                     | 0       |
+|      e_39_fu_13322_p2                           |     |        | e_39          | add       | fabric                   | 0       |
+|      and_ln205_79_fu_13326_p2                   |     |        | and_ln205_79  | and       | auto                     | 0       |
+|      and_ln205_80_fu_13347_p2                   |     |        | and_ln205_80  | and       | auto                     | 0       |
+|      xor_ln205_156_fu_13360_p2                  |     |        | xor_ln205_156 | xor       | auto                     | 0       |
+|      xor_ln205_157_fu_13366_p2                  |     |        | xor_ln205_157 | xor       | auto                     | 0       |
+|      xor_ln205_158_fu_13372_p2                  |     |        | xor_ln205_158 | xor       | auto                     | 0       |
+|      xor_ln205_159_fu_13378_p2                  |     |        | xor_ln205_159 | xor       | auto                     | 0       |
+|      xor_ln184_160_fu_13437_p2                  |     |        | xor_ln184_160 | xor       | auto                     | 0       |
+|      and_ln184_80_fu_13443_p2                   |     |        | and_ln184_80  | and       | auto                     | 0       |
+|      and_ln184_81_fu_13448_p2                   |     |        | and_ln184_81  | and       | auto                     | 0       |
+|      xor_ln184_161_fu_13469_p2                  |     |        | xor_ln184_161 | xor       | auto                     | 0       |
+|      xor_ln184_162_fu_13483_p2                  |     |        | xor_ln184_162 | xor       | auto                     | 0       |
+|      xor_ln184_163_fu_13489_p2                  |     |        | xor_ln184_163 | xor       | auto                     | 0       |
+|      e_40_fu_13560_p2                           |     |        | e_40          | add       | fabric                   | 0       |
+|      and_ln205_81_fu_13829_p2                   |     |        | and_ln205_81  | and       | auto                     | 0       |
+|      and_ln205_82_fu_13833_p2                   |     |        | and_ln205_82  | and       | auto                     | 0       |
+|      xor_ln205_160_fu_13837_p2                  |     |        | xor_ln205_160 | xor       | auto                     | 0       |
+|      xor_ln205_161_fu_13842_p2                  |     |        | xor_ln205_161 | xor       | auto                     | 0       |
+|      xor_ln205_162_fu_13589_p2                  |     |        | xor_ln205_162 | xor       | auto                     | 0       |
+|      xor_ln205_163_fu_13595_p2                  |     |        | xor_ln205_163 | xor       | auto                     | 0       |
+|      xor_ln184_164_fu_13858_p2                  |     |        | xor_ln184_164 | xor       | auto                     | 0       |
+|      and_ln184_82_fu_13863_p2                   |     |        | and_ln184_82  | and       | auto                     | 0       |
+|      and_ln184_83_fu_13868_p2                   |     |        | and_ln184_83  | and       | auto                     | 0       |
+|      xor_ln184_165_fu_13872_p2                  |     |        | xor_ln184_165 | xor       | auto                     | 0       |
+|      xor_ln184_166_fu_13667_p2                  |     |        | xor_ln184_166 | xor       | auto                     | 0       |
+|      xor_ln184_167_fu_13673_p2                  |     |        | xor_ln184_167 | xor       | auto                     | 0       |
+|      e_41_fu_13941_p2                           |     |        | e_41          | add       | fabric                   | 0       |
+|      and_ln205_83_fu_13946_p2                   |     |        | and_ln205_83  | and       | auto                     | 0       |
+|      and_ln205_84_fu_13967_p2                   |     |        | and_ln205_84  | and       | auto                     | 0       |
+|      xor_ln205_164_fu_13980_p2                  |     |        | xor_ln205_164 | xor       | auto                     | 0       |
+|      xor_ln205_165_fu_13986_p2                  |     |        | xor_ln205_165 | xor       | auto                     | 0       |
+|      xor_ln205_166_fu_13992_p2                  |     |        | xor_ln205_166 | xor       | auto                     | 0       |
+|      xor_ln205_167_fu_13998_p2                  |     |        | xor_ln205_167 | xor       | auto                     | 0       |
+|      xor_ln184_168_fu_14058_p2                  |     |        | xor_ln184_168 | xor       | auto                     | 0       |
+|      and_ln184_84_fu_14064_p2                   |     |        | and_ln184_84  | and       | auto                     | 0       |
+|      and_ln184_85_fu_14069_p2                   |     |        | and_ln184_85  | and       | auto                     | 0       |
+|      xor_ln184_169_fu_14090_p2                  |     |        | xor_ln184_169 | xor       | auto                     | 0       |
+|      xor_ln184_170_fu_14104_p2                  |     |        | xor_ln184_170 | xor       | auto                     | 0       |
+|      xor_ln184_171_fu_14110_p2                  |     |        | xor_ln184_171 | xor       | auto                     | 0       |
+|      e_42_fu_14819_p2                           |     |        | e_42          | add       | fabric                   | 0       |
+|      and_ln205_85_fu_14823_p2                   |     |        | and_ln205_85  | and       | auto                     | 0       |
+|      and_ln205_86_fu_14827_p2                   |     |        | and_ln205_86  | and       | auto                     | 0       |
+|      xor_ln205_168_fu_14831_p2                  |     |        | xor_ln205_168 | xor       | auto                     | 0       |
+|      xor_ln205_169_fu_14836_p2                  |     |        | xor_ln205_169 | xor       | auto                     | 0       |
+|      xor_ln205_170_fu_14205_p2                  |     |        | xor_ln205_170 | xor       | auto                     | 0       |
+|      xor_ln205_171_fu_14211_p2                  |     |        | xor_ln205_171 | xor       | auto                     | 0       |
+|      xor_ln184_172_fu_14894_p2                  |     |        | xor_ln184_172 | xor       | auto                     | 0       |
+|      and_ln184_86_fu_14900_p2                   |     |        | and_ln184_86  | and       | auto                     | 0       |
+|      and_ln184_87_fu_14905_p2                   |     |        | and_ln184_87  | and       | auto                     | 0       |
+|      xor_ln184_173_fu_14926_p2                  |     |        | xor_ln184_173 | xor       | auto                     | 0       |
+|      xor_ln184_174_fu_14940_p2                  |     |        | xor_ln184_174 | xor       | auto                     | 0       |
+|      xor_ln184_175_fu_14946_p2                  |     |        | xor_ln184_175 | xor       | auto                     | 0       |
+|      e_43_fu_15017_p2                           |     |        | e_43          | add       | fabric                   | 0       |
+|      and_ln205_87_fu_15479_p2                   |     |        | and_ln205_87  | and       | auto                     | 0       |
+|      and_ln205_88_fu_15483_p2                   |     |        | and_ln205_88  | and       | auto                     | 0       |
+|      xor_ln205_172_fu_15487_p2                  |     |        | xor_ln205_172 | xor       | auto                     | 0       |
+|      xor_ln205_173_fu_15492_p2                  |     |        | xor_ln205_173 | xor       | auto                     | 0       |
+|      xor_ln205_174_fu_15046_p2                  |     |        | xor_ln205_174 | xor       | auto                     | 0       |
+|      xor_ln205_175_fu_15052_p2                  |     |        | xor_ln205_175 | xor       | auto                     | 0       |
+|      xor_ln184_176_fu_15508_p2                  |     |        | xor_ln184_176 | xor       | auto                     | 0       |
+|      and_ln184_88_fu_15513_p2                   |     |        | and_ln184_88  | and       | auto                     | 0       |
+|      and_ln184_89_fu_15518_p2                   |     |        | and_ln184_89  | and       | auto                     | 0       |
+|      xor_ln184_177_fu_15522_p2                  |     |        | xor_ln184_177 | xor       | auto                     | 0       |
+|      xor_ln184_178_fu_15124_p2                  |     |        | xor_ln184_178 | xor       | auto                     | 0       |
+|      xor_ln184_179_fu_15130_p2                  |     |        | xor_ln184_179 | xor       | auto                     | 0       |
+|      e_44_fu_15591_p2                           |     |        | e_44          | add       | fabric                   | 0       |
+|      and_ln205_89_fu_16426_p2                   |     |        | and_ln205_89  | and       | auto                     | 0       |
+|      and_ln205_90_fu_16430_p2                   |     |        | and_ln205_90  | and       | auto                     | 0       |
+|      xor_ln205_176_fu_16434_p2                  |     |        | xor_ln205_176 | xor       | auto                     | 0       |
+|      xor_ln205_177_fu_16439_p2                  |     |        | xor_ln205_177 | xor       | auto                     | 0       |
+|      xor_ln205_178_fu_15620_p2                  |     |        | xor_ln205_178 | xor       | auto                     | 0       |
+|      xor_ln205_179_fu_15626_p2                  |     |        | xor_ln205_179 | xor       | auto                     | 0       |
+|      xor_ln184_180_fu_15674_p2                  |     |        | xor_ln184_180 | xor       | auto                     | 0       |
+|      and_ln184_90_fu_15680_p2                   |     |        | and_ln184_90  | and       | auto                     | 0       |
+|      and_ln184_91_fu_15685_p2                   |     |        | and_ln184_91  | and       | auto                     | 0       |
+|      xor_ln184_181_fu_15706_p2                  |     |        | xor_ln184_181 | xor       | auto                     | 0       |
+|      xor_ln184_182_fu_15720_p2                  |     |        | xor_ln184_182 | xor       | auto                     | 0       |
+|      xor_ln184_183_fu_15726_p2                  |     |        | xor_ln184_183 | xor       | auto                     | 0       |
+|      e_45_fu_16497_p2                           |     |        | e_45          | add       | fabric                   | 0       |
+|      and_ln205_91_fu_16501_p2                   |     |        | and_ln205_91  | and       | auto                     | 0       |
+|      and_ln205_92_fu_16522_p2                   |     |        | and_ln205_92  | and       | auto                     | 0       |
+|      xor_ln205_180_fu_16535_p2                  |     |        | xor_ln205_180 | xor       | auto                     | 0       |
+|      xor_ln205_181_fu_16541_p2                  |     |        | xor_ln205_181 | xor       | auto                     | 0       |
+|      xor_ln205_182_fu_16547_p2                  |     |        | xor_ln205_182 | xor       | auto                     | 0       |
+|      xor_ln205_183_fu_16553_p2                  |     |        | xor_ln205_183 | xor       | auto                     | 0       |
+|      xor_ln184_184_fu_16612_p2                  |     |        | xor_ln184_184 | xor       | auto                     | 0       |
+|      and_ln184_92_fu_16618_p2                   |     |        | and_ln184_92  | and       | auto                     | 0       |
+|      and_ln184_93_fu_16623_p2                   |     |        | and_ln184_93  | and       | auto                     | 0       |
+|      xor_ln184_185_fu_16644_p2                  |     |        | xor_ln184_185 | xor       | auto                     | 0       |
+|      xor_ln184_186_fu_16658_p2                  |     |        | xor_ln184_186 | xor       | auto                     | 0       |
+|      xor_ln184_187_fu_16664_p2                  |     |        | xor_ln184_187 | xor       | auto                     | 0       |
+|      e_46_fu_16734_p2                           |     |        | e_46          | add       | fabric                   | 0       |
+|      and_ln205_93_fu_17483_p2                   |     |        | and_ln205_93  | and       | auto                     | 0       |
+|      and_ln205_94_fu_17487_p2                   |     |        | and_ln205_94  | and       | auto                     | 0       |
+|      xor_ln205_184_fu_17491_p2                  |     |        | xor_ln205_184 | xor       | auto                     | 0       |
+|      xor_ln205_185_fu_17496_p2                  |     |        | xor_ln205_185 | xor       | auto                     | 0       |
+|      xor_ln205_186_fu_16763_p2                  |     |        | xor_ln205_186 | xor       | auto                     | 0       |
+|      xor_ln205_187_fu_16769_p2                  |     |        | xor_ln205_187 | xor       | auto                     | 0       |
+|      xor_ln184_188_fu_17512_p2                  |     |        | xor_ln184_188 | xor       | auto                     | 0       |
+|      and_ln184_94_fu_17517_p2                   |     |        | and_ln184_94  | and       | auto                     | 0       |
+|      and_ln184_95_fu_17522_p2                   |     |        | and_ln184_95  | and       | auto                     | 0       |
+|      xor_ln184_189_fu_17526_p2                  |     |        | xor_ln184_189 | xor       | auto                     | 0       |
+|      xor_ln184_190_fu_16841_p2                  |     |        | xor_ln184_190 | xor       | auto                     | 0       |
+|      xor_ln184_191_fu_16847_p2                  |     |        | xor_ln184_191 | xor       | auto                     | 0       |
+|      e_47_fu_17595_p2                           |     |        | e_47          | add       | fabric                   | 0       |
+|      and_ln205_95_fu_18261_p2                   |     |        | and_ln205_95  | and       | auto                     | 0       |
+|      and_ln205_96_fu_18265_p2                   |     |        | and_ln205_96  | and       | auto                     | 0       |
+|      xor_ln205_188_fu_18269_p2                  |     |        | xor_ln205_188 | xor       | auto                     | 0       |
+|      xor_ln205_189_fu_18274_p2                  |     |        | xor_ln205_189 | xor       | auto                     | 0       |
+|      xor_ln205_190_fu_17624_p2                  |     |        | xor_ln205_190 | xor       | auto                     | 0       |
+|      xor_ln205_191_fu_17630_p2                  |     |        | xor_ln205_191 | xor       | auto                     | 0       |
+|      xor_ln184_192_fu_17678_p2                  |     |        | xor_ln184_192 | xor       | auto                     | 0       |
+|      and_ln184_96_fu_17684_p2                   |     |        | and_ln184_96  | and       | auto                     | 0       |
+|      and_ln184_97_fu_17689_p2                   |     |        | and_ln184_97  | and       | auto                     | 0       |
+|      xor_ln184_193_fu_17710_p2                  |     |        | xor_ln184_193 | xor       | auto                     | 0       |
+|      xor_ln184_194_fu_17724_p2                  |     |        | xor_ln184_194 | xor       | auto                     | 0       |
+|      xor_ln184_195_fu_17730_p2                  |     |        | xor_ln184_195 | xor       | auto                     | 0       |
+|      e_48_fu_18332_p2                           |     |        | e_48          | add       | fabric                   | 0       |
+|      and_ln205_97_fu_18336_p2                   |     |        | and_ln205_97  | and       | auto                     | 0       |
+|      and_ln205_98_fu_18357_p2                   |     |        | and_ln205_98  | and       | auto                     | 0       |
+|      xor_ln205_192_fu_18370_p2                  |     |        | xor_ln205_192 | xor       | auto                     | 0       |
+|      xor_ln205_193_fu_18376_p2                  |     |        | xor_ln205_193 | xor       | auto                     | 0       |
+|      xor_ln205_194_fu_18382_p2                  |     |        | xor_ln205_194 | xor       | auto                     | 0       |
+|      xor_ln205_195_fu_18388_p2                  |     |        | xor_ln205_195 | xor       | auto                     | 0       |
+|      xor_ln184_196_fu_18447_p2                  |     |        | xor_ln184_196 | xor       | auto                     | 0       |
+|      and_ln184_98_fu_18453_p2                   |     |        | and_ln184_98  | and       | auto                     | 0       |
+|      and_ln184_99_fu_18458_p2                   |     |        | and_ln184_99  | and       | auto                     | 0       |
+|      xor_ln184_197_fu_18479_p2                  |     |        | xor_ln184_197 | xor       | auto                     | 0       |
+|      xor_ln184_198_fu_18493_p2                  |     |        | xor_ln184_198 | xor       | auto                     | 0       |
+|      xor_ln184_199_fu_18499_p2                  |     |        | xor_ln184_199 | xor       | auto                     | 0       |
+|      e_49_fu_18569_p2                           |     |        | e_49          | add       | fabric                   | 0       |
+|      and_ln205_99_fu_18721_p2                   |     |        | and_ln205_99  | and       | auto                     | 0       |
+|      and_ln205_100_fu_18725_p2                  |     |        | and_ln205_100 | and       | auto                     | 0       |
+|      xor_ln205_196_fu_18729_p2                  |     |        | xor_ln205_196 | xor       | auto                     | 0       |
+|      xor_ln205_197_fu_18734_p2                  |     |        | xor_ln205_197 | xor       | auto                     | 0       |
+|      xor_ln205_198_fu_18598_p2                  |     |        | xor_ln205_198 | xor       | auto                     | 0       |
+|      xor_ln205_199_fu_18604_p2                  |     |        | xor_ln205_199 | xor       | auto                     | 0       |
+|      xor_ln184_200_fu_18750_p2                  |     |        | xor_ln184_200 | xor       | auto                     | 0       |
+|      and_ln184_100_fu_18755_p2                  |     |        | and_ln184_100 | and       | auto                     | 0       |
+|      and_ln184_101_fu_18760_p2                  |     |        | and_ln184_101 | and       | auto                     | 0       |
+|      xor_ln184_201_fu_18764_p2                  |     |        | xor_ln184_201 | xor       | auto                     | 0       |
+|      xor_ln184_202_fu_18676_p2                  |     |        | xor_ln184_202 | xor       | auto                     | 0       |
+|      xor_ln184_203_fu_18682_p2                  |     |        | xor_ln184_203 | xor       | auto                     | 0       |
+|      e_50_fu_18833_p2                           |     |        | e_50          | add       | fabric                   | 0       |
+|      and_ln205_101_fu_18996_p2                  |     |        | and_ln205_101 | and       | auto                     | 0       |
+|      and_ln205_102_fu_19000_p2                  |     |        | and_ln205_102 | and       | auto                     | 0       |
+|      xor_ln205_200_fu_19004_p2                  |     |        | xor_ln205_200 | xor       | auto                     | 0       |
+|      xor_ln205_201_fu_19009_p2                  |     |        | xor_ln205_201 | xor       | auto                     | 0       |
+|      xor_ln205_202_fu_18862_p2                  |     |        | xor_ln205_202 | xor       | auto                     | 0       |
+|      xor_ln205_203_fu_18868_p2                  |     |        | xor_ln205_203 | xor       | auto                     | 0       |
+|      xor_ln184_204_fu_18916_p2                  |     |        | xor_ln184_204 | xor       | auto                     | 0       |
+|      and_ln184_102_fu_18922_p2                  |     |        | and_ln184_102 | and       | auto                     | 0       |
+|      and_ln184_103_fu_18927_p2                  |     |        | and_ln184_103 | and       | auto                     | 0       |
+|      xor_ln184_205_fu_18948_p2                  |     |        | xor_ln184_205 | xor       | auto                     | 0       |
+|      xor_ln184_206_fu_18962_p2                  |     |        | xor_ln184_206 | xor       | auto                     | 0       |
+|      xor_ln184_207_fu_18968_p2                  |     |        | xor_ln184_207 | xor       | auto                     | 0       |
+|      e_51_fu_19067_p2                           |     |        | e_51          | add       | fabric                   | 0       |
+|      and_ln205_103_fu_19071_p2                  |     |        | and_ln205_103 | and       | auto                     | 0       |
+|      and_ln205_104_fu_19092_p2                  |     |        | and_ln205_104 | and       | auto                     | 0       |
+|      xor_ln205_204_fu_19105_p2                  |     |        | xor_ln205_204 | xor       | auto                     | 0       |
+|      xor_ln205_205_fu_19111_p2                  |     |        | xor_ln205_205 | xor       | auto                     | 0       |
+|      xor_ln205_206_fu_19117_p2                  |     |        | xor_ln205_206 | xor       | auto                     | 0       |
+|      xor_ln205_207_fu_19123_p2                  |     |        | xor_ln205_207 | xor       | auto                     | 0       |
+|      xor_ln184_208_fu_19182_p2                  |     |        | xor_ln184_208 | xor       | auto                     | 0       |
+|      and_ln184_104_fu_19188_p2                  |     |        | and_ln184_104 | and       | auto                     | 0       |
+|      and_ln184_105_fu_19193_p2                  |     |        | and_ln184_105 | and       | auto                     | 0       |
+|      xor_ln184_209_fu_19214_p2                  |     |        | xor_ln184_209 | xor       | auto                     | 0       |
+|      xor_ln184_210_fu_19228_p2                  |     |        | xor_ln184_210 | xor       | auto                     | 0       |
+|      xor_ln184_211_fu_19234_p2                  |     |        | xor_ln184_211 | xor       | auto                     | 0       |
+|      e_52_fu_19304_p2                           |     |        | e_52          | add       | fabric                   | 0       |
+|      and_ln205_105_fu_19474_p2                  |     |        | and_ln205_105 | and       | auto                     | 0       |
+|      and_ln205_106_fu_19478_p2                  |     |        | and_ln205_106 | and       | auto                     | 0       |
+|      xor_ln205_208_fu_19482_p2                  |     |        | xor_ln205_208 | xor       | auto                     | 0       |
+|      xor_ln205_209_fu_19487_p2                  |     |        | xor_ln205_209 | xor       | auto                     | 0       |
+|      xor_ln205_210_fu_19333_p2                  |     |        | xor_ln205_210 | xor       | auto                     | 0       |
+|      xor_ln205_211_fu_19339_p2                  |     |        | xor_ln205_211 | xor       | auto                     | 0       |
+|      xor_ln184_212_fu_19503_p2                  |     |        | xor_ln184_212 | xor       | auto                     | 0       |
+|      and_ln184_106_fu_19508_p2                  |     |        | and_ln184_106 | and       | auto                     | 0       |
+|      and_ln184_107_fu_19513_p2                  |     |        | and_ln184_107 | and       | auto                     | 0       |
+|      xor_ln184_213_fu_19517_p2                  |     |        | xor_ln184_213 | xor       | auto                     | 0       |
+|      xor_ln184_214_fu_19411_p2                  |     |        | xor_ln184_214 | xor       | auto                     | 0       |
+|      xor_ln184_215_fu_19417_p2                  |     |        | xor_ln184_215 | xor       | auto                     | 0       |
+|      e_53_fu_19586_p2                           |     |        | e_53          | add       | fabric                   | 0       |
+|      and_ln205_107_fu_19782_p2                  |     |        | and_ln205_107 | and       | auto                     | 0       |
+|      and_ln205_108_fu_19786_p2                  |     |        | and_ln205_108 | and       | auto                     | 0       |
+|      xor_ln205_212_fu_19790_p2                  |     |        | xor_ln205_212 | xor       | auto                     | 0       |
+|      xor_ln205_213_fu_19795_p2                  |     |        | xor_ln205_213 | xor       | auto                     | 0       |
+|      xor_ln205_214_fu_19615_p2                  |     |        | xor_ln205_214 | xor       | auto                     | 0       |
+|      xor_ln205_215_fu_19621_p2                  |     |        | xor_ln205_215 | xor       | auto                     | 0       |
+|      xor_ln184_216_fu_19669_p2                  |     |        | xor_ln184_216 | xor       | auto                     | 0       |
+|      and_ln184_108_fu_19675_p2                  |     |        | and_ln184_108 | and       | auto                     | 0       |
+|      and_ln184_109_fu_19680_p2                  |     |        | and_ln184_109 | and       | auto                     | 0       |
+|      xor_ln184_217_fu_19701_p2                  |     |        | xor_ln184_217 | xor       | auto                     | 0       |
+|      xor_ln184_218_fu_19715_p2                  |     |        | xor_ln184_218 | xor       | auto                     | 0       |
+|      xor_ln184_219_fu_19721_p2                  |     |        | xor_ln184_219 | xor       | auto                     | 0       |
+|      e_54_fu_19853_p2                           |     |        | e_54          | add       | fabric                   | 0       |
+|      and_ln205_109_fu_19857_p2                  |     |        | and_ln205_109 | and       | auto                     | 0       |
+|      and_ln205_110_fu_19878_p2                  |     |        | and_ln205_110 | and       | auto                     | 0       |
+|      xor_ln205_216_fu_19891_p2                  |     |        | xor_ln205_216 | xor       | auto                     | 0       |
+|      xor_ln205_217_fu_19897_p2                  |     |        | xor_ln205_217 | xor       | auto                     | 0       |
+|      xor_ln205_218_fu_19903_p2                  |     |        | xor_ln205_218 | xor       | auto                     | 0       |
+|      xor_ln205_219_fu_19909_p2                  |     |        | xor_ln205_219 | xor       | auto                     | 0       |
+|      xor_ln184_220_fu_19968_p2                  |     |        | xor_ln184_220 | xor       | auto                     | 0       |
+|      and_ln184_110_fu_19974_p2                  |     |        | and_ln184_110 | and       | auto                     | 0       |
+|      and_ln184_111_fu_19979_p2                  |     |        | and_ln184_111 | and       | auto                     | 0       |
+|      xor_ln184_221_fu_20000_p2                  |     |        | xor_ln184_221 | xor       | auto                     | 0       |
+|      xor_ln184_222_fu_20014_p2                  |     |        | xor_ln184_222 | xor       | auto                     | 0       |
+|      xor_ln184_223_fu_20020_p2                  |     |        | xor_ln184_223 | xor       | auto                     | 0       |
+|      e_55_fu_20090_p2                           |     |        | e_55          | add       | fabric                   | 0       |
+|      and_ln205_111_fu_20209_p2                  |     |        | and_ln205_111 | and       | auto                     | 0       |
+|      and_ln205_112_fu_20213_p2                  |     |        | and_ln205_112 | and       | auto                     | 0       |
+|      xor_ln205_220_fu_20217_p2                  |     |        | xor_ln205_220 | xor       | auto                     | 0       |
+|      xor_ln205_221_fu_20222_p2                  |     |        | xor_ln205_221 | xor       | auto                     | 0       |
+|      xor_ln205_222_fu_20119_p2                  |     |        | xor_ln205_222 | xor       | auto                     | 0       |
+|      xor_ln205_223_fu_20125_p2                  |     |        | xor_ln205_223 | xor       | auto                     | 0       |
+|      xor_ln184_224_fu_20238_p2                  |     |        | xor_ln184_224 | xor       | auto                     | 0       |
+|      and_ln184_112_fu_20243_p2                  |     |        | and_ln184_112 | and       | auto                     | 0       |
+|      and_ln184_113_fu_20248_p2                  |     |        | and_ln184_113 | and       | auto                     | 0       |
+|      xor_ln184_225_fu_20252_p2                  |     |        | xor_ln184_225 | xor       | auto                     | 0       |
+|      xor_ln184_226_fu_20197_p2                  |     |        | xor_ln184_226 | xor       | auto                     | 0       |
+|      xor_ln184_227_fu_20203_p2                  |     |        | xor_ln184_227 | xor       | auto                     | 0       |
+|      e_56_fu_20321_p2                           |     |        | e_56          | add       | fabric                   | 0       |
+|      and_ln205_113_fu_20326_p2                  |     |        | and_ln205_113 | and       | auto                     | 0       |
+|      and_ln205_114_fu_20347_p2                  |     |        | and_ln205_114 | and       | auto                     | 0       |
+|      xor_ln205_224_fu_20360_p2                  |     |        | xor_ln205_224 | xor       | auto                     | 0       |
+|      xor_ln205_225_fu_20366_p2                  |     |        | xor_ln205_225 | xor       | auto                     | 0       |
+|      xor_ln205_226_fu_20372_p2                  |     |        | xor_ln205_226 | xor       | auto                     | 0       |
+|      xor_ln205_227_fu_20378_p2                  |     |        | xor_ln205_227 | xor       | auto                     | 0       |
+|      xor_ln184_228_fu_20438_p2                  |     |        | xor_ln184_228 | xor       | auto                     | 0       |
+|      and_ln184_114_fu_20444_p2                  |     |        | and_ln184_114 | and       | auto                     | 0       |
+|      and_ln184_115_fu_20449_p2                  |     |        | and_ln184_115 | and       | auto                     | 0       |
+|      xor_ln184_229_fu_20470_p2                  |     |        | xor_ln184_229 | xor       | auto                     | 0       |
+|      xor_ln184_230_fu_20484_p2                  |     |        | xor_ln184_230 | xor       | auto                     | 0       |
+|      xor_ln184_231_fu_20490_p2                  |     |        | xor_ln184_231 | xor       | auto                     | 0       |
+|      e_57_fu_20596_p2                           |     |        | e_57          | add       | fabric                   | 0       |
+|      and_ln205_115_fu_20600_p2                  |     |        | and_ln205_115 | and       | auto                     | 0       |
+|      and_ln205_116_fu_20604_p2                  |     |        | and_ln205_116 | and       | auto                     | 0       |
+|      xor_ln205_228_fu_20608_p2                  |     |        | xor_ln205_228 | xor       | auto                     | 0       |
+|      xor_ln205_229_fu_20613_p2                  |     |        | xor_ln205_229 | xor       | auto                     | 0       |
+|      xor_ln205_230_fu_20584_p2                  |     |        | xor_ln205_230 | xor       | auto                     | 0       |
+|      xor_ln205_231_fu_20590_p2                  |     |        | xor_ln205_231 | xor       | auto                     | 0       |
+|      xor_ln184_232_fu_20671_p2                  |     |        | xor_ln184_232 | xor       | auto                     | 0       |
+|      and_ln184_116_fu_20677_p2                  |     |        | and_ln184_116 | and       | auto                     | 0       |
+|      and_ln184_117_fu_20682_p2                  |     |        | and_ln184_117 | and       | auto                     | 0       |
+|      xor_ln184_233_fu_20703_p2                  |     |        | xor_ln184_233 | xor       | auto                     | 0       |
+|      xor_ln184_234_fu_20717_p2                  |     |        | xor_ln184_234 | xor       | auto                     | 0       |
+|      xor_ln184_235_fu_20723_p2                  |     |        | xor_ln184_235 | xor       | auto                     | 0       |
+|      e_58_fu_20793_p2                           |     |        | e_58          | add       | fabric                   | 0       |
+|      and_ln205_117_fu_20798_p2                  |     |        | and_ln205_117 | and       | auto                     | 0       |
+|      and_ln205_118_fu_20819_p2                  |     |        | and_ln205_118 | and       | auto                     | 0       |
+|      xor_ln205_232_fu_20832_p2                  |     |        | xor_ln205_232 | xor       | auto                     | 0       |
+|      xor_ln205_233_fu_20838_p2                  |     |        | xor_ln205_233 | xor       | auto                     | 0       |
+|      xor_ln205_234_fu_20844_p2                  |     |        | xor_ln205_234 | xor       | auto                     | 0       |
+|      xor_ln205_235_fu_20850_p2                  |     |        | xor_ln205_235 | xor       | auto                     | 0       |
+|      xor_ln184_236_fu_21024_p2                  |     |        | xor_ln184_236 | xor       | auto                     | 0       |
+|      and_ln184_118_fu_21029_p2                  |     |        | and_ln184_118 | and       | auto                     | 0       |
+|      and_ln184_119_fu_21034_p2                  |     |        | and_ln184_119 | and       | auto                     | 0       |
+|      xor_ln184_237_fu_21038_p2                  |     |        | xor_ln184_237 | xor       | auto                     | 0       |
+|      xor_ln184_238_fu_20934_p2                  |     |        | xor_ln184_238 | xor       | auto                     | 0       |
+|      xor_ln184_239_fu_20940_p2                  |     |        | xor_ln184_239 | xor       | auto                     | 0       |
+|      e_59_fu_21065_p2                           |     |        | e_59          | add       | fabric                   | 0       |
+|      and_ln205_119_fu_21192_p2                  |     |        | and_ln205_119 | and       | auto                     | 0       |
+|      and_ln205_120_fu_21196_p2                  |     |        | and_ln205_120 | and       | auto                     | 0       |
+|      xor_ln205_236_fu_21200_p2                  |     |        | xor_ln205_236 | xor       | auto                     | 0       |
+|      xor_ln205_237_fu_21205_p2                  |     |        | xor_ln205_237 | xor       | auto                     | 0       |
+|      xor_ln205_238_fu_21012_p2                  |     |        | xor_ln205_238 | xor       | auto                     | 0       |
+|      xor_ln205_239_fu_21018_p2                  |     |        | xor_ln205_239 | xor       | auto                     | 0       |
+|      xor_ln184_240_fu_21112_p2                  |     |        | xor_ln184_240 | xor       | auto                     | 0       |
+|      and_ln184_120_fu_21118_p2                  |     |        | and_ln184_120 | and       | auto                     | 0       |
+|      and_ln184_121_fu_21123_p2                  |     |        | and_ln184_121 | and       | auto                     | 0       |
+|      xor_ln184_241_fu_21144_p2                  |     |        | xor_ln184_241 | xor       | auto                     | 0       |
+|      xor_ln184_242_fu_21158_p2                  |     |        | xor_ln184_242 | xor       | auto                     | 0       |
+|      xor_ln184_243_fu_21164_p2                  |     |        | xor_ln184_243 | xor       | auto                     | 0       |
+|      e_60_fu_21263_p2                           |     |        | e_60          | add       | fabric                   | 0       |
+|      and_ln205_121_fu_21267_p2                  |     |        | and_ln205_121 | and       | auto                     | 0       |
+|      and_ln205_122_fu_21288_p2                  |     |        | and_ln205_122 | and       | auto                     | 0       |
+|      xor_ln205_240_fu_21301_p2                  |     |        | xor_ln205_240 | xor       | auto                     | 0       |
+|      xor_ln205_241_fu_21307_p2                  |     |        | xor_ln205_241 | xor       | auto                     | 0       |
+|      xor_ln205_242_fu_21313_p2                  |     |        | xor_ln205_242 | xor       | auto                     | 0       |
+|      xor_ln205_243_fu_21319_p2                  |     |        | xor_ln205_243 | xor       | auto                     | 0       |
+|      xor_ln184_244_fu_21378_p2                  |     |        | xor_ln184_244 | xor       | auto                     | 0       |
+|      and_ln184_122_fu_21384_p2                  |     |        | and_ln184_122 | and       | auto                     | 0       |
+|      and_ln184_123_fu_21389_p2                  |     |        | and_ln184_123 | and       | auto                     | 0       |
+|      xor_ln184_245_fu_21410_p2                  |     |        | xor_ln184_245 | xor       | auto                     | 0       |
+|      xor_ln184_246_fu_21424_p2                  |     |        | xor_ln184_246 | xor       | auto                     | 0       |
+|      xor_ln184_247_fu_21430_p2                  |     |        | xor_ln184_247 | xor       | auto                     | 0       |
+|      e_61_fu_21500_p2                           |     |        | e_61          | add       | fabric                   | 0       |
+|      and_ln205_123_fu_21541_p2                  |     |        | and_ln205_123 | and       | auto                     | 0       |
+|      and_ln205_124_fu_21545_p2                  |     |        | and_ln205_124 | and       | auto                     | 0       |
+|      xor_ln205_244_fu_21549_p2                  |     |        | xor_ln205_244 | xor       | auto                     | 0       |
+|      xor_ln205_245_fu_21554_p2                  |     |        | xor_ln205_245 | xor       | auto                     | 0       |
+|      xor_ln205_246_fu_21529_p2                  |     |        | xor_ln205_246 | xor       | auto                     | 0       |
+|      xor_ln205_247_fu_21535_p2                  |     |        | xor_ln205_247 | xor       | auto                     | 0       |
+|      xor_ln184_248_fu_21606_p2                  |     |        | xor_ln184_248 | xor       | auto                     | 0       |
+|      and_ln184_124_fu_21611_p2                  |     |        | and_ln184_124 | and       | auto                     | 0       |
+|      and_ln184_125_fu_21616_p2                  |     |        | and_ln184_125 | and       | auto                     | 0       |
+|      xor_ln184_249_fu_21636_p2                  |     |        | xor_ln184_249 | xor       | auto                     | 0       |
+|      xor_ln184_250_fu_21650_p2                  |     |        | xor_ln184_250 | xor       | auto                     | 0       |
+|      xor_ln184_251_fu_21656_p2                  |     |        | xor_ln184_251 | xor       | auto                     | 0       |
+|      xor_ln184_252_fu_19765_p2                  |     |        | xor_ln184_252 | xor       | auto                     | 0       |
+|      xor_ln184_253_fu_19771_p2                  |     |        | xor_ln184_253 | xor       | auto                     | 0       |
+|      xor_ln184_254_fu_15770_p2                  |     |        | xor_ln184_254 | xor       | auto                     | 0       |
+|      xor_ln184_255_fu_15776_p2                  |     |        | xor_ln184_255 | xor       | auto                     | 0       |
+|      add_ln184_242_fu_21662_p2                  |     |        | add_ln184_242 | add       | fabric                   | 0       |
+|      add_ln184_243_fu_19777_p2                  |     |        | add_ln184_243 | add       | fabric                   | 0       |
+|      add_ln184_246_fu_21676_p2                  |     |        | add_ln184_246 | add       | fabric                   | 0       |
+|      e_62_fu_21736_p2                           |     |        | e_62          | add       | fabric                   | 0       |
+|      and_ln205_125_fu_21777_p2                  |     |        | and_ln205_125 | and       | auto                     | 0       |
+|      and_ln205_126_fu_21781_p2                  |     |        | and_ln205_126 | and       | auto                     | 0       |
+|      xor_ln205_248_fu_21785_p2                  |     |        | xor_ln205_248 | xor       | auto                     | 0       |
+|      xor_ln205_249_fu_21790_p2                  |     |        | xor_ln205_249 | xor       | auto                     | 0       |
+|      xor_ln205_250_fu_21765_p2                  |     |        | xor_ln205_250 | xor       | auto                     | 0       |
+|      xor_ln205_251_fu_21771_p2                  |     |        | xor_ln205_251 | xor       | auto                     | 0       |
+|      xor_ln184_256_fu_21842_p2                  |     |        | xor_ln184_256 | xor       | auto                     | 0       |
+|      and_ln184_126_fu_21847_p2                  |     |        | and_ln184_126 | and       | auto                     | 0       |
+|      and_ln184_127_fu_21852_p2                  |     |        | and_ln184_127 | and       | auto                     | 0       |
+|      xor_ln184_257_fu_21872_p2                  |     |        | xor_ln184_257 | xor       | auto                     | 0       |
+|      xor_ln184_258_fu_21886_p2                  |     |        | xor_ln184_258 | xor       | auto                     | 0       |
+|      xor_ln184_259_fu_21892_p2                  |     |        | xor_ln184_259 | xor       | auto                     | 0       |
+|      xor_ln184_260_fu_18704_p2                  |     |        | xor_ln184_260 | xor       | auto                     | 0       |
+|      xor_ln184_261_fu_18710_p2                  |     |        | xor_ln184_261 | xor       | auto                     | 0       |
+|      xor_ln184_262_fu_16869_p2                  |     |        | xor_ln184_262 | xor       | auto                     | 0       |
+|      xor_ln184_263_fu_16875_p2                  |     |        | xor_ln184_263 | xor       | auto                     | 0       |
+|      add_ln184_249_fu_21898_p2                  |     |        | add_ln184_249 | add       | fabric                   | 0       |
+|      add_ln184_250_fu_18716_p2                  |     |        | add_ln184_250 | add       | fabric                   | 0       |
+|      add_ln184_253_fu_21912_p2                  |     |        | add_ln184_253 | add       | fabric                   | 0       |
+|      and_ln208_fu_21972_p2                      |     |        | and_ln208     | and       | auto                     | 0       |
+|      and_ln208_1_fu_21977_p2                    |     |        | and_ln208_1   | and       | auto                     | 0       |
+|      xor_ln208_fu_21998_p2                      |     |        | xor_ln208     | xor       | auto                     | 0       |
+|      xor_ln208_1_fu_22004_p2                    |     |        | xor_ln208_1   | xor       | auto                     | 0       |
+|      xor_ln208_2_fu_22018_p2                    |     |        | xor_ln208_2   | xor       | auto                     | 0       |
+|      xor_ln208_3_fu_22024_p2                    |     |        | xor_ln208_3   | xor       | auto                     | 0       |
+|      add_ln208_1_fu_22035_p2                    |     |        | add_ln208_1   | add       | fabric                   | 0       |
+|      add_ln209_fu_22047_p2                      |     |        | add_ln209     | add       | fabric                   | 0       |
+|      add_ln210_fu_22052_p2                      |     |        | add_ln210     | add       | fabric                   | 0       |
+|      add_ln211_fu_22056_p2                      |     |        | add_ln211     | add       | fabric                   | 0       |
+|      add_ln213_fu_22070_p2                      |     |        | add_ln213     | add       | fabric                   | 0       |
+|      add_ln214_fu_22074_p2                      |     |        | add_ln214     | add       | fabric                   | 0       |
+|      add_ln215_fu_22078_p2                      |     |        | add_ln215     | add       | fabric                   | 0       |
++-------------------------------------------------+-----+--------+---------------+-----------+--------------------------+---------+
+
+
+================================================================
+== Storage Report
+================================================================
++--------------------------------------------+---------------+-----------+------+------+--------+---------------+------+---------+------------------+
+| Name                                       | Usage         | Type      | BRAM | URAM | Pragma | Variable      | Impl | Latency | Bitwidth, Depth, |
+|                                            |               |           |      |      |        |               |      |         | Banks            |
++--------------------------------------------+---------------+-----------+------+------+--------+---------------+------+---------+------------------+
+| + mine                                     |               |           | 24   | 0    |        |               |      |         |                  |
+|   control_s_axi_U                          | interface     | s_axilite |      |      |        |               |      |         |                  |
+|   gmem0_m_axi_U                            | interface     | m_axi     | 8    |      |        |               |      |         |                  |
+|   gmem1_m_axi_U                            | interface     | m_axi     | 15   |      |        |               |      |         |                  |
+|   gmem2_m_axi_U                            | interface     | m_axi     |      |      |        |               |      |         |                  |
+|   hdr_U                                    | ram_2p array  |           |      |      |        | hdr           | auto | 1       | 8, 80, 1         |
+|   tgt_U                                    | ram_2p array  |           |      |      |        | tgt           | auto | 1       | 8, 16, 1         |
+|   tgt_1_U                                  | ram_2p array  |           |      |      |        | tgt_1         | auto | 1       | 8, 16, 1         |
+|   target_words_U                           | ram_2p array  |           |      |      |        | target_words  | auto | 1       | 32, 8, 1         |
+|   first_block_U                            | ram_2p array  |           |      |      |        | first_block   | auto | 1       | 8, 32, 1         |
+|   first_block_1_U                          | ram_2p array  |           |      |      |        | first_block_1 | auto | 1       | 8, 32, 1         |
+|   midstate_U                               | ram_t2p array |           |      |      |        | midstate      | auto | 1       | 32, 8, 1         |
+|  + mine_Pipeline_INIT_MIDSTATE             |               |           | 0    | 0    |        |               |      |         |                  |
+|    H0_U                                    | rom_1p        |           |      |      |        | H0            | auto | 1       | 32, 8, 1         |
+|  + sha256_compress                         |               |           | 1    | 0    |        |               |      |         |                  |
+|    w_U                                     | rom_np array  |           |      |      |        | w             | auto | 1       | 32, 4, 1         |
+|    w_1_U                                   | rom_np array  |           |      |      |        | w_1           | auto | 1       | 32, 4, 1         |
+|    w_2_U                                   | rom_np array  |           |      |      |        | w_2           | auto | 1       | 32, 4, 1         |
+|    w_3_U                                   | rom_np array  |           |      |      |        | w_3           | auto | 1       | 32, 4, 1         |
+|   + sha256_compress_Pipeline_SHA256_ROUNDS |               |           | 1    | 0    |        |               |      |         |                  |
+|     K_U                                    | rom_1p        |           | 1    |      |        | K             | auto | 1       | 32, 64, 1        |
++--------------------------------------------+---------------+-----------+------+------+--------+---------------+------+---------+------------------+
+
+
+================================================================
+== Pragma Report
+================================================================
+* Inferred Pragmas
++----------+---------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------+
+| Type     | Options | Location                                                                                                                                                                                                       | Inferred From                 |
++----------+---------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------+
+| PIPELINE |         | loop LOAD_INITIAL_WORDS (BitcoinMining/4601-hardware-acceleration-design-project/martin-hls/mine.cpp:54:5) in sha256_compress (BitcoinMining/4601-hardware-acceleration-design-project/martin-hls/mine.cpp:54) | syn.compile.pipeline_loops=64 |
+| PIPELINE |         | loop SHA256_ROUNDS (BitcoinMining/4601-hardware-acceleration-design-project/martin-hls/mine.cpp:72:5) in sha256_compress (BitcoinMining/4601-hardware-acceleration-design-project/martin-hls/mine.cpp:72)      | syn.compile.pipeline_loops=64 |
+| PIPELINE |         | loop COPY_HEADER (BitcoinMining/4601-hardware-acceleration-design-project/martin-hls/mine.cpp:517:5) in mine (BitcoinMining/4601-hardware-acceleration-design-project/martin-hls/mine.cpp:517)                 | syn.compile.pipeline_loops=64 |
+| PIPELINE |         | loop COPY_TARGET (BitcoinMining/4601-hardware-acceleration-design-project/martin-hls/mine.cpp:524:5) in mine (BitcoinMining/4601-hardware-acceleration-design-project/martin-hls/mine.cpp:524)                 | syn.compile.pipeline_loops=64 |
+| PIPELINE |         | loop BUILD_TARGET_WORDS (BitcoinMining/4601-hardware-acceleration-design-project/martin-hls/mine.cpp:549:5) in mine (BitcoinMining/4601-hardware-acceleration-design-project/martin-hls/mine.cpp:549)          | syn.compile.pipeline_loops=64 |
+| PIPELINE |         | loop COPY_INVARIANT_BLOCK (BitcoinMining/4601-hardware-acceleration-design-project/martin-hls/mine.cpp:564:5) in mine (BitcoinMining/4601-hardware-acceleration-design-project/martin-hls/mine.cpp:564)        | syn.compile.pipeline_loops=64 |
+| PIPELINE |         | loop INIT_MIDSTATE (BitcoinMining/4601-hardware-acceleration-design-project/martin-hls/mine.cpp:571:5) in mine (BitcoinMining/4601-hardware-acceleration-design-project/martin-hls/mine.cpp:571)               | syn.compile.pipeline_loops=64 |
+| PIPELINE |         | loop NONCE_LOOP (BitcoinMining/4601-hardware-acceleration-design-project/martin-hls/mine.cpp:588:5) in mine (BitcoinMining/4601-hardware-acceleration-design-project/martin-hls/mine.cpp:588)                  | syn.compile.pipeline_loops=64 |
++----------+---------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------+
+
+* Valid Pragma Syntax
++-----------------+---------------------------------------------+---------------------------------------------------------------------------------------------------------------------------+
+| Type            | Options                                     | Location                                                                                                                  |
++-----------------+---------------------------------------------+---------------------------------------------------------------------------------------------------------------------------+
+| ARRAY_PARTITION | variable=w cyclic factor=4 dim=1            | in sha256_compress (../../BitcoinMining/4601-hardware-acceleration-design-project/martin-hls/mine.cpp:51)                 |
+| INLINE          | off                                         | in sha256_compress_words (../../BitcoinMining/4601-hardware-acceleration-design-project/martin-hls/mine.cpp:143)          |
+| INLINE          | off                                         | in sha256d_80_from_midstate_words (../../BitcoinMining/4601-hardware-acceleration-design-project/martin-hls/mine.cpp:226) |
+| INTERFACE       | m_axi port=header bundle=gmem0 depth=80     | in mine (../../BitcoinMining/4601-hardware-acceleration-design-project/martin-hls/mine.cpp:506)                           |
+| INTERFACE       | m_axi port=target bundle=gmem1 depth=32     | in mine (../../BitcoinMining/4601-hardware-acceleration-design-project/martin-hls/mine.cpp:507)                           |
+| INTERFACE       | m_axi port=found_nonce bundle=gmem2 depth=1 | in mine (../../BitcoinMining/4601-hardware-acceleration-design-project/martin-hls/mine.cpp:508)                           |
+| INTERFACE       | m_axi port=found bundle=gmem2 depth=1       | in mine (../../BitcoinMining/4601-hardware-acceleration-design-project/martin-hls/mine.cpp:509)                           |
+| INTERFACE       | s_axilite port=nonce_start                  | in mine (../../BitcoinMining/4601-hardware-acceleration-design-project/martin-hls/mine.cpp:510)                           |
+| INTERFACE       | s_axilite port=nonce_count                  | in mine (../../BitcoinMining/4601-hardware-acceleration-design-project/martin-hls/mine.cpp:511)                           |
+| INTERFACE       | s_axilite port=return                       | in mine (../../BitcoinMining/4601-hardware-acceleration-design-project/martin-hls/mine.cpp:512)                           |
+| LOOP_TRIPCOUNT  | min=1 avg=65536 max=1048576                 | in mine (../../BitcoinMining/4601-hardware-acceleration-design-project/martin-hls/mine.cpp:589)                           |
++-----------------+---------------------------------------------+---------------------------------------------------------------------------------------------------------------------------+
+
+
