@@ -1,0 +1,3 @@
+relativeroot=/home/cse/Documents/WorkSpaces/vaddWS/hasitha_optimization/hasitha_hls_component
+original_argv=--mode hls --package --config /home/cse/Documents/WorkSpaces/vaddWS/hasitha_optimization/hasitha_hls_component/hls_config.cfg --work_dir mine 
+

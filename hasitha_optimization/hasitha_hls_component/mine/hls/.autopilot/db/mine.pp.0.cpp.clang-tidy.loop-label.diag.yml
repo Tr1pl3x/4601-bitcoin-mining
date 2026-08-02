@@ -1,0 +1,40 @@
+---
+MainSourceFile:  '/home/cse/Documents/WorkSpaces/vaddWS/hasitha_optimization/hasitha_hls_component/mine/hls/.autopilot/db/mine.pp.0.cpp'
+Diagnostics:
+  - DiagnosticName:  xilinx-label-all-loops
+    DiagnosticMessage:
+      Message:         'Added loop label VITIS_LOOP_448_1:  '
+      FilePath:        '/home/cse/Documents/WorkSpaces/vaddWS/dylan-hls/mine.cpp'
+      FileOffset:      448
+      Replacements:
+        - FilePath:        '/home/cse/Documents/WorkSpaces/vaddWS/hasitha_optimization/hasitha_hls_component/mine/hls/.autopilot/db/mine.pp.0.cpp'
+          Offset:          26775
+          Length:          0
+          ReplacementText: 'VITIS_LOOP_448_1: '
+    Level:           Remark
+    BuildDirectory:  '/home/cse/Documents/WorkSpaces/vaddWS/hasitha_optimization/hasitha_hls_component'
+  - DiagnosticName:  xilinx-label-all-loops
+    DiagnosticMessage:
+      Message:         'Added loop label VITIS_LOOP_453_2:  '
+      FilePath:        '/home/cse/Documents/WorkSpaces/vaddWS/dylan-hls/mine.cpp'
+      FileOffset:      453
+      Replacements:
+        - FilePath:        '/home/cse/Documents/WorkSpaces/vaddWS/hasitha_optimization/hasitha_hls_component/mine/hls/.autopilot/db/mine.pp.0.cpp'
+          Offset:          26891
+          Length:          0
+          ReplacementText: 'VITIS_LOOP_453_2: '
+    Level:           Remark
+    BuildDirectory:  '/home/cse/Documents/WorkSpaces/vaddWS/hasitha_optimization/hasitha_hls_component'
+  - DiagnosticName:  xilinx-label-all-loops
+    DiagnosticMessage:
+      Message:         'Added loop label VITIS_LOOP_468_3:  '
+      FilePath:        '/home/cse/Documents/WorkSpaces/vaddWS/dylan-hls/mine.cpp'
+      FileOffset:      468
+      Replacements:
+        - FilePath:        '/home/cse/Documents/WorkSpaces/vaddWS/hasitha_optimization/hasitha_hls_component/mine/hls/.autopilot/db/mine.pp.0.cpp'
+          Offset:          27112
+          Length:          0
+          ReplacementText: 'VITIS_LOOP_468_3: '
+    Level:           Remark
+    BuildDirectory:  '/home/cse/Documents/WorkSpaces/vaddWS/hasitha_optimization/hasitha_hls_component'
+...

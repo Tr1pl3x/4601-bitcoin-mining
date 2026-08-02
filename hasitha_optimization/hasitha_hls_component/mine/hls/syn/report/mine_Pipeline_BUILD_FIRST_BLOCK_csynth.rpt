@@ -1,0 +1,187 @@
+
+
+================================================================
+== Vitis HLS Report for 'mine_Pipeline_BUILD_FIRST_BLOCK'
+================================================================
+* Date:           Mon Aug  3 02:09:59 2026
+
+* Version:        2025.2 (Build 6295257 on Nov 14 2025)
+* Project:        mine
+* Solution:       hls (Vitis Kernel Flow Target)
+* Product family: zynquplus
+* Target device:  xck26-sfvc784-2LV-c
+
+
+================================================================
+== Performance Estimates
+================================================================
++ Timing: 
+    * Summary: 
+    +--------+---------+----------+------------+
+    |  Clock |  Target | Estimated| Uncertainty|
+    +--------+---------+----------+------------+
+    |ap_clk  |  5.00 ns|  1.643 ns|     1.35 ns|
+    +--------+---------+----------+------------+
+
++ Latency: 
+    * Summary: 
+    +---------+---------+-----------+-----------+-----+-----+-------------------+
+    |  Latency (cycles) |   Latency (absolute)  |  Interval |      Pipeline     |
+    |   min   |   max   |    min    |    max    | min | max |        Type       |
+    +---------+---------+-----------+-----------+-----+-----+-------------------+
+    |       18|       18|  90.000 ns|  90.000 ns|    0|    0|  loop pipeline stp|
+    +---------+---------+-----------+-----------+-----+-----+-------------------+
+
+    + Detail: 
+        * Instance: 
+        N/A
+
+        * Loop: 
+        +---------------------+---------+---------+----------+-----------+-----------+------+----------+
+        |                     |  Latency (cycles) | Iteration|  Initiation Interval  | Trip |          |
+        |      Loop Name      |   min   |   max   |  Latency |  achieved |   target  | Count| Pipelined|
+        +---------------------+---------+---------+----------+-----------+-----------+------+----------+
+        |- BUILD_FIRST_BLOCK  |       16|       16|         2|          1|          1|    16|       yes|
+        +---------------------+---------+---------+----------+-----------+-----------+------+----------+
+
+
+
+================================================================
+== Utilization Estimates
+================================================================
+* Summary: 
++-----------------+---------+------+--------+--------+-----+
+|       Name      | BRAM_18K|  DSP |   FF   |   LUT  | URAM|
++-----------------+---------+------+--------+--------+-----+
+|DSP              |        -|     -|       -|       -|    -|
+|Expression       |        -|     -|       0|      27|    -|
+|FIFO             |        -|     -|       -|       -|    -|
+|Instance         |        -|     -|       -|       -|    -|
+|Memory           |        -|     -|       -|       -|    -|
+|Multiplexer      |        -|     -|       0|      36|    -|
+|Register         |        -|     -|     524|       -|    -|
++-----------------+---------+------+--------+--------+-----+
+|Total            |        0|     0|     524|      63|    0|
++-----------------+---------+------+--------+--------+-----+
+|Available        |      288|  1248|  234240|  117120|   64|
++-----------------+---------+------+--------+--------+-----+
+|Utilization (%)  |        0|     0|      ~0|      ~0|    0|
++-----------------+---------+------+--------+--------+-----+
+
++ Detail: 
+    * Instance: 
+    N/A
+
+    * DSP: 
+    N/A
+
+    * Memory: 
+    N/A
+
+    * FIFO: 
+    N/A
+
+    * Expression: 
+    +----------------------+----------+----+---+----+------------+------------+
+    |     Variable Name    | Operation| DSP| FF| LUT| Bitwidth P0| Bitwidth P1|
+    +----------------------+----------+----+---+----+------------+------------+
+    |add_ln234_fu_315_p2   |         +|   0|  0|  12|           5|           1|
+    |icmp_ln234_fu_309_p2  |      icmp|   0|  0|  13|           5|           6|
+    |ap_enable_pp0         |       xor|   0|  0|   2|           1|           2|
+    +----------------------+----------+----+---+----+------------+------------+
+    |Total                 |          |   0|  0|  27|          11|           9|
+    +----------------------+----------+----+---+----+------------+------------+
+
+    * Multiplexer: 
+    +-------------------------+----+-----------+-----+-----------+
+    |           Name          | LUT| Input Size| Bits| Total Bits|
+    +-------------------------+----+-----------+-----+-----------+
+    |ap_done_int              |   9|          2|    1|          2|
+    |ap_enable_reg_pp0_iter1  |   9|          2|    1|          2|
+    |ap_sig_allocacmp_i       |   9|          2|    5|         10|
+    |i_4_fu_108               |   9|          2|    5|         10|
+    +-------------------------+----+-----------+-----+-----------+
+    |Total                    |  36|          8|   12|         24|
+    +-------------------------+----+-----------+-----+-----------+
+
+    * Register: 
+    +-------------------------+----+----+-----+-----------+
+    |           Name          | FF | LUT| Bits| Const Bits|
+    +-------------------------+----+----+-----+-----------+
+    |ap_CS_fsm                |   1|   0|    1|          0|
+    |ap_done_reg              |   1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter1  |   1|   0|    1|          0|
+    |i_4_fu_108               |   5|   0|    5|          0|
+    |or7_i_i11_fu_120         |  32|   0|   32|          0|
+    |or7_i_i13_fu_124         |  32|   0|   32|          0|
+    |or7_i_i15_fu_128         |  32|   0|   32|          0|
+    |or7_i_i17_fu_132         |  32|   0|   32|          0|
+    |or7_i_i19_fu_136         |  32|   0|   32|          0|
+    |or7_i_i21_fu_140         |  32|   0|   32|          0|
+    |or7_i_i23_fu_144         |  32|   0|   32|          0|
+    |or7_i_i25_fu_148         |  32|   0|   32|          0|
+    |or7_i_i27_fu_152         |  32|   0|   32|          0|
+    |or7_i_i29_fu_156         |  32|   0|   32|          0|
+    |or7_i_i31_fu_160         |  32|   0|   32|          0|
+    |or7_i_i33_fu_164         |  32|   0|   32|          0|
+    |or7_i_i35_fu_168         |  32|   0|   32|          0|
+    |or7_i_i37_fu_172         |  32|   0|   32|          0|
+    |or7_i_i7_fu_112          |  32|   0|   32|          0|
+    |or7_i_i9_fu_116          |  32|   0|   32|          0|
+    |trunc_ln234_reg_665      |   4|   0|    4|          0|
+    +-------------------------+----+----+-----+-----------+
+    |Total                    | 524|   0|  524|          0|
+    +-------------------------+----+----+-----+-----------+
+
+
+
+================================================================
+== Interface
+================================================================
+* Summary: 
++----------------------+-----+-----+------------+---------------------------------+--------------+
+|       RTL Ports      | Dir | Bits|  Protocol  |          Source Object          |    C Type    |
++----------------------+-----+-----+------------+---------------------------------+--------------+
+|ap_clk                |   in|    1|  ap_ctrl_hs|  mine_Pipeline_BUILD_FIRST_BLOCK|  return value|
+|ap_rst                |   in|    1|  ap_ctrl_hs|  mine_Pipeline_BUILD_FIRST_BLOCK|  return value|
+|ap_start              |   in|    1|  ap_ctrl_hs|  mine_Pipeline_BUILD_FIRST_BLOCK|  return value|
+|ap_done               |  out|    1|  ap_ctrl_hs|  mine_Pipeline_BUILD_FIRST_BLOCK|  return value|
+|ap_idle               |  out|    1|  ap_ctrl_hs|  mine_Pipeline_BUILD_FIRST_BLOCK|  return value|
+|ap_ready              |  out|    1|  ap_ctrl_hs|  mine_Pipeline_BUILD_FIRST_BLOCK|  return value|
+|hdr_address0          |  out|    5|   ap_memory|                              hdr|         array|
+|hdr_ce0               |  out|    1|   ap_memory|                              hdr|         array|
+|hdr_q0                |   in|   32|   ap_memory|                              hdr|         array|
+|or7_i_i37_out         |  out|   32|      ap_vld|                    or7_i_i37_out|       pointer|
+|or7_i_i37_out_ap_vld  |  out|    1|      ap_vld|                    or7_i_i37_out|       pointer|
+|or7_i_i35_out         |  out|   32|      ap_vld|                    or7_i_i35_out|       pointer|
+|or7_i_i35_out_ap_vld  |  out|    1|      ap_vld|                    or7_i_i35_out|       pointer|
+|or7_i_i33_out         |  out|   32|      ap_vld|                    or7_i_i33_out|       pointer|
+|or7_i_i33_out_ap_vld  |  out|    1|      ap_vld|                    or7_i_i33_out|       pointer|
+|or7_i_i31_out         |  out|   32|      ap_vld|                    or7_i_i31_out|       pointer|
+|or7_i_i31_out_ap_vld  |  out|    1|      ap_vld|                    or7_i_i31_out|       pointer|
+|or7_i_i29_out         |  out|   32|      ap_vld|                    or7_i_i29_out|       pointer|
+|or7_i_i29_out_ap_vld  |  out|    1|      ap_vld|                    or7_i_i29_out|       pointer|
+|or7_i_i27_out         |  out|   32|      ap_vld|                    or7_i_i27_out|       pointer|
+|or7_i_i27_out_ap_vld  |  out|    1|      ap_vld|                    or7_i_i27_out|       pointer|
+|or7_i_i25_out         |  out|   32|      ap_vld|                    or7_i_i25_out|       pointer|
+|or7_i_i25_out_ap_vld  |  out|    1|      ap_vld|                    or7_i_i25_out|       pointer|
+|or7_i_i23_out         |  out|   32|      ap_vld|                    or7_i_i23_out|       pointer|
+|or7_i_i23_out_ap_vld  |  out|    1|      ap_vld|                    or7_i_i23_out|       pointer|
+|or7_i_i21_out         |  out|   32|      ap_vld|                    or7_i_i21_out|       pointer|
+|or7_i_i21_out_ap_vld  |  out|    1|      ap_vld|                    or7_i_i21_out|       pointer|
+|or7_i_i19_out         |  out|   32|      ap_vld|                    or7_i_i19_out|       pointer|
+|or7_i_i19_out_ap_vld  |  out|    1|      ap_vld|                    or7_i_i19_out|       pointer|
+|or7_i_i17_out         |  out|   32|      ap_vld|                    or7_i_i17_out|       pointer|
+|or7_i_i17_out_ap_vld  |  out|    1|      ap_vld|                    or7_i_i17_out|       pointer|
+|or7_i_i15_out         |  out|   32|      ap_vld|                    or7_i_i15_out|       pointer|
+|or7_i_i15_out_ap_vld  |  out|    1|      ap_vld|                    or7_i_i15_out|       pointer|
+|or7_i_i13_out         |  out|   32|      ap_vld|                    or7_i_i13_out|       pointer|
+|or7_i_i13_out_ap_vld  |  out|    1|      ap_vld|                    or7_i_i13_out|       pointer|
+|or7_i_i11_out         |  out|   32|      ap_vld|                    or7_i_i11_out|       pointer|
+|or7_i_i11_out_ap_vld  |  out|    1|      ap_vld|                    or7_i_i11_out|       pointer|
+|or7_i_i9_out          |  out|   32|      ap_vld|                     or7_i_i9_out|       pointer|
+|or7_i_i9_out_ap_vld   |  out|    1|      ap_vld|                     or7_i_i9_out|       pointer|
+|or7_i_i7_out          |  out|   32|      ap_vld|                     or7_i_i7_out|       pointer|
+|or7_i_i7_out_ap_vld   |  out|    1|      ap_vld|                     or7_i_i7_out|       pointer|
++----------------------+-----+-----+------------+---------------------------------+--------------+
+

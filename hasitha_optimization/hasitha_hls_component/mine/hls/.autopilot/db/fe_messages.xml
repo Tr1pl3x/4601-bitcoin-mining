@@ -1,0 +1,191 @@
+<xilinx:hls_fe_msgs>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-6999" msg_severity="WARNING" msg_loc="/home/cse/Documents/WorkSpaces/vaddWS/dylan-hls/mine.cpp:41:1" msg_body="HLS pragma dump">
+        <args ARG_PragmaContext="hls" ARG_PragmaFunction="sha256_compress_compact" ARG_PragmaIsValid="1" ARG_PragmaOptions="variable=w complete" ARG_PragmaType="array_partition" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-6999" msg_severity="WARNING" msg_loc="/home/cse/Documents/WorkSpaces/vaddWS/dylan-hls/mine.cpp:45:1" msg_body="HLS pragma dump">
+        <args ARG_PragmaContext="hls" ARG_PragmaFunction="sha256_compress_compact" ARG_PragmaIsValid="1" ARG_PragmaOptions="II=1" ARG_PragmaType="pipeline" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-6999" msg_severity="WARNING" msg_loc="/home/cse/Documents/WorkSpaces/vaddWS/dylan-hls/mine.cpp:63:1" msg_body="HLS pragma dump">
+        <args ARG_PragmaContext="hls" ARG_PragmaFunction="sha256_compress_compact" ARG_PragmaIsValid="1" ARG_PragmaOptions="II=1" ARG_PragmaType="pipeline" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-6999" msg_severity="WARNING" msg_loc="/home/cse/Documents/WorkSpaces/vaddWS/dylan-hls/mine.cpp:112:1" msg_body="HLS pragma dump">
+        <args ARG_PragmaContext="hls" ARG_PragmaFunction="sha256_compress_words" ARG_PragmaIsValid="1" ARG_PragmaOptions="off" ARG_PragmaType="inline" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-6999" msg_severity="WARNING" msg_loc="/home/cse/Documents/WorkSpaces/vaddWS/dylan-hls/mine.cpp:115:1" msg_body="HLS pragma dump">
+        <args ARG_PragmaContext="hls" ARG_PragmaFunction="sha256_compress_words" ARG_PragmaIsValid="1" ARG_PragmaOptions="variable=w complete" ARG_PragmaType="array_partition" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-6999" msg_severity="WARNING" msg_loc="/home/cse/Documents/WorkSpaces/vaddWS/dylan-hls/mine.cpp:119:1" msg_body="HLS pragma dump">
+        <args ARG_PragmaContext="hls" ARG_PragmaFunction="sha256_compress_words" ARG_PragmaIsValid="1" ARG_PragmaOptions="II=1" ARG_PragmaType="pipeline" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-6999" msg_severity="WARNING" msg_loc="/home/cse/Documents/WorkSpaces/vaddWS/dylan-hls/mine.cpp:134:1" msg_body="HLS pragma dump">
+        <args ARG_PragmaContext="hls" ARG_PragmaFunction="sha256_compress_words" ARG_PragmaIsValid="1" ARG_PragmaOptions="II=1" ARG_PragmaType="pipeline" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-6999" msg_severity="WARNING" msg_loc="/home/cse/Documents/WorkSpaces/vaddWS/dylan-hls/mine.cpp:209:1" msg_body="HLS pragma dump">
+        <args ARG_PragmaContext="hls" ARG_PragmaFunction="bswap32" ARG_PragmaIsValid="1" ARG_PragmaType="inline" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-6999" msg_severity="WARNING" msg_loc="/home/cse/Documents/WorkSpaces/vaddWS/dylan-hls/mine.cpp:225:1" msg_body="HLS pragma dump">
+        <args ARG_PragmaContext="hls" ARG_PragmaFunction="compute_midstate" ARG_PragmaIsValid="1" ARG_PragmaOptions="variable=block_words complete" ARG_PragmaType="array_partition" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-6999" msg_severity="WARNING" msg_loc="/home/cse/Documents/WorkSpaces/vaddWS/dylan-hls/mine.cpp:229:1" msg_body="HLS pragma dump">
+        <args ARG_PragmaContext="hls" ARG_PragmaFunction="compute_midstate" ARG_PragmaIsValid="1" ARG_PragmaType="unroll" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-6999" msg_severity="WARNING" msg_loc="/home/cse/Documents/WorkSpaces/vaddWS/dylan-hls/mine.cpp:235:1" msg_body="HLS pragma dump">
+        <args ARG_PragmaContext="hls" ARG_PragmaFunction="compute_midstate" ARG_PragmaIsValid="1" ARG_PragmaOptions="II=1" ARG_PragmaType="pipeline" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-6999" msg_severity="WARNING" msg_loc="/home/cse/Documents/WorkSpaces/vaddWS/dylan-hls/mine.cpp:251:1" msg_body="HLS pragma dump">
+        <args ARG_PragmaContext="hls" ARG_PragmaFunction="sha256d_from_midstate" ARG_PragmaIsValid="1" ARG_PragmaOptions="off" ARG_PragmaType="inline" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-6999" msg_severity="WARNING" msg_loc="/home/cse/Documents/WorkSpaces/vaddWS/dylan-hls/mine.cpp:252:1" msg_body="HLS pragma dump">
+        <args ARG_PragmaContext="hls" ARG_PragmaFunction="sha256d_from_midstate" ARG_PragmaIsValid="1" ARG_PragmaOptions="function instances=sha256_compress_words limit=1" ARG_PragmaType="allocation" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-6999" msg_severity="WARNING" msg_loc="/home/cse/Documents/WorkSpaces/vaddWS/dylan-hls/mine.cpp:255:1" msg_body="HLS pragma dump">
+        <args ARG_PragmaContext="hls" ARG_PragmaFunction="sha256d_from_midstate" ARG_PragmaIsValid="1" ARG_PragmaOptions="variable=block_words complete" ARG_PragmaType="array_partition" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-6999" msg_severity="WARNING" msg_loc="/home/cse/Documents/WorkSpaces/vaddWS/dylan-hls/mine.cpp:258:1" msg_body="HLS pragma dump">
+        <args ARG_PragmaContext="hls" ARG_PragmaFunction="sha256d_from_midstate" ARG_PragmaIsValid="1" ARG_PragmaOptions="variable=s complete" ARG_PragmaType="array_partition" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-6999" msg_severity="WARNING" msg_loc="/home/cse/Documents/WorkSpaces/vaddWS/dylan-hls/mine.cpp:262:1" msg_body="HLS pragma dump">
+        <args ARG_PragmaContext="hls" ARG_PragmaFunction="sha256d_from_midstate" ARG_PragmaIsValid="1" ARG_PragmaType="unroll" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-6999" msg_severity="WARNING" msg_loc="/home/cse/Documents/WorkSpaces/vaddWS/dylan-hls/mine.cpp:269:1" msg_body="HLS pragma dump">
+        <args ARG_PragmaContext="hls" ARG_PragmaFunction="sha256d_from_midstate" ARG_PragmaIsValid="1" ARG_PragmaType="unroll" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-6999" msg_severity="WARNING" msg_loc="/home/cse/Documents/WorkSpaces/vaddWS/dylan-hls/mine.cpp:277:1" msg_body="HLS pragma dump">
+        <args ARG_PragmaContext="hls" ARG_PragmaFunction="sha256d_from_midstate" ARG_PragmaIsValid="1" ARG_PragmaType="unroll" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-6999" msg_severity="WARNING" msg_loc="/home/cse/Documents/WorkSpaces/vaddWS/dylan-hls/mine.cpp:294:1" msg_body="HLS pragma dump">
+        <args ARG_PragmaContext="hls" ARG_PragmaFunction="sha256d_from_midstate" ARG_PragmaIsValid="1" ARG_PragmaType="unroll" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-6999" msg_severity="WARNING" msg_loc="/home/cse/Documents/WorkSpaces/vaddWS/dylan-hls/mine.cpp:302:1" msg_body="HLS pragma dump">
+        <args ARG_PragmaContext="hls" ARG_PragmaFunction="sha256d_from_midstate" ARG_PragmaIsValid="1" ARG_PragmaType="unroll" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-6999" msg_severity="WARNING" msg_loc="/home/cse/Documents/WorkSpaces/vaddWS/dylan-hls/mine.cpp:311:1" msg_body="HLS pragma dump">
+        <args ARG_PragmaContext="hls" ARG_PragmaFunction="sha256d_from_midstate" ARG_PragmaIsValid="1" ARG_PragmaType="unroll" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-6999" msg_severity="WARNING" msg_loc="/home/cse/Documents/WorkSpaces/vaddWS/dylan-hls/mine.cpp:319:1" msg_body="HLS pragma dump">
+        <args ARG_PragmaContext="hls" ARG_PragmaFunction="sha256d_from_midstate" ARG_PragmaIsValid="1" ARG_PragmaType="unroll" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-6999" msg_severity="WARNING" msg_loc="/home/cse/Documents/WorkSpaces/vaddWS/dylan-hls/mine.cpp:332:1" msg_body="HLS pragma dump">
+        <args ARG_PragmaContext="hls" ARG_PragmaFunction="sha256d_80" ARG_PragmaIsValid="1" ARG_PragmaOptions="variable=block_words complete" ARG_PragmaType="array_partition" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-6999" msg_severity="WARNING" msg_loc="/home/cse/Documents/WorkSpaces/vaddWS/dylan-hls/mine.cpp:335:1" msg_body="HLS pragma dump">
+        <args ARG_PragmaContext="hls" ARG_PragmaFunction="sha256d_80" ARG_PragmaIsValid="1" ARG_PragmaOptions="variable=s complete" ARG_PragmaType="array_partition" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-6999" msg_severity="WARNING" msg_loc="/home/cse/Documents/WorkSpaces/vaddWS/dylan-hls/mine.cpp:339:1" msg_body="HLS pragma dump">
+        <args ARG_PragmaContext="hls" ARG_PragmaFunction="sha256d_80" ARG_PragmaIsValid="1" ARG_PragmaType="unroll" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-6999" msg_severity="WARNING" msg_loc="/home/cse/Documents/WorkSpaces/vaddWS/dylan-hls/mine.cpp:345:1" msg_body="HLS pragma dump">
+        <args ARG_PragmaContext="hls" ARG_PragmaFunction="sha256d_80" ARG_PragmaIsValid="1" ARG_PragmaOptions="II=1" ARG_PragmaType="pipeline" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-6999" msg_severity="WARNING" msg_loc="/home/cse/Documents/WorkSpaces/vaddWS/dylan-hls/mine.cpp:353:1" msg_body="HLS pragma dump">
+        <args ARG_PragmaContext="hls" ARG_PragmaFunction="sha256d_80" ARG_PragmaIsValid="1" ARG_PragmaType="unroll" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-6999" msg_severity="WARNING" msg_loc="/home/cse/Documents/WorkSpaces/vaddWS/dylan-hls/mine.cpp:361:1" msg_body="HLS pragma dump">
+        <args ARG_PragmaContext="hls" ARG_PragmaFunction="sha256d_80" ARG_PragmaIsValid="1" ARG_PragmaType="unroll" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-6999" msg_severity="WARNING" msg_loc="/home/cse/Documents/WorkSpaces/vaddWS/dylan-hls/mine.cpp:371:1" msg_body="HLS pragma dump">
+        <args ARG_PragmaContext="hls" ARG_PragmaFunction="sha256d_80" ARG_PragmaIsValid="1" ARG_PragmaType="unroll" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-6999" msg_severity="WARNING" msg_loc="/home/cse/Documents/WorkSpaces/vaddWS/dylan-hls/mine.cpp:379:1" msg_body="HLS pragma dump">
+        <args ARG_PragmaContext="hls" ARG_PragmaFunction="sha256d_80" ARG_PragmaIsValid="1" ARG_PragmaType="unroll" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-6999" msg_severity="WARNING" msg_loc="/home/cse/Documents/WorkSpaces/vaddWS/dylan-hls/mine.cpp:387:1" msg_body="HLS pragma dump">
+        <args ARG_PragmaContext="hls" ARG_PragmaFunction="sha256d_80" ARG_PragmaIsValid="1" ARG_PragmaType="unroll" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-6999" msg_severity="WARNING" msg_loc="/home/cse/Documents/WorkSpaces/vaddWS/dylan-hls/mine.cpp:395:1" msg_body="HLS pragma dump">
+        <args ARG_PragmaContext="hls" ARG_PragmaFunction="sha256d_80" ARG_PragmaIsValid="1" ARG_PragmaType="unroll" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-6999" msg_severity="WARNING" msg_loc="/home/cse/Documents/WorkSpaces/vaddWS/dylan-hls/mine.cpp:407:1" msg_body="HLS pragma dump">
+        <args ARG_PragmaContext="hls" ARG_PragmaFunction="hash_below_target" ARG_PragmaIsValid="1" ARG_PragmaType="inline" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-6999" msg_severity="WARNING" msg_loc="directive:1:1" msg_body="HLS pragma dump">
+        <args ARG_PragmaContext="directive" ARG_PragmaFunction="mine" ARG_PragmaIsValid="1" ARG_PragmaOptions="name=mine" ARG_PragmaType="top" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-6999" msg_severity="WARNING" msg_loc="/home/cse/Documents/WorkSpaces/vaddWS/dylan-hls/mine.cpp:438:1" msg_body="HLS pragma dump">
+        <args ARG_PragmaContext="hls" ARG_PragmaFunction="mine" ARG_PragmaIsValid="1" ARG_PragmaOptions="m_axi port=header bundle=gmem0 depth=20" ARG_PragmaType="interface" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-6999" msg_severity="WARNING" msg_loc="/home/cse/Documents/WorkSpaces/vaddWS/dylan-hls/mine.cpp:439:1" msg_body="HLS pragma dump">
+        <args ARG_PragmaContext="hls" ARG_PragmaFunction="mine" ARG_PragmaIsValid="1" ARG_PragmaOptions="m_axi port=target bundle=gmem1 depth=8" ARG_PragmaType="interface" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-6999" msg_severity="WARNING" msg_loc="/home/cse/Documents/WorkSpaces/vaddWS/dylan-hls/mine.cpp:440:1" msg_body="HLS pragma dump">
+        <args ARG_PragmaContext="hls" ARG_PragmaFunction="mine" ARG_PragmaIsValid="1" ARG_PragmaOptions="m_axi port=found_nonce bundle=gmem2 depth=1" ARG_PragmaType="interface" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-6999" msg_severity="WARNING" msg_loc="/home/cse/Documents/WorkSpaces/vaddWS/dylan-hls/mine.cpp:441:1" msg_body="HLS pragma dump">
+        <args ARG_PragmaContext="hls" ARG_PragmaFunction="mine" ARG_PragmaIsValid="1" ARG_PragmaOptions="m_axi port=found bundle=gmem2 depth=1" ARG_PragmaType="interface" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-6999" msg_severity="WARNING" msg_loc="/home/cse/Documents/WorkSpaces/vaddWS/dylan-hls/mine.cpp:442:1" msg_body="HLS pragma dump">
+        <args ARG_PragmaContext="hls" ARG_PragmaFunction="mine" ARG_PragmaIsValid="1" ARG_PragmaOptions="s_axilite port=nonce_start" ARG_PragmaType="interface" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-6999" msg_severity="WARNING" msg_loc="/home/cse/Documents/WorkSpaces/vaddWS/dylan-hls/mine.cpp:443:1" msg_body="HLS pragma dump">
+        <args ARG_PragmaContext="hls" ARG_PragmaFunction="mine" ARG_PragmaIsValid="1" ARG_PragmaOptions="s_axilite port=nonce_count" ARG_PragmaType="interface" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-6999" msg_severity="WARNING" msg_loc="/home/cse/Documents/WorkSpaces/vaddWS/dylan-hls/mine.cpp:444:1" msg_body="HLS pragma dump">
+        <args ARG_PragmaContext="hls" ARG_PragmaFunction="mine" ARG_PragmaIsValid="1" ARG_PragmaOptions="s_axilite port=return" ARG_PragmaType="interface" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-6999" msg_severity="WARNING" msg_loc="/home/cse/Documents/WorkSpaces/vaddWS/dylan-hls/mine.cpp:449:1" msg_body="HLS pragma dump">
+        <args ARG_PragmaContext="hls" ARG_PragmaFunction="mine" ARG_PragmaIsValid="1" ARG_PragmaOptions="II=1" ARG_PragmaType="pipeline" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-6999" msg_severity="WARNING" msg_loc="/home/cse/Documents/WorkSpaces/vaddWS/dylan-hls/mine.cpp:454:1" msg_body="HLS pragma dump">
+        <args ARG_PragmaContext="hls" ARG_PragmaFunction="mine" ARG_PragmaIsValid="1" ARG_PragmaOptions="II=1" ARG_PragmaType="pipeline" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="CODE_UNSUPPORTED" msg_id="214-131" msg_severity="INFO" msg_loc="dylan-hls/mine.cpp:236:30" msg_body="Inlining function 'bswap32(unsigned int)' into 'compute_midstate(unsigned int const*, unsigned int*)'">
+        <args Callee="bswap32(unsigned int)" Callee-DebugLoc="File dylan-hls/mine.cpp Line 208 Column 0" Caller="compute_midstate(unsigned int const*, unsigned int*)" Caller-DebugLoc="File dylan-hls/mine.cpp Line 223 Column 0"/>
+    </msg>
+    <msg msg_groups="CODE_UNSUPPORTED" msg_id="214-131" msg_severity="INFO" msg_loc="dylan-hls/mine.cpp:270:30" msg_body="Inlining function 'bswap32(unsigned int)' into 'sha256d_from_midstate(unsigned int const*, unsigned int const*, unsigned char*)'">
+        <args Callee="bswap32(unsigned int)" Callee-DebugLoc="File dylan-hls/mine.cpp Line 208 Column 0" Caller="sha256d_from_midstate(unsigned int const*, unsigned int const*, unsigned char*)" Caller-DebugLoc="File dylan-hls/mine.cpp Line 250 Column 0"/>
+    </msg>
+    <msg msg_groups="CODE_UNSUPPORTED" msg_id="214-131" msg_severity="INFO" msg_loc="dylan-hls/mine.cpp:481:13" msg_body="Inlining function 'hash_below_target(unsigned char const*, unsigned int const*)' into 'mine(unsigned int const*, unsigned int const*, unsigned int, unsigned int, unsigned int*, int*)'">
+        <args Callee="hash_below_target(unsigned char const*, unsigned int const*)" Callee-DebugLoc="File dylan-hls/mine.cpp Line 406 Column 0" Caller="mine(unsigned int const*, unsigned int const*, unsigned int, unsigned int, unsigned int*, int*)" Caller-DebugLoc="File dylan-hls/mine.cpp Line 437 Column 0"/>
+    </msg>
+    <msg msg_groups="PRAGMA_UNROLL" msg_id="214-186" msg_severity="INFO" msg_loc="dylan-hls/mine.cpp:250:0" msg_body="Unrolling loop 'WRITE_HASH' (dylan-hls/mine.cpp:318:9) in function 'sha256d_from_midstate' completely with a factor of 8">
+        <args Factor="8" LoopLoc="dylan-hls/mine.cpp:318:9" LoopName="WRITE_HASH"/>
+    </msg>
+    <msg msg_groups="PRAGMA_UNROLL" msg_id="214-186" msg_severity="INFO" msg_loc="dylan-hls/mine.cpp:250:0" msg_body="Unrolling loop 'RESET_SECOND_HASH_STATE' (dylan-hls/mine.cpp:310:9) in function 'sha256d_from_midstate' completely with a factor of 8">
+        <args Factor="8" LoopLoc="dylan-hls/mine.cpp:310:9" LoopName="RESET_SECOND_HASH_STATE"/>
+    </msg>
+    <msg msg_groups="PRAGMA_UNROLL" msg_id="214-186" msg_severity="INFO" msg_loc="dylan-hls/mine.cpp:250:0" msg_body="Unrolling loop 'CLEAR_SECOND_HASH_BLOCK' (dylan-hls/mine.cpp:301:9) in function 'sha256d_from_midstate' completely with a factor of 6">
+        <args Factor="6" LoopLoc="dylan-hls/mine.cpp:301:9" LoopName="CLEAR_SECOND_HASH_BLOCK"/>
+    </msg>
+    <msg msg_groups="PRAGMA_UNROLL" msg_id="214-186" msg_severity="INFO" msg_loc="dylan-hls/mine.cpp:250:0" msg_body="Unrolling loop 'BUILD_SECOND_HASH_BLOCK' (dylan-hls/mine.cpp:293:9) in function 'sha256d_from_midstate' completely with a factor of 8">
+        <args Factor="8" LoopLoc="dylan-hls/mine.cpp:293:9" LoopName="BUILD_SECOND_HASH_BLOCK"/>
+    </msg>
+    <msg msg_groups="PRAGMA_UNROLL" msg_id="214-186" msg_severity="INFO" msg_loc="dylan-hls/mine.cpp:250:0" msg_body="Unrolling loop 'CLEAR_FIRST_HASH_BLOCK' (dylan-hls/mine.cpp:276:9) in function 'sha256d_from_midstate' completely with a factor of 10">
+        <args Factor="10" LoopLoc="dylan-hls/mine.cpp:276:9" LoopName="CLEAR_FIRST_HASH_BLOCK"/>
+    </msg>
+    <msg msg_groups="PRAGMA_UNROLL" msg_id="214-186" msg_severity="INFO" msg_loc="dylan-hls/mine.cpp:250:0" msg_body="Unrolling loop 'BUILD_FIRST_HASH_BLOCK' (dylan-hls/mine.cpp:268:9) in function 'sha256d_from_midstate' completely with a factor of 4">
+        <args Factor="4" LoopLoc="dylan-hls/mine.cpp:268:9" LoopName="BUILD_FIRST_HASH_BLOCK"/>
+    </msg>
+    <msg msg_groups="PRAGMA_UNROLL" msg_id="214-186" msg_severity="INFO" msg_loc="dylan-hls/mine.cpp:250:0" msg_body="Unrolling loop 'RESTORE_MIDSTATE' (dylan-hls/mine.cpp:261:9) in function 'sha256d_from_midstate' completely with a factor of 8">
+        <args Factor="8" LoopLoc="dylan-hls/mine.cpp:261:9" LoopName="RESTORE_MIDSTATE"/>
+    </msg>
+    <msg msg_groups="PRAGMA_UNROLL" msg_id="214-186" msg_severity="INFO" msg_loc="dylan-hls/mine.cpp:223:0" msg_body="Unrolling loop 'INIT_MIDSTATE' (dylan-hls/mine.cpp:228:9) in function 'compute_midstate' completely with a factor of 8">
+        <args Factor="8" LoopLoc="dylan-hls/mine.cpp:228:9" LoopName="INIT_MIDSTATE"/>
+    </msg>
+    <msg msg_groups="PRAGMA_INLINE" msg_id="214-178" msg_severity="INFO" msg_loc="dylan-hls/mine.cpp:111:0" msg_body="Inlining function 'rotr(unsigned int, int)' into 'sha256_compress_words(unsigned int*, unsigned int const*)'">
+        <args Callee="rotr(unsigned int, int)" Callee-DebugLoc="File dylan-hls/mine.cpp Line 32 Column 0" Caller="sha256_compress_words(unsigned int*, unsigned int const*)" Caller-DebugLoc="File dylan-hls/mine.cpp Line 111 Column 0"/>
+    </msg>
+    <msg msg_groups="PRAGMA_INLINE" msg_id="214-178" msg_severity="INFO" msg_loc="dylan-hls/mine.cpp:437:0" msg_body="Inlining function 'compute_midstate(unsigned int const*, unsigned int*)' into 'mine(unsigned int const*, unsigned int const*, unsigned int, unsigned int, unsigned int*, int*)'">
+        <args Callee="compute_midstate(unsigned int const*, unsigned int*)" Callee-DebugLoc="File dylan-hls/mine.cpp Line 223 Column 0" Caller="mine(unsigned int const*, unsigned int const*, unsigned int, unsigned int, unsigned int*, int*)" Caller-DebugLoc="File dylan-hls/mine.cpp Line 437 Column 0"/>
+    </msg>
+    <msg msg_groups="PRAGMA_MISC" msg_id="214-248" msg_severity="INFO" msg_loc="dylan-hls/mine.cpp:114:14" msg_body="Applying array_partition to 'w': Complete partitioning on dimension 1.">
+        <args Dim="1" Mode="Complete" UOName="w"/>
+    </msg>
+    <msg msg_groups="PRAGMA_MISC" msg_id="214-248" msg_severity="INFO" msg_loc="dylan-hls/mine.cpp:254:18" msg_body="Applying array_partition to 'block_words': Complete partitioning on dimension 1.">
+        <args Dim="1" Mode="Complete" UOName="block_words"/>
+    </msg>
+    <msg msg_groups="PRAGMA_MISC" msg_id="214-248" msg_severity="INFO" msg_loc="dylan-hls/mine.cpp:257:18" msg_body="Applying array_partition to 's': Complete partitioning on dimension 1.">
+        <args Dim="1" Mode="Complete" UOName="s"/>
+    </msg>
+    <msg msg_groups="PRAGMA_MISC" msg_id="214-248" msg_severity="INFO" msg_loc="dylan-hls/mine.cpp:224:18" msg_body="Applying array_partition to 'block_words.i': Complete partitioning on dimension 1.">
+        <args Dim="1" Mode="Complete" UOName="block_words.i"/>
+    </msg>
+    <msg msg_groups="AUTOMATION_VERBOSE_PASSED" msg_id="214-335" msg_severity="INFO" msg_loc="dylan-hls/mine.cpp:410:9" msg_body="pipeline   1 mine config_compile -pipeline_loops 64COMPARE_HASH dylan-hls/mine.cpp:410:9">
+        <args LoopLoc="dylan-hls/mine.cpp:410:9" LoopLoc-DebugLoc="File dylan-hls/mine.cpp Line 410 Column 9" LoopName="COMPARE_HASH" PragmaFunction="mine" PragmaInferReason="config_compile -pipeline_loops 64" PragmaIsAuto="1" PragmaType="pipeline"/>
+    </msg>
+    <msg msg_groups="AUTOMATION PRAGMA_MISC" msg_id="214-449" msg_severity="INFO" msg_loc="dylan-hls/mine.cpp:461:14" msg_body="Partitioning array 'midstate' dimension 1 due to constant index.">
+        <args Dim="1" Value="midstate"/>
+    </msg>
+    <msg msg_groups="PRAGMA_MISC" msg_id="214-248" msg_severity="INFO" msg_loc="dylan-hls/mine.cpp:461:14" msg_body="Applying array_partition to 'midstate': Complete partitioning on dimension 1.">
+        <args Dim="1" Mode="Complete" UOName="midstate"/>
+    </msg>
+</xilinx:hls_fe_msgs>

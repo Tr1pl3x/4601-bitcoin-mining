@@ -1,0 +1,241 @@
+{
+    "1": {
+        "name": "sha256_compress_words",
+        "file": "dylan-hls\/mine.cpp",
+        "fileloc": "109",
+        "instructions": "86",
+        "total_instructions": "427",
+        "calls": "4 5",
+        "basicblocks": "1",
+        "memory_accesses": "0",
+        "control_depth": "0",
+        "def_use_depth": "11",
+        "loads": {
+            "L": "24"
+        }
+    },
+    "2": {
+        "name": "sha256_compress_words.1_Pipeline_LOAD_INITIAL_WORDS",
+        "file": "dylan-hls\/mine.cpp",
+        "fileloc": "114",
+        "instructions": "112",
+        "total_instructions": "112",
+        "calls": "",
+        "basicblocks": "21",
+        "memory_accesses": "18",
+        "control_depth": "2",
+        "def_use_depth": "1",
+        "loads": {
+            "L": "17"
+        },
+        "stores": {
+            "L": "18"
+        },
+        "loops": {
+            "L": "1"
+        }
+    },
+    "0": {
+        "name": "mine",
+        "file": "mine.cpp",
+        "fileloc": "435",
+        "instructions": "134",
+        "total_instructions": "1757",
+        "calls": "3 8 11 9 10 7",
+        "basicblocks": "5",
+        "memory_accesses": "0",
+        "control_depth": "0",
+        "def_use_depth": "3",
+        "loads": {
+            "L": "21"
+        },
+        "stores": {
+            "L": "7"
+        },
+        "loops": {
+            "L": "1"
+        }
+    },
+    "3": {
+        "name": "mine_Pipeline_VITIS_LOOP_448_1",
+        "file": "dylan-hls\/mine.cpp",
+        "fileloc": "448",
+        "instructions": "34",
+        "total_instructions": "34",
+        "calls": "",
+        "basicblocks": "6",
+        "memory_accesses": "6",
+        "control_depth": "2",
+        "def_use_depth": "2",
+        "loads": {
+            "L": "2"
+        },
+        "stores": {
+            "L": "5"
+        },
+        "loops": {
+            "L": "1"
+        }
+    },
+    "4": {
+        "name": "sha256_compress_words_Pipeline_LOAD_INITIAL_WORDS",
+        "file": "dylan-hls\/mine.cpp",
+        "fileloc": "114",
+        "instructions": "107",
+        "total_instructions": "107",
+        "calls": "",
+        "basicblocks": "21",
+        "memory_accesses": "18",
+        "control_depth": "2",
+        "def_use_depth": "1",
+        "loads": {
+            "L": "17"
+        },
+        "stores": {
+            "L": "18"
+        },
+        "loops": {
+            "L": "1"
+        }
+    },
+    "5": {
+        "name": "sha256_compress_words_Pipeline_SHA256_ROUNDS",
+        "file": "dylan-hls\/mine.cpp",
+        "fileloc": "114",
+        "instructions": "234",
+        "total_instructions": "234",
+        "calls": "",
+        "basicblocks": "23",
+        "memory_accesses": "51",
+        "control_depth": "3",
+        "def_use_depth": "2",
+        "loads": {
+            "G": "1",
+            "L": "27"
+        },
+        "stores": {
+            "L": "50"
+        },
+        "loops": {
+            "L": "1"
+        }
+    },
+    "6": {
+        "name": "sha256_compress_words.1_Pipeline_SHA256_ROUNDS",
+        "file": "dylan-hls\/mine.cpp",
+        "fileloc": "114",
+        "instructions": "226",
+        "total_instructions": "226",
+        "calls": "",
+        "basicblocks": "23",
+        "memory_accesses": "51",
+        "control_depth": "3",
+        "def_use_depth": "2",
+        "loads": {
+            "G": "1",
+            "L": "27"
+        },
+        "stores": {
+            "L": "50"
+        },
+        "loops": {
+            "L": "1"
+        }
+    },
+    "7": {
+        "name": "mine_Pipeline_COMPARE_HASH",
+        "file": "dylan-hls\/mine.cpp",
+        "fileloc": "481",
+        "instructions": "35",
+        "total_instructions": "35",
+        "calls": "",
+        "basicblocks": "6",
+        "memory_accesses": "4",
+        "control_depth": "3",
+        "def_use_depth": "1",
+        "loads": {
+            "L": "3"
+        },
+        "stores": {
+            "L": "2"
+        },
+        "loops": {
+            "L": "1"
+        }
+    },
+    "8": {
+        "name": "mine_Pipeline_VITIS_LOOP_453_2",
+        "file": "dylan-hls\/mine.cpp",
+        "fileloc": "453",
+        "instructions": "24",
+        "total_instructions": "24",
+        "calls": "",
+        "basicblocks": "4",
+        "memory_accesses": "5",
+        "control_depth": "1",
+        "def_use_depth": "1",
+        "loads": {
+            "L": "2"
+        },
+        "stores": {
+            "L": "5"
+        },
+        "loops": {
+            "L": "1"
+        }
+    },
+    "9": {
+        "name": "sha256_compress_words.1",
+        "file": "dylan-hls\/mine.cpp",
+        "fileloc": "109",
+        "instructions": "83",
+        "total_instructions": "421",
+        "calls": "2 6",
+        "basicblocks": "1",
+        "memory_accesses": "0",
+        "control_depth": "0",
+        "def_use_depth": "11",
+        "loads": {
+            "L": "24"
+        }
+    },
+    "10": {
+        "name": "sha256d_from_midstate",
+        "file": "dylan-hls\/mine.cpp",
+        "fileloc": "247",
+        "instructions": "152",
+        "total_instructions": "1006",
+        "calls": "1 1",
+        "basicblocks": "1",
+        "memory_accesses": "0",
+        "control_depth": "0",
+        "def_use_depth": "9",
+        "loads": {
+            "L": "4"
+        },
+        "stores": {
+            "L": "32"
+        }
+    },
+    "11": {
+        "name": "mine_Pipeline_BUILD_FIRST_BLOCK",
+        "file": "dylan-hls\/mine.cpp",
+        "fileloc": "463",
+        "instructions": "103",
+        "total_instructions": "103",
+        "calls": "",
+        "basicblocks": "21",
+        "memory_accesses": "19",
+        "control_depth": "2",
+        "def_use_depth": "1",
+        "loads": {
+            "L": "18"
+        },
+        "stores": {
+            "L": "18"
+        },
+        "loops": {
+            "L": "1"
+        }
+    }
+}

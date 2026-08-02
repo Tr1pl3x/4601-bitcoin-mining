@@ -1,0 +1,52 @@
+<profile>
+
+<section name = "Vitis HLS Report for 'mine'" level="0">
+<item name = "Date">Mon Aug  3 02:09:58 2026
+</item>
+<item name = "Version">2025.2 (Build 6295257 on Nov 14 2025)</item>
+<item name = "Project">mine</item>
+<item name = "Solution">hls (Vitis Kernel Flow Target)</item>
+<item name = "Product family">zynquplus</item>
+<item name = "Target device">xck26-sfvc784-2LV-c</item>
+</section>
+
+<section name = "Performance Estimates" level="0">
+<item name = "Timing">
+<section name = "" level="1">
+<item name = "Summary"><table name="" hasTotal="0">
+<keys size="4">Clock, Target, Estimated, Uncertainty</keys>
+<column name="ap_clk">5.00 ns, 3.650 ns, 1.35 ns</column>
+</table>
+</item>
+</section>
+</item>
+<item name = "Latency">
+<section name = "" level="1">
+<item name = "Summary"><table name="" hasTotal="0">
+<keys size="8">, min, max, min, max, min, max, Type</keys>
+<column name="">?, ?, ?, ?, ?, ?, no</column>
+</table>
+</item>
+<item name = "Detail">
+<section name = "" level="1">
+<item name = "Instance"><table name="" hasTotal="0">
+<keys size="9">Instance, Module, min, max, min, max, min, max, Type</keys>
+<column name="grp_mine_Pipeline_VITIS_LOOP_448_1_fu_341">mine_Pipeline_VITIS_LOOP_448_1, 23, 23, 0.115 us, 0.115 us, 0, 0, loop pipeline stp</column>
+<column name="grp_mine_Pipeline_VITIS_LOOP_453_2_fu_349">mine_Pipeline_VITIS_LOOP_453_2, 10, 10, 50.000 ns, 50.000 ns, 0, 0, loop pipeline stp</column>
+<column name="grp_mine_Pipeline_BUILD_FIRST_BLOCK_fu_355">mine_Pipeline_BUILD_FIRST_BLOCK, 18, 18, 90.000 ns, 90.000 ns, 0, 0, loop pipeline stp</column>
+<column name="grp_sha256_compress_words_1_fu_376">sha256_compress_words_1, 89, 89, 0.445 us, 0.445 us, 89, 89, no</column>
+<column name="grp_sha256d_from_midstate_fu_398">sha256d_from_midstate, 199, 199, 0.995 us, 0.995 us, 199, 199, no</column>
+<column name="grp_mine_Pipeline_COMPARE_HASH_fu_414">mine_Pipeline_COMPARE_HASH, 3, 67, 15.000 ns, 0.335 us, 0, 0, loop pipeline stp</column>
+</table>
+</item>
+<item name = "Loop"><table name="" hasTotal="0">
+<keys size="8">Loop Name, min, max, Latency, achieved, target, Count, Pipelined</keys>
+<column name="- VITIS_LOOP_468_3">?, ?, 208 ~ 272, -, -, ?, no</column>
+</table>
+</item>
+</section>
+</item>
+</section>
+</item>
+</section>
+</profile>

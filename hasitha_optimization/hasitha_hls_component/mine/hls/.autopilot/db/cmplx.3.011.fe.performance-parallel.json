@@ -1,0 +1,78 @@
+{
+  "0": {
+    "basicblocks": 33,
+    "calls": "3 1",
+    "control_depth": 2,
+    "def_use_depth": 6,
+    "file": "mine.cpp",
+    "fileloc": 435,
+    "instructions": 185,
+    "loads": {
+      "L": 3,
+      "T": 1
+    },
+    "memory_accesses": 7,
+    "name": "mine",
+    "stores": {
+      "L": 11,
+      "T": 2
+    },
+    "total_instructions": 1113
+  },
+  "1": {
+    "basicblocks": 1,
+    "calls": "2 2",
+    "control_depth": 0,
+    "def_use_depth": 3,
+    "file": "mine.cpp",
+    "fileloc": 246,
+    "instructions": 240,
+    "loads": {
+      "L": 28
+    },
+    "memory_accesses": 0,
+    "name": "sha256d_from_midstate",
+    "stores": {
+      "L": 80
+    },
+    "total_instructions": 704
+  },
+  "2": {
+    "basicblocks": 39,
+    "calls": "",
+    "control_depth": 3,
+    "def_use_depth": 15,
+    "file": "mine.cpp",
+    "fileloc": 108,
+    "instructions": 232,
+    "loads": {
+      "G": 1,
+      "L": 24
+    },
+    "memory_accesses": 3,
+    "name": "sha256_compress_words",
+    "stores": {
+      "L": 8
+    },
+    "total_instructions": 232
+  },
+  "3": {
+    "basicblocks": 39,
+    "calls": "",
+    "control_depth": 3,
+    "def_use_depth": 15,
+    "file": "mine.cpp",
+    "fileloc": 108,
+    "instructions": 224,
+    "loads": {
+      "G": 1,
+      "L": 8
+    },
+    "memory_accesses": 3,
+    "name": "sha256_compress_words",
+    "stores": {
+      "L": 8
+    },
+    "total_instructions": 224
+  }
+}

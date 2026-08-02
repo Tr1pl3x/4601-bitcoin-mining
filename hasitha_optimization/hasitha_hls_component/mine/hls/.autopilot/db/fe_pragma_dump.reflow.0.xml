@@ -1,0 +1,31 @@
+<pragmas>
+<pragma file="dylan-hls/mine.cpp" line="454" pragmaType="pipeline" parentfunction="mine" off="0" ii="1" rewind="0" style=""/>
+<pragma file="dylan-hls/mine.cpp" line="449" pragmaType="pipeline" parentfunction="mine" off="0" ii="1" rewind="0" style=""/>
+<pragma file="dylan-hls/mine.cpp" line="438" pragmaType="interface" parentfunction="mine" mode="m_axi" port="header" bundle="gmem0" offset="" name="" depth="20" num_read_outstanding="-1" num_write_outstanding="-1" max_burst_read_length="-1" max_burst_write_length="-1" latency="-1" max_widen_bitwidth="-1" channel=""/>
+<pragma file="dylan-hls/mine.cpp" line="439" pragmaType="interface" parentfunction="mine" mode="m_axi" port="target" bundle="gmem1" offset="" name="" depth="8" num_read_outstanding="-1" num_write_outstanding="-1" max_burst_read_length="-1" max_burst_write_length="-1" latency="-1" max_widen_bitwidth="-1" channel=""/>
+<pragma file="dylan-hls/mine.cpp" line="440" pragmaType="interface" parentfunction="mine" mode="m_axi" port="found_nonce" bundle="gmem2" offset="" name="" depth="1" num_read_outstanding="-1" num_write_outstanding="-1" max_burst_read_length="-1" max_burst_write_length="-1" latency="-1" max_widen_bitwidth="-1" channel=""/>
+<pragma file="dylan-hls/mine.cpp" line="441" pragmaType="interface" parentfunction="mine" mode="m_axi" port="found" bundle="gmem2" offset="" name="" depth="1" num_read_outstanding="-1" num_write_outstanding="-1" max_burst_read_length="-1" max_burst_write_length="-1" latency="-1" max_widen_bitwidth="-1" channel=""/>
+<pragma file="dylan-hls/mine.cpp" line="442" pragmaType="interface" parentfunction="mine" mode="s_axilite" port="nonce_start" bundle="" offset="-1" name="" clock="" impl="" register="0"/>
+<pragma file="dylan-hls/mine.cpp" line="443" pragmaType="interface" parentfunction="mine" mode="s_axilite" port="nonce_count" bundle="" offset="-1" name="" clock="" impl="" register="0"/>
+<pragma file="dylan-hls/mine.cpp" line="444" pragmaType="interface" parentfunction="mine" mode="s_axilite" port="" bundle="" offset="-1" name="" clock="" impl="" register="0"/>
+<pragma file="dylan-hls/mine.cpp" line="112" pragmaType="inline" parentfunction="sha256_compress_words" off="1" region="0" recursive="0"/>
+<pragma file="dylan-hls/mine.cpp" line="134" pragmaType="pipeline" parentfunction="sha256_compress_words" off="0" ii="1" rewind="0" style=""/>
+<pragma file="dylan-hls/mine.cpp" line="119" pragmaType="pipeline" parentfunction="sha256_compress_words" off="0" ii="1" rewind="0" style=""/>
+<pragma file="dylan-hls/mine.cpp" line="115" pragmaType="array_partition" parentfunction="sha256_compress_words" dim="1" factor="0" mode="complete" dynamic="0" variable="w"/>
+<pragma file="dylan-hls/mine.cpp" line="209" pragmaType="inline" parentfunction="bswap32" off="0" region="0" recursive="0"/>
+<pragma file="dylan-hls/mine.cpp" line="235" pragmaType="pipeline" parentfunction="compute_midstate" off="0" ii="1" rewind="0" style=""/>
+<pragma file="dylan-hls/mine.cpp" line="229" pragmaType="unroll" parentfunction="compute_midstate" factor="-1" skip_exit_check="0"/>
+<pragma file="dylan-hls/mine.cpp" line="225" pragmaType="array_partition" parentfunction="compute_midstate" dim="1" factor="0" mode="complete" dynamic="0" variable="block_words"/>
+<pragma file="dylan-hls/mine.cpp" line="251" pragmaType="inline" parentfunction="sha256d_from_midstate" off="1" region="0" recursive="0"/>
+<pragma file="dylan-hls/mine.cpp" line="319" pragmaType="unroll" parentfunction="sha256d_from_midstate" factor="-1" skip_exit_check="0"/>
+<pragma file="dylan-hls/mine.cpp" line="311" pragmaType="unroll" parentfunction="sha256d_from_midstate" factor="-1" skip_exit_check="0"/>
+<pragma file="dylan-hls/mine.cpp" line="302" pragmaType="unroll" parentfunction="sha256d_from_midstate" factor="-1" skip_exit_check="0"/>
+<pragma file="dylan-hls/mine.cpp" line="294" pragmaType="unroll" parentfunction="sha256d_from_midstate" factor="-1" skip_exit_check="0"/>
+<pragma file="dylan-hls/mine.cpp" line="277" pragmaType="unroll" parentfunction="sha256d_from_midstate" factor="-1" skip_exit_check="0"/>
+<pragma file="dylan-hls/mine.cpp" line="269" pragmaType="unroll" parentfunction="sha256d_from_midstate" factor="-1" skip_exit_check="0"/>
+<pragma file="dylan-hls/mine.cpp" line="262" pragmaType="unroll" parentfunction="sha256d_from_midstate" factor="-1" skip_exit_check="0"/>
+<pragma file="dylan-hls/mine.cpp" line="252" pragmaType="allocation" parentfunction="sha256d_from_midstate" type="function" limit="1" instances="sha256_compress_words"/>
+<pragma file="dylan-hls/mine.cpp" line="255" pragmaType="array_partition" parentfunction="sha256d_from_midstate" dim="1" factor="0" mode="complete" dynamic="0" variable="block_words"/>
+<pragma file="dylan-hls/mine.cpp" line="258" pragmaType="array_partition" parentfunction="sha256d_from_midstate" dim="1" factor="0" mode="complete" dynamic="0" variable="s"/>
+<pragma file="dylan-hls/mine.cpp" line="407" pragmaType="inline" parentfunction="hash_below_target" off="0" region="0" recursive="0"/>
+</pragmas>

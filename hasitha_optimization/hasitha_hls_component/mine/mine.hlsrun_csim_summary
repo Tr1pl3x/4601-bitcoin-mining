@@ -1,0 +1,156 @@
+<ENTRY>
+{
+ "thisFile": "/home/cse/Documents/WorkSpaces/vaddWS/hasitha_optimization/hasitha_hls_component/mine/mine.hlsrun_csim_summary",
+ "connectId": "",
+ "serverToken": "",
+ "timestamp": "0"
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_CmdStep",
+ "dateTimestamp": "Mon Aug  3 00:35:45 2026",
+ "timestampMillis": "1785681345551",
+ "buildStep": {
+  "cmdId": "0c2a06d7-92d8-4dce-bf15-8a645cc089ac",
+  "name": "vitis-run",
+  "logFile": "/home/cse/Documents/WorkSpaces/vaddWS/hasitha_optimization/hasitha_hls_component/mine/logs/mine.steps.log",
+  "commandLine": "/tools/Xilinx/2025.2/Vitis/bin/unwrapped/lnx64.o/vitis-run  --mode hls --csim --config /home/cse/Documents/WorkSpaces/vaddWS/hasitha_optimization/hasitha_hls_component/hls_config.cfg --work_dir mine ",
+  "args": [
+   "--mode",
+   "hls",
+   "--csim",
+   "--config",
+   "/home/cse/Documents/WorkSpaces/vaddWS/hasitha_optimization/hasitha_hls_component/hls_config.cfg",
+   "--work_dir",
+   "mine"
+  ],
+  "iniFiles": [],
+  "cwd": "/home/cse/Documents/WorkSpaces/vaddWS/hasitha_optimization/hasitha_hls_component"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Status",
+ "dateTimestamp": "Mon Aug  3 00:35:45 2026",
+ "timestampMillis": "1785681345552",
+ "status": {
+  "cmdId": "0c2a06d7-92d8-4dce-bf15-8a645cc089ac",
+  "state": "CS_RUNNING"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_FlowMetaData",
+ "dateTimestamp": "Mon Aug  3 00:35:47 2026",
+ "timestampMillis": "1785681347898",
+ "buildSummary": {
+  "hardwarePlatform": "",
+  "hardwareDsa": "",
+  "platformDirectory": "",
+  "runtime": "",
+  "systemConfig": "",
+  "flow": "BF_RUN",
+  "target": "TT_HLS_C_SIM",
+  "kernels": [
+   {
+    "base": {
+     "type": "KERNEL",
+     "name": "mine",
+     "file": "",
+     "reports": [],
+     "uuid": ""
+    },
+    "sources": [
+     "/home/cse/Documents/WorkSpaces/vaddWS/dylan-hls/mine.cpp"
+    ],
+    "psSources": [],
+    "cuNames": [],
+    "type": "HLS",
+    "frequency": 0,
+    "freqUnits": ""
+   }
+  ],
+  "toolVersion": "2025.2"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_SubCmdStep",
+ "dateTimestamp": "Mon Aug  3 00:35:47 2026",
+ "timestampMillis": "1785681347899",
+ "buildStep": {
+  "cmdId": "dfaabcf9-9946-4b94-8c58-578b6ede4ccc",
+  "name": "",
+  "logFile": "/home/cse/Documents/WorkSpaces/vaddWS/hasitha_optimization/hasitha_hls_component/mine/hls/hls.log",
+  "commandLine": "",
+  "args": [],
+  "iniFiles": [],
+  "cwd": "/home/cse/Documents/WorkSpaces/vaddWS/hasitha_optimization/hasitha_hls_component"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Status",
+ "dateTimestamp": "Mon Aug  3 00:35:47 2026",
+ "timestampMillis": "1785681347899",
+ "status": {
+  "cmdId": "dfaabcf9-9946-4b94-8c58-578b6ede4ccc",
+  "state": "CS_RUNNING"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Status",
+ "dateTimestamp": "Mon Aug  3 00:35:48 2026",
+ "timestampMillis": "1785681348395",
+ "status": {
+  "cmdId": "dfaabcf9-9946-4b94-8c58-578b6ede4ccc",
+  "state": "CS_PASSED"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Status",
+ "dateTimestamp": "Mon Aug  3 00:35:48 2026",
+ "timestampMillis": "1785681348484",
+ "status": {
+  "cmdId": "0c2a06d7-92d8-4dce-bf15-8a645cc089ac",
+  "state": "CS_PASSED"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Report",
+ "dateTimestamp": "Mon Aug  3 00:35:48 2026",
+ "timestampMillis": "1785681348484",
+ "report": {
+  "path": "",
+  "name": "",
+  "fileType": "HTML",
+  "reportType": "GLOBAL_RULECHECK_GUIDANCE",
+  "cmdId": ""
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Report",
+ "dateTimestamp": "Mon Aug  3 00:35:48 2026",
+ "timestampMillis": "1785681348485",
+ "report": {
+  "path": "",
+  "name": "",
+  "fileType": "BINARY_PROTOBUF",
+  "reportType": "GLOBAL_RULECHECK_GUIDANCE",
+  "cmdId": ""
+ }
+}
+</ENTRY>

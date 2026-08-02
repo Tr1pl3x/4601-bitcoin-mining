@@ -1,0 +1,207 @@
+<profile>
+
+<section name = "Vitis HLS Report for 'sha256d_from_midstate'" level="0">
+<item name = "Date">Mon Aug  3 02:09:59 2026
+</item>
+<item name = "Version">2025.2 (Build 6295257 on Nov 14 2025)</item>
+<item name = "Project">mine</item>
+<item name = "Solution">hls (Vitis Kernel Flow Target)</item>
+<item name = "Product family">zynquplus</item>
+<item name = "Target device">xck26-sfvc784-2LV-c</item>
+</section>
+
+<section name = "Performance Estimates" level="0">
+<item name = "Timing">
+<section name = "" level="1">
+<item name = "Summary"><table name="" hasTotal="0">
+<keys size="4">Clock, Target, Estimated, Uncertainty</keys>
+<column name="ap_clk">5.00 ns, 3.411 ns, 1.35 ns</column>
+</table>
+</item>
+</section>
+</item>
+<item name = "Latency">
+<section name = "" level="1">
+<item name = "Summary"><table name="" hasTotal="0">
+<keys size="8">, min, max, min, max, min, max, Type</keys>
+<column name="">199, 199, 0.995 us, 0.995 us, 199, 199, no</column>
+</table>
+</item>
+<item name = "Detail">
+<section name = "" level="1">
+<item name = "Instance"><table name="" hasTotal="0">
+<keys size="9">Instance, Module, min, max, min, max, min, max, Type</keys>
+<column name="grp_sha256_compress_words_fu_526">sha256_compress_words, 90, 90, 0.450 us, 0.450 us, 90, 90, no</column>
+</table>
+</item>
+<item name = "Loop"><table name="" hasTotal="0">
+<keys size="8">Loop Name, min, max, Latency, achieved, target, Count, Pipelined</keys>
+</table>
+</item>
+</section>
+</item>
+</section>
+</item>
+</section>
+
+<section name = "Utilization Estimates" level="0">
+<item name = "Summary"><table name="" hasTotal="1">
+<keys size="6">Name, BRAM_18K, DSP, FF, LUT, URAM</keys>
+<column name="DSP">-, -, -, -, -</column>
+<column name="Expression">-, -, -, -, -</column>
+<column name="FIFO">-, -, -, -, -</column>
+<column name="Instance">1, -, 1381, 1905, -</column>
+<column name="Memory">-, -, -, -, -</column>
+<column name="Multiplexer">-, -, 0, 710, -</column>
+<column name="Register">-, -, 709, -, -</column>
+<specialColumn name="Available">288, 1248, 234240, 117120, 64</specialColumn>
+<specialColumn name="Utilization (%)">~0, 0, ~0, 2, 0</specialColumn>
+</table>
+</item>
+<item name = "Detail">
+<section name = "" level="1">
+<item name = "Instance"><table name="" hasTotal="1">
+<keys size="7">Instance, Module, BRAM_18K, DSP, FF, LUT, URAM</keys>
+<column name="grp_sha256_compress_words_fu_526">sha256_compress_words, 1, 0, 1381, 1905, 0</column>
+</table>
+</item>
+<item name = "DSP"><table name="" hasTotal="0">
+<keys size="3">Instance, Module, Expression</keys>
+</table>
+</item>
+<item name = "Memory"><table name="" hasTotal="1">
+<keys size="10">Memory, Module, BRAM_18K, FF, LUT, URAM, Words, Bits, Banks, W*Bits*Banks</keys>
+</table>
+</item>
+<item name = "FIFO"><table name="" hasTotal="1">
+<keys size="8">Name, BRAM_18K, FF, LUT, URAM, Depth, Bits, Size:D*B</keys>
+</table>
+</item>
+<item name = "Expression"><table name="" hasTotal="1">
+<keys size="7">Variable Name, Operation, DSP, FF, LUT, Bitwidth P0, Bitwidth P1</keys>
+</table>
+</item>
+<item name = "Multiplexer"><table name="" hasTotal="1">
+<keys size="5">Name, LUT, Input Size, Bits, Total Bits</keys>
+<column name="ap_NS_fsm">106, 21, 1, 21</column>
+<column name="grp_sha256_compress_words_fu_526_block_words_read">14, 3, 32, 96</column>
+<column name="grp_sha256_compress_words_fu_526_block_words_read_38">14, 3, 32, 96</column>
+<column name="grp_sha256_compress_words_fu_526_block_words_read_39">14, 3, 32, 96</column>
+<column name="grp_sha256_compress_words_fu_526_block_words_read_40">14, 3, 32, 96</column>
+<column name="grp_sha256_compress_words_fu_526_block_words_read_41">14, 3, 32, 96</column>
+<column name="grp_sha256_compress_words_fu_526_block_words_read_42">14, 3, 32, 96</column>
+<column name="grp_sha256_compress_words_fu_526_block_words_read_43">14, 3, 32, 96</column>
+<column name="grp_sha256_compress_words_fu_526_block_words_read_44">14, 3, 32, 96</column>
+<column name="grp_sha256_compress_words_fu_526_block_words_read_45">14, 3, 32, 96</column>
+<column name="grp_sha256_compress_words_fu_526_block_words_read_46">14, 3, 32, 96</column>
+<column name="grp_sha256_compress_words_fu_526_state_read">14, 3, 32, 96</column>
+<column name="grp_sha256_compress_words_fu_526_state_read_30">14, 3, 32, 96</column>
+<column name="grp_sha256_compress_words_fu_526_state_read_31">14, 3, 32, 96</column>
+<column name="grp_sha256_compress_words_fu_526_state_read_32">14, 3, 32, 96</column>
+<column name="grp_sha256_compress_words_fu_526_state_read_33">14, 3, 32, 96</column>
+<column name="grp_sha256_compress_words_fu_526_state_read_34">14, 3, 32, 96</column>
+<column name="grp_sha256_compress_words_fu_526_state_read_35">14, 3, 32, 96</column>
+<column name="grp_sha256_compress_words_fu_526_state_read_36">14, 3, 32, 96</column>
+<column name="header_tail_address0_local">14, 3, 5, 15</column>
+<column name="header_tail_address1_local">14, 3, 5, 15</column>
+<column name="out_r_address0_local">81, 17, 5, 85</column>
+<column name="out_r_address1_local">81, 17, 5, 85</column>
+<column name="out_r_d0_local">81, 17, 8, 136</column>
+<column name="out_r_d1_local">81, 17, 8, 136</column>
+</table>
+</item>
+<item name = "Register"><table name="" hasTotal="1">
+<keys size="5">Name, FF, LUT, Bits, Const Bits</keys>
+<column name="ap_CS_fsm">20, 0, 20, 0</column>
+<column name="block_words_1_reg_1167">32, 0, 32, 0</column>
+<column name="block_words_2_reg_1172">32, 0, 32, 0</column>
+<column name="block_words_3_reg_1177">32, 0, 32, 0</column>
+<column name="block_words_reg_1162">32, 0, 32, 0</column>
+<column name="empty_40_reg_1092">8, 0, 8, 0</column>
+<column name="empty_reg_1072">8, 0, 8, 0</column>
+<column name="grp_sha256_compress_words_fu_526_ap_start_reg">1, 0, 1, 0</column>
+<column name="p_1_reg_1082">8, 0, 8, 0</column>
+<column name="p_2_reg_1087">8, 0, 8, 0</column>
+<column name="p_3_reg_1077">8, 0, 8, 0</column>
+<column name="p_4_reg_1097">8, 0, 8, 0</column>
+<column name="p_5_reg_1102">8, 0, 8, 0</column>
+<column name="p_6_reg_1107">8, 0, 8, 0</column>
+<column name="s_16_reg_1182">32, 0, 32, 0</column>
+<column name="s_17_reg_1187">32, 0, 32, 0</column>
+<column name="s_18_reg_1192">32, 0, 32, 0</column>
+<column name="s_19_reg_1197">32, 0, 32, 0</column>
+<column name="s_20_reg_1202">32, 0, 32, 0</column>
+<column name="s_21_reg_1207">32, 0, 32, 0</column>
+<column name="s_22_reg_1212">32, 0, 32, 0</column>
+<column name="s_23_reg_1217">32, 0, 32, 0</column>
+<column name="trunc_ln2_reg_1222">8, 0, 8, 0</column>
+<column name="trunc_ln320_1_reg_1232">8, 0, 8, 0</column>
+<column name="trunc_ln320_2_reg_1252">8, 0, 8, 0</column>
+<column name="trunc_ln320_3_reg_1272">8, 0, 8, 0</column>
+<column name="trunc_ln320_4_reg_1292">8, 0, 8, 0</column>
+<column name="trunc_ln320_5_reg_1312">8, 0, 8, 0</column>
+<column name="trunc_ln320_6_reg_1332">8, 0, 8, 0</column>
+<column name="trunc_ln320_7_reg_1352">8, 0, 8, 0</column>
+<column name="trunc_ln321_1_reg_1237">8, 0, 8, 0</column>
+<column name="trunc_ln321_2_reg_1257">8, 0, 8, 0</column>
+<column name="trunc_ln321_3_reg_1277">8, 0, 8, 0</column>
+<column name="trunc_ln321_4_reg_1297">8, 0, 8, 0</column>
+<column name="trunc_ln321_5_reg_1317">8, 0, 8, 0</column>
+<column name="trunc_ln321_6_reg_1337">8, 0, 8, 0</column>
+<column name="trunc_ln321_7_reg_1357">8, 0, 8, 0</column>
+<column name="trunc_ln322_1_reg_1242">8, 0, 8, 0</column>
+<column name="trunc_ln322_2_reg_1262">8, 0, 8, 0</column>
+<column name="trunc_ln322_3_reg_1282">8, 0, 8, 0</column>
+<column name="trunc_ln322_4_reg_1302">8, 0, 8, 0</column>
+<column name="trunc_ln322_5_reg_1322">8, 0, 8, 0</column>
+<column name="trunc_ln322_6_reg_1342">8, 0, 8, 0</column>
+<column name="trunc_ln322_7_reg_1362">8, 0, 8, 0</column>
+<column name="trunc_ln323_1_reg_1247">8, 0, 8, 0</column>
+<column name="trunc_ln323_2_reg_1267">8, 0, 8, 0</column>
+<column name="trunc_ln323_3_reg_1287">8, 0, 8, 0</column>
+<column name="trunc_ln323_4_reg_1307">8, 0, 8, 0</column>
+<column name="trunc_ln323_5_reg_1327">8, 0, 8, 0</column>
+<column name="trunc_ln323_6_reg_1347">8, 0, 8, 0</column>
+<column name="trunc_ln323_7_reg_1367">8, 0, 8, 0</column>
+<column name="trunc_ln323_reg_1227">8, 0, 8, 0</column>
+</table>
+</item>
+</section>
+</item>
+</section>
+
+<section name = "Interface" level="0">
+<item name = "Summary"><table name="" hasTotal="0">
+<keys size="6">RTL Ports, Dir, Bits, Protocol, Source Object, C Type</keys>
+<column name="ap_clk">in, 1, ap_ctrl_hs, sha256d_from_midstate, return value</column>
+<column name="ap_rst">in, 1, ap_ctrl_hs, sha256d_from_midstate, return value</column>
+<column name="ap_start">in, 1, ap_ctrl_hs, sha256d_from_midstate, return value</column>
+<column name="ap_done">out, 1, ap_ctrl_hs, sha256d_from_midstate, return value</column>
+<column name="ap_idle">out, 1, ap_ctrl_hs, sha256d_from_midstate, return value</column>
+<column name="ap_ready">out, 1, ap_ctrl_hs, sha256d_from_midstate, return value</column>
+<column name="midstate_read">in, 32, ap_none, midstate_read, scalar</column>
+<column name="midstate_read_15">in, 32, ap_none, midstate_read_15, scalar</column>
+<column name="midstate_read_16">in, 32, ap_none, midstate_read_16, scalar</column>
+<column name="midstate_read_17">in, 32, ap_none, midstate_read_17, scalar</column>
+<column name="midstate_read_18">in, 32, ap_none, midstate_read_18, scalar</column>
+<column name="midstate_read_19">in, 32, ap_none, midstate_read_19, scalar</column>
+<column name="midstate_read_20">in, 32, ap_none, midstate_read_20, scalar</column>
+<column name="midstate_read_21">in, 32, ap_none, midstate_read_21, scalar</column>
+<column name="header_tail_address0">out, 5, ap_memory, header_tail, array</column>
+<column name="header_tail_ce0">out, 1, ap_memory, header_tail, array</column>
+<column name="header_tail_q0">in, 32, ap_memory, header_tail, array</column>
+<column name="header_tail_address1">out, 5, ap_memory, header_tail, array</column>
+<column name="header_tail_ce1">out, 1, ap_memory, header_tail, array</column>
+<column name="header_tail_q1">in, 32, ap_memory, header_tail, array</column>
+<column name="out_r_address0">out, 5, ap_memory, out_r, array</column>
+<column name="out_r_ce0">out, 1, ap_memory, out_r, array</column>
+<column name="out_r_we0">out, 1, ap_memory, out_r, array</column>
+<column name="out_r_d0">out, 8, ap_memory, out_r, array</column>
+<column name="out_r_address1">out, 5, ap_memory, out_r, array</column>
+<column name="out_r_ce1">out, 1, ap_memory, out_r, array</column>
+<column name="out_r_we1">out, 1, ap_memory, out_r, array</column>
+<column name="out_r_d1">out, 8, ap_memory, out_r, array</column>
+</table>
+</item>
+</section>
+</profile>

@@ -1,0 +1,171 @@
+
+
+================================================================
+== Vitis HLS Report for 'sha256_compress_words'
+================================================================
+* Date:           Mon Aug  3 02:09:59 2026
+
+* Version:        2025.2 (Build 6295257 on Nov 14 2025)
+* Project:        mine
+* Solution:       hls (Vitis Kernel Flow Target)
+* Product family: zynquplus
+* Target device:  xck26-sfvc784-2LV-c
+
+
+================================================================
+== Performance Estimates
+================================================================
++ Timing: 
+    * Summary: 
+    +--------+---------+----------+------------+
+    |  Clock |  Target | Estimated| Uncertainty|
+    +--------+---------+----------+------------+
+    |ap_clk  |  5.00 ns|  3.411 ns|     1.35 ns|
+    +--------+---------+----------+------------+
+
++ Latency: 
+    * Summary: 
+    +---------+---------+----------+----------+-----+-----+---------+
+    |  Latency (cycles) |  Latency (absolute) |  Interval | Pipeline|
+    |   min   |   max   |    min   |    max   | min | max |   Type  |
+    +---------+---------+----------+----------+-----+-----+---------+
+    |       90|       90|  0.450 us|  0.450 us|   90|   90|       no|
+    +---------+---------+----------+----------+-----+-----+---------+
+
+    + Detail: 
+        * Instance: 
+        +--------------------------------------------------------------+---------------------------------------------------+---------+---------+-----------+-----------+-----+-----+-------------------+
+        |                                                              |                                                   |  Latency (cycles) |   Latency (absolute)  |  Interval |      Pipeline     |
+        |                           Instance                           |                       Module                      |   min   |   max   |    min    |    max    | min | max |        Type       |
+        +--------------------------------------------------------------+---------------------------------------------------+---------+---------+-----------+-----------+-----+-----+-------------------+
+        |grp_sha256_compress_words_Pipeline_LOAD_INITIAL_WORDS_fu_252  |sha256_compress_words_Pipeline_LOAD_INITIAL_WORDS  |       18|       18|  90.000 ns|  90.000 ns|    0|    0|  loop pipeline stp|
+        |grp_sha256_compress_words_Pipeline_SHA256_ROUNDS_fu_291       |sha256_compress_words_Pipeline_SHA256_ROUNDS       |       67|       67|   0.335 us|   0.335 us|    0|    0|  loop pipeline stp|
+        +--------------------------------------------------------------+---------------------------------------------------+---------+---------+-----------+-----------+-----+-----+-------------------+
+
+        * Loop: 
+        N/A
+
+
+
+================================================================
+== Utilization Estimates
+================================================================
+* Summary: 
++-----------------+---------+------+--------+--------+-----+
+|       Name      | BRAM_18K|  DSP |   FF   |   LUT  | URAM|
++-----------------+---------+------+--------+--------+-----+
+|DSP              |        -|     -|       -|       -|    -|
+|Expression       |        -|     -|       0|     312|    -|
+|FIFO             |        -|     -|       -|       -|    -|
+|Instance         |        1|     -|    1364|    1562|    -|
+|Memory           |        -|     -|       -|       -|    -|
+|Multiplexer      |        -|     -|       0|      31|    -|
+|Register         |        -|     -|      17|       -|    -|
++-----------------+---------+------+--------+--------+-----+
+|Total            |        1|     0|    1381|    1905|    0|
++-----------------+---------+------+--------+--------+-----+
+|Available        |      288|  1248|  234240|  117120|   64|
++-----------------+---------+------+--------+--------+-----+
+|Utilization (%)  |       ~0|     0|      ~0|       1|    0|
++-----------------+---------+------+--------+--------+-----+
+
++ Detail: 
+    * Instance: 
+    +--------------------------------------------------------------+---------------------------------------------------+---------+----+-----+------+-----+
+    |                           Instance                           |                       Module                      | BRAM_18K| DSP|  FF |  LUT | URAM|
+    +--------------------------------------------------------------+---------------------------------------------------+---------+----+-----+------+-----+
+    |grp_sha256_compress_words_Pipeline_LOAD_INITIAL_WORDS_fu_252  |sha256_compress_words_Pipeline_LOAD_INITIAL_WORDS  |        0|   0|  519|   117|    0|
+    |grp_sha256_compress_words_Pipeline_SHA256_ROUNDS_fu_291       |sha256_compress_words_Pipeline_SHA256_ROUNDS       |        1|   0|  845|  1445|    0|
+    +--------------------------------------------------------------+---------------------------------------------------+---------+----+-----+------+-----+
+    |Total                                                         |                                                   |        1|   0| 1364|  1562|    0|
+    +--------------------------------------------------------------+---------------------------------------------------+---------+----+-----+------+-----+
+
+    * DSP: 
+    N/A
+
+    * Memory: 
+    N/A
+
+    * FIFO: 
+    N/A
+
+    * Expression: 
+    +---------------------+----------+----+---+----+------------+------------+
+    |    Variable Name    | Operation| DSP| FF| LUT| Bitwidth P0| Bitwidth P1|
+    +---------------------+----------+----+---+----+------------+------------+
+    |add_ln198_fu_430_p2  |         +|   0|  0|  39|          32|          32|
+    |add_ln199_fu_435_p2  |         +|   0|  0|  39|          32|          32|
+    |add_ln200_fu_440_p2  |         +|   0|  0|  39|          32|          32|
+    |add_ln201_fu_445_p2  |         +|   0|  0|  39|          32|          32|
+    |add_ln202_fu_450_p2  |         +|   0|  0|  39|          32|          32|
+    |add_ln203_fu_455_p2  |         +|   0|  0|  39|          32|          32|
+    |add_ln204_fu_460_p2  |         +|   0|  0|  39|          32|          32|
+    |add_ln205_fu_465_p2  |         +|   0|  0|  39|          32|          32|
+    +---------------------+----------+----+---+----+------------+------------+
+    |Total                |          |   0|  0| 312|         256|         256|
+    +---------------------+----------+----+---+----+------------+------------+
+
+    * Multiplexer: 
+    +-----------+----+-----------+-----+-----------+
+    |    Name   | LUT| Input Size| Bits| Total Bits|
+    +-----------+----+-----------+-----+-----------+
+    |ap_NS_fsm  |  31|          6|    1|          6|
+    +-----------+----+-----------+-----+-----------+
+    |Total      |  31|          6|    1|          6|
+    +-----------+----+-----------+-----+-----------+
+
+    * Register: 
+    +---------------------------------------------------------------------------+----+----+-----+-----------+
+    |                                    Name                                   | FF | LUT| Bits| Const Bits|
+    +---------------------------------------------------------------------------+----+----+-----+-----------+
+    |ap_CS_fsm                                                                  |   5|   0|    5|          0|
+    |empty_reg_563                                                              |  10|   0|   10|          0|
+    |grp_sha256_compress_words_Pipeline_LOAD_INITIAL_WORDS_fu_252_ap_start_reg  |   1|   0|    1|          0|
+    |grp_sha256_compress_words_Pipeline_SHA256_ROUNDS_fu_291_ap_start_reg       |   1|   0|    1|          0|
+    +---------------------------------------------------------------------------+----+----+-----+-----------+
+    |Total                                                                      |  17|   0|   17|          0|
+    +---------------------------------------------------------------------------+----+----+-----+-----------+
+
+
+
+================================================================
+== Interface
+================================================================
+* Summary: 
++---------------------+-----+-----+------------+-----------------------+--------------+
+|      RTL Ports      | Dir | Bits|  Protocol  |     Source Object     |    C Type    |
++---------------------+-----+-----+------------+-----------------------+--------------+
+|ap_clk               |   in|    1|  ap_ctrl_hs|  sha256_compress_words|  return value|
+|ap_rst               |   in|    1|  ap_ctrl_hs|  sha256_compress_words|  return value|
+|ap_start             |   in|    1|  ap_ctrl_hs|  sha256_compress_words|  return value|
+|ap_done              |  out|    1|  ap_ctrl_hs|  sha256_compress_words|  return value|
+|ap_idle              |  out|    1|  ap_ctrl_hs|  sha256_compress_words|  return value|
+|ap_ready             |  out|    1|  ap_ctrl_hs|  sha256_compress_words|  return value|
+|ap_return_0          |  out|   32|  ap_ctrl_hs|  sha256_compress_words|  return value|
+|ap_return_1          |  out|   32|  ap_ctrl_hs|  sha256_compress_words|  return value|
+|ap_return_2          |  out|   32|  ap_ctrl_hs|  sha256_compress_words|  return value|
+|ap_return_3          |  out|   32|  ap_ctrl_hs|  sha256_compress_words|  return value|
+|ap_return_4          |  out|   32|  ap_ctrl_hs|  sha256_compress_words|  return value|
+|ap_return_5          |  out|   32|  ap_ctrl_hs|  sha256_compress_words|  return value|
+|ap_return_6          |  out|   32|  ap_ctrl_hs|  sha256_compress_words|  return value|
+|ap_return_7          |  out|   32|  ap_ctrl_hs|  sha256_compress_words|  return value|
+|state_read           |   in|   32|     ap_none|             state_read|        scalar|
+|state_read_30        |   in|   32|     ap_none|          state_read_30|        scalar|
+|state_read_31        |   in|   32|     ap_none|          state_read_31|        scalar|
+|state_read_32        |   in|   32|     ap_none|          state_read_32|        scalar|
+|state_read_33        |   in|   32|     ap_none|          state_read_33|        scalar|
+|state_read_34        |   in|   32|     ap_none|          state_read_34|        scalar|
+|state_read_35        |   in|   32|     ap_none|          state_read_35|        scalar|
+|state_read_36        |   in|   32|     ap_none|          state_read_36|        scalar|
+|block_words_read     |   in|   32|     ap_none|       block_words_read|        scalar|
+|block_words_read_38  |   in|   32|     ap_none|    block_words_read_38|        scalar|
+|block_words_read_39  |   in|   32|     ap_none|    block_words_read_39|        scalar|
+|block_words_read_40  |   in|   32|     ap_none|    block_words_read_40|        scalar|
+|block_words_read_41  |   in|   32|     ap_none|    block_words_read_41|        scalar|
+|block_words_read_42  |   in|   32|     ap_none|    block_words_read_42|        scalar|
+|block_words_read_43  |   in|   32|     ap_none|    block_words_read_43|        scalar|
+|block_words_read_44  |   in|   32|     ap_none|    block_words_read_44|        scalar|
+|block_words_read_45  |   in|   32|     ap_none|    block_words_read_45|        scalar|
+|block_words_read_46  |   in|   32|     ap_none|    block_words_read_46|        scalar|
++---------------------+-----+-----+------------+-----------------------+--------------+
+

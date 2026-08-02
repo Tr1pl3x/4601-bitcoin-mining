@@ -1,0 +1,8 @@
+INFO: [SIM 2] *************** CSIM start ***************
+   Compiling ../../../../../../dylan-hls/mine.cpp in debug mode
+   Generating csim.exe
+Test 1 (hashing): 32 lines, 0 mismatches -> PASS
+Test 2 (search): found=1 nonce=8603 -> PASS
+ALL PASS
+INFO: [SIM 1] CSim done with 0 errors.
+INFO: [SIM 3] *************** CSIM finish ***************

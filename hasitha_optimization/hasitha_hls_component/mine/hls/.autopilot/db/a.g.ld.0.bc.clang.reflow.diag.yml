@@ -1,0 +1,732 @@
+--- !Missed
+Pass:            inline
+Name:            NeverInline
+DebugLoc:        { File: dylan-hls/mine.cpp, Line: 147, Column: 17 }
+Function:        _ZL21sha256_compress_wordsPjPKj
+Args:            
+  - Callee:          'rotr(unsigned int, int)'
+    DebugLoc:        { File: dylan-hls/mine.cpp, Line: 32, Column: 0 }
+  - String:          ' not inlined into '
+  - Caller:          'sha256_compress_words(unsigned int*, unsigned int const*)'
+    DebugLoc:        { File: dylan-hls/mine.cpp, Line: 111, Column: 0 }
+  - String:          ' because it should never be inlined (cost=never)'
+...
+--- !Passed
+Pass:            inline
+Name:            AlwaysInline
+DebugLoc:        { File: dylan-hls/mine.cpp, Line: 236, Column: 30 }
+Function:        _ZL16compute_midstatePKjPj
+Args:            
+  - String:          'Inlining function '''
+  - Callee:          'bswap32(unsigned int)'
+    DebugLoc:        { File: dylan-hls/mine.cpp, Line: 208, Column: 0 }
+  - String:          ''' into '''
+  - Caller:          'compute_midstate(unsigned int const*, unsigned int*)'
+    DebugLoc:        { File: dylan-hls/mine.cpp, Line: 223, Column: 0 }
+  - String:          ''''
+...
+--- !Missed
+Pass:            inline
+Name:            NeverInline
+DebugLoc:        { File: dylan-hls/mine.cpp, Line: 239, Column: 9 }
+Function:        _ZL16compute_midstatePKjPj
+Args:            
+  - Callee:          'sha256_compress_words(unsigned int*, unsigned int const*)'
+    DebugLoc:        { File: dylan-hls/mine.cpp, Line: 111, Column: 0 }
+  - String:          ' not inlined into '
+  - Caller:          'compute_midstate(unsigned int const*, unsigned int*)'
+    DebugLoc:        { File: dylan-hls/mine.cpp, Line: 223, Column: 0 }
+  - String:          ' because it should never be inlined (cost=never)'
+...
+--- !Passed
+Pass:            inline
+Name:            AlwaysInline
+DebugLoc:        { File: dylan-hls/mine.cpp, Line: 270, Column: 30 }
+Function:        _ZL21sha256d_from_midstatePKjS0_Ph
+Args:            
+  - String:          'Inlining function '''
+  - Callee:          'bswap32(unsigned int)'
+    DebugLoc:        { File: dylan-hls/mine.cpp, Line: 208, Column: 0 }
+  - String:          ''' into '''
+  - Caller:          'sha256d_from_midstate(unsigned int const*, unsigned int const*, unsigned char*)'
+    DebugLoc:        { File: dylan-hls/mine.cpp, Line: 250, Column: 0 }
+  - String:          ''''
+...
+--- !Missed
+Pass:            inline
+Name:            NeverInline
+DebugLoc:        { File: dylan-hls/mine.cpp, Line: 315, Column: 9 }
+Function:        _ZL21sha256d_from_midstatePKjS0_Ph
+Args:            
+  - Callee:          'sha256_compress_words(unsigned int*, unsigned int const*)'
+    DebugLoc:        { File: dylan-hls/mine.cpp, Line: 111, Column: 0 }
+  - String:          ' not inlined into '
+  - Caller:          'sha256d_from_midstate(unsigned int const*, unsigned int const*, unsigned char*)'
+    DebugLoc:        { File: dylan-hls/mine.cpp, Line: 250, Column: 0 }
+  - String:          ' because it should never be inlined (cost=never)'
+...
+--- !Missed
+Pass:            inline
+Name:            NeverInline
+DebugLoc:        { File: dylan-hls/mine.cpp, Line: 463, Column: 5 }
+Function:        _Z4minePKjS0_jjPjPi
+Args:            
+  - Callee:          'compute_midstate(unsigned int const*, unsigned int*)'
+    DebugLoc:        { File: dylan-hls/mine.cpp, Line: 223, Column: 0 }
+  - String:          ' not inlined into '
+  - Caller:          'mine(unsigned int const*, unsigned int const*, unsigned int, unsigned int, unsigned int*, int*)'
+    DebugLoc:        { File: dylan-hls/mine.cpp, Line: 437, Column: 0 }
+  - String:          ' because it should never be inlined (cost=never)'
+...
+--- !Missed
+Pass:            inline
+Name:            NeverInline
+DebugLoc:        { File: dylan-hls/mine.cpp, Line: 480, Column: 9 }
+Function:        _Z4minePKjS0_jjPjPi
+Args:            
+  - Callee:          'sha256d_from_midstate(unsigned int const*, unsigned int const*, unsigned char*)'
+    DebugLoc:        { File: dylan-hls/mine.cpp, Line: 250, Column: 0 }
+  - String:          ' not inlined into '
+  - Caller:          'mine(unsigned int const*, unsigned int const*, unsigned int, unsigned int, unsigned int*, int*)'
+    DebugLoc:        { File: dylan-hls/mine.cpp, Line: 437, Column: 0 }
+  - String:          ' because it should never be inlined (cost=never)'
+...
+--- !Passed
+Pass:            inline
+Name:            AlwaysInline
+DebugLoc:        { File: dylan-hls/mine.cpp, Line: 481, Column: 13 }
+Function:        _Z4minePKjS0_jjPjPi
+Args:            
+  - String:          'Inlining function '''
+  - Callee:          'hash_below_target(unsigned char const*, unsigned int const*)'
+    DebugLoc:        { File: dylan-hls/mine.cpp, Line: 406, Column: 0 }
+  - String:          ''' into '''
+  - Caller:          'mine(unsigned int const*, unsigned int const*, unsigned int, unsigned int, unsigned int*, int*)'
+    DebugLoc:        { File: dylan-hls/mine.cpp, Line: 437, Column: 0 }
+  - String:          ''''
+...
+--- !Passed
+Pass:            reflow-pragma-loop-unroll
+Name:            PragmaFullyUnroll
+DebugLoc:        { File: dylan-hls/mine.cpp, Line: 250, Column: 0 }
+Function:        _ZL21sha256d_from_midstatePKjS0_Ph
+Args:            
+  - String:          'Unrolling loop '''
+  - LoopName:        WRITE_HASH
+  - String:          ''' ('
+  - LoopLoc:         'dylan-hls/mine.cpp:318:9'
+  - String:          ') '
+  - String:          'in function '''
+  - String:          sha256d_from_midstate
+  - String:          ''' completely with a factor of '
+  - Factor:          '8'
+...
+--- !Passed
+Pass:            reflow-pragma-loop-unroll
+Name:            PragmaFullyUnroll
+DebugLoc:        { File: dylan-hls/mine.cpp, Line: 250, Column: 0 }
+Function:        _ZL21sha256d_from_midstatePKjS0_Ph
+Args:            
+  - String:          'Unrolling loop '''
+  - LoopName:        RESET_SECOND_HASH_STATE
+  - String:          ''' ('
+  - LoopLoc:         'dylan-hls/mine.cpp:310:9'
+  - String:          ') '
+  - String:          'in function '''
+  - String:          sha256d_from_midstate
+  - String:          ''' completely with a factor of '
+  - Factor:          '8'
+...
+--- !Passed
+Pass:            reflow-pragma-loop-unroll
+Name:            PragmaFullyUnroll
+DebugLoc:        { File: dylan-hls/mine.cpp, Line: 250, Column: 0 }
+Function:        _ZL21sha256d_from_midstatePKjS0_Ph
+Args:            
+  - String:          'Unrolling loop '''
+  - LoopName:        CLEAR_SECOND_HASH_BLOCK
+  - String:          ''' ('
+  - LoopLoc:         'dylan-hls/mine.cpp:301:9'
+  - String:          ') '
+  - String:          'in function '''
+  - String:          sha256d_from_midstate
+  - String:          ''' completely with a factor of '
+  - Factor:          '6'
+...
+--- !Passed
+Pass:            reflow-pragma-loop-unroll
+Name:            PragmaFullyUnroll
+DebugLoc:        { File: dylan-hls/mine.cpp, Line: 250, Column: 0 }
+Function:        _ZL21sha256d_from_midstatePKjS0_Ph
+Args:            
+  - String:          'Unrolling loop '''
+  - LoopName:        BUILD_SECOND_HASH_BLOCK
+  - String:          ''' ('
+  - LoopLoc:         'dylan-hls/mine.cpp:293:9'
+  - String:          ') '
+  - String:          'in function '''
+  - String:          sha256d_from_midstate
+  - String:          ''' completely with a factor of '
+  - Factor:          '8'
+...
+--- !Passed
+Pass:            reflow-pragma-loop-unroll
+Name:            PragmaFullyUnroll
+DebugLoc:        { File: dylan-hls/mine.cpp, Line: 250, Column: 0 }
+Function:        _ZL21sha256d_from_midstatePKjS0_Ph
+Args:            
+  - String:          'Unrolling loop '''
+  - LoopName:        CLEAR_FIRST_HASH_BLOCK
+  - String:          ''' ('
+  - LoopLoc:         'dylan-hls/mine.cpp:276:9'
+  - String:          ') '
+  - String:          'in function '''
+  - String:          sha256d_from_midstate
+  - String:          ''' completely with a factor of '
+  - Factor:          '10'
+...
+--- !Passed
+Pass:            reflow-pragma-loop-unroll
+Name:            PragmaFullyUnroll
+DebugLoc:        { File: dylan-hls/mine.cpp, Line: 250, Column: 0 }
+Function:        _ZL21sha256d_from_midstatePKjS0_Ph
+Args:            
+  - String:          'Unrolling loop '''
+  - LoopName:        BUILD_FIRST_HASH_BLOCK
+  - String:          ''' ('
+  - LoopLoc:         'dylan-hls/mine.cpp:268:9'
+  - String:          ') '
+  - String:          'in function '''
+  - String:          sha256d_from_midstate
+  - String:          ''' completely with a factor of '
+  - Factor:          '4'
+...
+--- !Passed
+Pass:            reflow-pragma-loop-unroll
+Name:            PragmaFullyUnroll
+DebugLoc:        { File: dylan-hls/mine.cpp, Line: 250, Column: 0 }
+Function:        _ZL21sha256d_from_midstatePKjS0_Ph
+Args:            
+  - String:          'Unrolling loop '''
+  - LoopName:        RESTORE_MIDSTATE
+  - String:          ''' ('
+  - LoopLoc:         'dylan-hls/mine.cpp:261:9'
+  - String:          ') '
+  - String:          'in function '''
+  - String:          sha256d_from_midstate
+  - String:          ''' completely with a factor of '
+  - Factor:          '8'
+...
+--- !Passed
+Pass:            reflow-pragma-loop-unroll
+Name:            PragmaFullyUnroll
+DebugLoc:        { File: dylan-hls/mine.cpp, Line: 223, Column: 0 }
+Function:        _ZL16compute_midstatePKjPj
+Args:            
+  - String:          'Unrolling loop '''
+  - LoopName:        INIT_MIDSTATE
+  - String:          ''' ('
+  - LoopLoc:         'dylan-hls/mine.cpp:228:9'
+  - String:          ') '
+  - String:          'in function '''
+  - String:          compute_midstate
+  - String:          ''' completely with a factor of '
+  - Factor:          '8'
+...
+--- !Missed
+Pass:            inline
+Name:            NeverInline
+DebugLoc:        { File: dylan-hls/mine.cpp, Line: 147, Column: 17 }
+Function:        _ZL21sha256_compress_wordsPjPKj
+Args:            
+  - Callee:          'rotr(unsigned int, int)'
+    DebugLoc:        { File: dylan-hls/mine.cpp, Line: 32, Column: 0 }
+  - String:          ' not inlined into '
+  - Caller:          'sha256_compress_words(unsigned int*, unsigned int const*)'
+    DebugLoc:        { File: dylan-hls/mine.cpp, Line: 111, Column: 0 }
+  - String:          ' because it should never be inlined (cost=never)'
+...
+--- !Missed
+Pass:            inline
+Name:            NeverInline
+DebugLoc:        { File: dylan-hls/mine.cpp, Line: 239, Column: 9 }
+Function:        _ZL16compute_midstatePKjPj
+Args:            
+  - Callee:          'sha256_compress_words(unsigned int*, unsigned int const*)'
+    DebugLoc:        { File: dylan-hls/mine.cpp, Line: 111, Column: 0 }
+  - String:          ' not inlined into '
+  - Caller:          'compute_midstate(unsigned int const*, unsigned int*)'
+    DebugLoc:        { File: dylan-hls/mine.cpp, Line: 223, Column: 0 }
+  - String:          ' because it should never be inlined (cost=never)'
+...
+--- !Missed
+Pass:            inline
+Name:            NeverInline
+DebugLoc:        { File: dylan-hls/mine.cpp, Line: 284, Column: 9 }
+Function:        _ZL21sha256d_from_midstatePKjS0_Ph
+Args:            
+  - Callee:          'sha256_compress_words(unsigned int*, unsigned int const*)'
+    DebugLoc:        { File: dylan-hls/mine.cpp, Line: 111, Column: 0 }
+  - String:          ' not inlined into '
+  - Caller:          'sha256d_from_midstate(unsigned int const*, unsigned int const*, unsigned char*)'
+    DebugLoc:        { File: dylan-hls/mine.cpp, Line: 250, Column: 0 }
+  - String:          ' because it should never be inlined (cost=never)'
+...
+--- !Missed
+Pass:            inline
+Name:            NeverInline
+DebugLoc:        { File: dylan-hls/mine.cpp, Line: 463, Column: 5 }
+Function:        _Z4minePKjS0_jjPjPi
+Args:            
+  - Callee:          'compute_midstate(unsigned int const*, unsigned int*)'
+    DebugLoc:        { File: dylan-hls/mine.cpp, Line: 223, Column: 0 }
+  - String:          ' not inlined into '
+  - Caller:          'mine(unsigned int const*, unsigned int const*, unsigned int, unsigned int, unsigned int*, int*)'
+    DebugLoc:        { File: dylan-hls/mine.cpp, Line: 437, Column: 0 }
+  - String:          ' because it should never be inlined (cost=never)'
+...
+--- !Missed
+Pass:            inline
+Name:            NeverInline
+DebugLoc:        { File: dylan-hls/mine.cpp, Line: 480, Column: 9 }
+Function:        _Z4minePKjS0_jjPjPi
+Args:            
+  - Callee:          'sha256d_from_midstate(unsigned int const*, unsigned int const*, unsigned char*)'
+    DebugLoc:        { File: dylan-hls/mine.cpp, Line: 250, Column: 0 }
+  - String:          ' not inlined into '
+  - Caller:          'mine(unsigned int const*, unsigned int const*, unsigned int, unsigned int, unsigned int*, int*)'
+    DebugLoc:        { File: dylan-hls/mine.cpp, Line: 437, Column: 0 }
+  - String:          ' because it should never be inlined (cost=never)'
+...
+--- !Missed
+Pass:            inline
+Name:            NeverInline
+Function:        apatb_mine_ir
+Args:            
+  - Callee:          'mine(unsigned int const*, unsigned int const*, unsigned int, unsigned int, unsigned int*, int*)'
+    DebugLoc:        { File: dylan-hls/mine.cpp, Line: 437, Column: 0 }
+  - String:          ' not inlined into '
+  - Caller:          apatb_mine_ir
+  - String:          ' because it should never be inlined (cost=never)'
+...
+--- !Passed
+Pass:            reflow-inliner
+Name:            Inline
+DebugLoc:        { File: dylan-hls/mine.cpp, Line: 111, Column: 0 }
+Function:        _ZL21sha256_compress_wordsPjPKj
+Args:            
+  - String:          'Inlining function '''
+  - Callee:          'rotr(unsigned int, int)'
+    DebugLoc:        { File: dylan-hls/mine.cpp, Line: 32, Column: 0 }
+  - String:          ''' into '''
+  - Caller:          'sha256_compress_words(unsigned int*, unsigned int const*)'
+    DebugLoc:        { File: dylan-hls/mine.cpp, Line: 111, Column: 0 }
+  - String:          ''''
+...
+--- !Passed
+Pass:            reflow-inliner
+Name:            Inline
+DebugLoc:        { File: dylan-hls/mine.cpp, Line: 437, Column: 0 }
+Function:        _Z4minePKjS0_jjPjPi
+Args:            
+  - String:          'Inlining function '''
+  - Callee:          'compute_midstate(unsigned int const*, unsigned int*)'
+    DebugLoc:        { File: dylan-hls/mine.cpp, Line: 223, Column: 0 }
+  - String:          ''' into '''
+  - Caller:          'mine(unsigned int const*, unsigned int const*, unsigned int, unsigned int, unsigned int*, int*)'
+    DebugLoc:        { File: dylan-hls/mine.cpp, Line: 437, Column: 0 }
+  - String:          ''''
+...
+--- !Passed
+Pass:            reflow-array-partition
+Name:            ArrayXform
+DebugLoc:        { File: dylan-hls/mine.cpp, Line: 114, Column: 14 }
+Function:        _ZL21sha256_compress_wordsPjPKj
+Args:            
+  - String:          'Applying '
+  - String:          array_partition
+  - String:          ' to '''
+  - UOName:          w
+  - String:          ''':'
+  - String:          ' '
+  - Mode:            Complete
+  - String:          ' partitioning'
+  - String:          ' on dimension '
+  - Dim:             '1'
+  - String:          .
+...
+--- !Passed
+Pass:            reflow-array-partition
+Name:            ArrayXform
+DebugLoc:        { File: dylan-hls/mine.cpp, Line: 254, Column: 18 }
+Function:        _ZL21sha256d_from_midstatePKjS0_Ph
+Args:            
+  - String:          'Applying '
+  - String:          array_partition
+  - String:          ' to '''
+  - UOName:          block_words
+  - String:          ''':'
+  - String:          ' '
+  - Mode:            Complete
+  - String:          ' partitioning'
+  - String:          ' on dimension '
+  - Dim:             '1'
+  - String:          .
+...
+--- !Passed
+Pass:            reflow-array-partition
+Name:            ArrayXform
+DebugLoc:        { File: dylan-hls/mine.cpp, Line: 257, Column: 18 }
+Function:        _ZL21sha256d_from_midstatePKjS0_Ph
+Args:            
+  - String:          'Applying '
+  - String:          array_partition
+  - String:          ' to '''
+  - UOName:          s
+  - String:          ''':'
+  - String:          ' '
+  - Mode:            Complete
+  - String:          ' partitioning'
+  - String:          ' on dimension '
+  - Dim:             '1'
+  - String:          .
+...
+--- !Passed
+Pass:            reflow-array-partition
+Name:            ArrayXform
+DebugLoc:        { File: dylan-hls/mine.cpp, Line: 224, Column: 18 }
+Function:        _Z4minePKjS0_jjPjPi
+Args:            
+  - String:          'Applying '
+  - String:          array_partition
+  - String:          ' to '''
+  - UOName:          block_words.i
+  - String:          ''':'
+  - String:          ' '
+  - Mode:            Complete
+  - String:          ' partitioning'
+  - String:          ' on dimension '
+  - Dim:             '1'
+  - String:          .
+...
+--- !Passed
+Pass:            reflow-burst-inference
+Name:            BurstInferred
+DebugLoc:        { File: dylan-hls/mine.cpp, Line: 448, Column: 23 }
+Function:        _Z4minePKjS0_jjPjPi
+Args:            
+  - String:          'Sequential '
+  - Direction:       read
+  - String:          ' of length '
+  - Length:          '20'
+  - String:          ' has been inferred'
+  - String:          ' _XLX_SEP_ '
+  - AccessID:        header3seq
+  - ArrayName:       header
+  - String:          ' '
+  - BundleName:      gmem0
+  - String:          ' '
+  - LoopName:        VITIS_LOOP_448_1
+  - String:          ' '
+  - LoopLoc:         'dylan-hls/mine.cpp:448:23'
+  - String:          ' '
+  - Function:        'mine(unsigned int const*, unsigned int const*, unsigned int, unsigned int, unsigned int*, int*)'
+    DebugLoc:        { File: dylan-hls/mine.cpp, Line: 437, Column: 0 }
+  - String:          ' '
+  - String:          ' _XLX_SEP_ '
+  - OrigAccess:      load
+    DebugLoc:        { File: dylan-hls/mine.cpp, Line: 450, Column: 18 }
+  - OrigDirection:   read
+  - OrigID:          for.inc.load.4
+...
+--- !Passed
+Pass:            reflow-burst-inference
+Name:            BurstInferred
+DebugLoc:        { File: dylan-hls/mine.cpp, Line: 453, Column: 23 }
+Function:        _Z4minePKjS0_jjPjPi
+Args:            
+  - String:          'Sequential '
+  - Direction:       read
+  - String:          ' of length '
+  - Length:          '8'
+  - String:          ' has been inferred'
+  - String:          ' _XLX_SEP_ '
+  - AccessID:        target4seq
+  - ArrayName:       target
+  - String:          ' '
+  - BundleName:      gmem1
+  - String:          ' '
+  - LoopName:        VITIS_LOOP_453_2
+  - String:          ' '
+  - LoopLoc:         'dylan-hls/mine.cpp:453:23'
+  - String:          ' '
+  - Function:        'mine(unsigned int const*, unsigned int const*, unsigned int, unsigned int, unsigned int*, int*)'
+    DebugLoc:        { File: dylan-hls/mine.cpp, Line: 437, Column: 0 }
+  - String:          ' '
+  - String:          ' _XLX_SEP_ '
+  - OrigAccess:      load
+    DebugLoc:        { File: dylan-hls/mine.cpp, Line: 455, Column: 18 }
+  - OrigDirection:   read
+  - OrigID:          for.inc12.load.4
+...
+--- !Missed
+Pass:            reflow-burst-inference
+Name:            CouldNotAnalyzeBoundsPattern
+DebugLoc:        { File: dylan-hls/mine.cpp, Line: 410, Column: 9 }
+Function:        _Z4minePKjS0_jjPjPi
+Args:            
+  - String:          Could not analyze the loop bounds
+  - String:          ' _XLX_SEP_ '
+  - LoopName:        COMPARE_HASH
+  - String:          ' '
+  - LoopLoc:         'dylan-hls/mine.cpp:410:9'
+  - String:          ' '
+  - Function:        'mine(unsigned int const*, unsigned int const*, unsigned int, unsigned int, unsigned int*, int*)'
+    DebugLoc:        { File: dylan-hls/mine.cpp, Line: 437, Column: 0 }
+  - String:          ' '
+...
+--- !Missed
+Pass:            reflow-burst-inference
+Name:            CouldNotAnalyzeBoundsPattern
+DebugLoc:        { File: dylan-hls/mine.cpp, Line: 468, Column: 23 }
+Function:        _Z4minePKjS0_jjPjPi
+Args:            
+  - String:          Could not analyze the loop bounds
+  - String:          ' _XLX_SEP_ '
+  - LoopName:        VITIS_LOOP_468_3
+  - String:          ' '
+  - LoopLoc:         'dylan-hls/mine.cpp:468:23'
+  - String:          ' '
+  - Function:        'mine(unsigned int const*, unsigned int const*, unsigned int, unsigned int, unsigned int*, int*)'
+    DebugLoc:        { File: dylan-hls/mine.cpp, Line: 437, Column: 0 }
+  - String:          ' '
+...
+--- !Passed
+Pass:            reflow-burst-widen
+Name:            BurstWidened
+DebugLoc:        { File: dylan-hls/mine.cpp, Line: 453, Column: 23 }
+Function:        _Z4minePKjS0_jjPjPi
+Args:            
+  - String:          'Sequential '
+  - Direction:       read
+  - String:          ' of '
+  - OrigLength:      '8'
+  - String:          ' x '
+  - OrigWords:       '32'
+  - String:          'bit words has been widened by '
+  - Factor:          '8'
+  - String:          ': '
+  - Length:          '1'
+  - String:          ' x '
+  - Words:           '256'
+  - String:          bit words
+  - String:          ' _XLX_SEP_ '
+  - OrigAccess:      call
+    DebugLoc:        { File: dylan-hls/mine.cpp, Line: 453, Column: 23 }
+  - OrigDirection:   read
+  - OrigID:          target4seq
+  - String:          ' _XLX_SEP_ '
+  - AccessID:        wseq
+  - ArrayName:       target
+  - String:          ' '
+  - BundleName:      gmem1
+  - String:          ' '
+  - LoopName:        VITIS_LOOP_453_2
+  - String:          ' '
+  - LoopLoc:         'dylan-hls/mine.cpp:453:23'
+  - String:          ' '
+  - Function:        'mine(unsigned int const*, unsigned int const*, unsigned int, unsigned int, unsigned int*, int*)'
+    DebugLoc:        { File: dylan-hls/mine.cpp, Line: 437, Column: 0 }
+  - String:          ' '
+...
+--- !Passed
+Pass:            reflow-burst-widen
+Name:            BurstWidened
+DebugLoc:        { File: dylan-hls/mine.cpp, Line: 448, Column: 23 }
+Function:        _Z4minePKjS0_jjPjPi
+Args:            
+  - String:          'Sequential '
+  - Direction:       read
+  - String:          ' of '
+  - OrigLength:      '20'
+  - String:          ' x '
+  - OrigWords:       '32'
+  - String:          'bit words has been widened by '
+  - Factor:          '4'
+  - String:          ': '
+  - Length:          '5'
+  - String:          ' x '
+  - Words:           '128'
+  - String:          bit words
+  - String:          ' _XLX_SEP_ '
+  - OrigAccess:      call
+    DebugLoc:        { File: dylan-hls/mine.cpp, Line: 448, Column: 23 }
+  - OrigDirection:   read
+  - OrigID:          header3seq
+  - String:          ' _XLX_SEP_ '
+  - AccessID:        wseq5
+  - ArrayName:       header
+  - String:          ' '
+  - BundleName:      gmem0
+  - String:          ' '
+  - LoopName:        VITIS_LOOP_448_1
+  - String:          ' '
+  - LoopLoc:         'dylan-hls/mine.cpp:448:23'
+  - String:          ' '
+  - Function:        'mine(unsigned int const*, unsigned int const*, unsigned int, unsigned int, unsigned int*, int*)'
+    DebugLoc:        { File: dylan-hls/mine.cpp, Line: 437, Column: 0 }
+  - String:          ' '
+...
+--- !Failure
+Pass:            reflow-occurrence-inference
+Name:            NonComputableLoopForm
+DebugLoc:        { File: dylan-hls/mine.cpp, Line: 468, Column: 23 }
+Function:        _Z4minePKjS0_jjPjPi
+Args:            
+  - String:          'Could not analyze occurrence information within '''
+  - LoopName:        VITIS_LOOP_468_3
+  - String:          '''('
+  - LoopLoc:         'dylan-hls/mine.cpp:468:23'
+  - String:          ') . Requires loop in simplify form and with single exit.'
+...
+--- !HLSReportInfo
+Pass:            reflow-auto-loop-pipeline
+Name:            AutoLoopPipeline
+Args:            
+  - String:          'Pipelining loop< '
+  - LoopName:        COMPARE_HASH
+  - String:          '> at '
+  - LoopLoc:         'dylan-hls/mine.cpp:410:9'
+  - String:          ' due to pipeline_loops threshold'
+...
+--- !Passed
+Pass:            reflow-auto-loop-pipeline
+Name:            AutoParallelPerformanceDrivenVerbosePassed
+DebugLoc:        { File: dylan-hls/mine.cpp, Line: 410, Column: 9 }
+Function:        _Z4minePKjS0_jjPjPi
+Args:            
+  - PragmaType:      pipeline
+  - String:          ' '
+  - PragmaOptions:   ' '
+  - String:          ' '
+  - PragmaIsAuto:    '1'
+  - String:          ' '
+  - PragmaFunction:  mine
+  - String:          ' '
+  - PragmaInferReason: config_compile -pipeline_loops 64
+  - LoopName:        COMPARE_HASH
+  - String:          ' '
+  - LoopLoc:         'dylan-hls/mine.cpp:410:9'
+    DebugLoc:        { File: dylan-hls/mine.cpp, Line: 410, Column: 9 }
+  - String:          ' '
+...
+--- !Passed
+Pass:            reflow-auto-array-partition
+Name:            AutoArrayPromotion
+DebugLoc:        { File: dylan-hls/mine.cpp, Line: 461, Column: 14 }
+Function:        _Z4minePKjS0_jjPjPi
+Args:            
+  - String:          'Partitioning array '''
+  - Value:           midstate
+  - String:          ''' dimension '
+  - Dim:             '1'
+  - String:          ' due to constant index.'
+...
+--- !Passed
+Pass:            reflow-array-partition
+Name:            ArrayXform
+DebugLoc:        { File: dylan-hls/mine.cpp, Line: 461, Column: 14 }
+Function:        _Z4minePKjS0_jjPjPi
+Args:            
+  - String:          'Applying '
+  - String:          array_partition
+  - String:          ' to '''
+  - UOName:          midstate
+  - String:          ''':'
+  - String:          ' '
+  - Mode:            Complete
+  - String:          ' partitioning'
+  - String:          ' on dimension '
+  - Dim:             '1'
+  - String:          .
+...
+--- !Passed
+Pass:            reflow-burst-summary
+Name:            BurstInferredVerboseSummary
+DebugLoc:        { File: dylan-hls/mine.cpp, Line: 448, Column: 23 }
+Function:        _Z4minePKjS0_jjPjPi
+Args:            
+  - String:          'Multiple burst '
+  - Direction:       reads
+  - String:          ' of length '
+  - Length:          '5'
+  - String:          ' and bit width '
+  - Width:           '128'
+  - String:          ' has been inferred.'
+  - String:          ' These burst requests might be further partitioned into multiple requests during RTL generation, based on max_read_burst_length or max_write_burst_length settings.'
+  - String:          ' _XLX_SEP_ '
+  - AccessID:        seq
+  - ArrayName:       ''
+  - String:          ' '
+  - BundleName:      gmem0
+  - String:          ' '
+  - Function:        'mine(unsigned int const*, unsigned int const*, unsigned int, unsigned int, unsigned int*, int*)'
+    DebugLoc:        { File: dylan-hls/mine.cpp, Line: 437, Column: 0 }
+  - String:          ' '
+...
+--- !Passed
+Pass:            reflow-burst-summary
+Name:            BurstInferredSummary
+DebugLoc:        { File: dylan-hls/mine.cpp, Line: 448, Column: 23 }
+Function:        _Z4minePKjS0_jjPjPi
+Args:            
+  - String:          'Multiple burst '
+  - Direction:       reads
+  - String:          ' of length '
+  - Length:          '5'
+  - String:          ' and bit width '
+  - Width:           '128'
+  - String:          ' has been inferred on bundle '''
+  - BundleName:      gmem0
+  - String:          '''.'
+  - String:          ' These burst requests might be further partitioned into multiple requests during RTL generation, based on max_read_burst_length or max_write_burst_length settings.'
+...
+--- !Missed
+Pass:            inline
+Name:            NeverInline
+DebugLoc:        { File: dylan-hls/mine.cpp, Line: 284, Column: 9 }
+Function:        _ZL21sha256d_from_midstatePKjS0_Ph
+Args:            
+  - Callee:          'sha256_compress_words(unsigned int*, unsigned int const*) (.4.5)'
+    DebugLoc:        { File: dylan-hls/mine.cpp, Line: 111, Column: 0 }
+  - String:          ' not inlined into '
+  - Caller:          'sha256d_from_midstate(unsigned int const*, unsigned int const*, unsigned char*)'
+    DebugLoc:        { File: dylan-hls/mine.cpp, Line: 250, Column: 0 }
+  - String:          ' because it should never be inlined (cost=never)'
+...
+--- !Missed
+Pass:            inline
+Name:            NeverInline
+DebugLoc:        { File: dylan-hls/mine.cpp, Line: 239, Column: 9 }
+Function:        _Z4minePKjS0_jjPjPi
+Args:            
+  - Callee:          'sha256_compress_words(unsigned int*, unsigned int const*) (.6.7)'
+    DebugLoc:        { File: dylan-hls/mine.cpp, Line: 111, Column: 0 }
+  - String:          ' not inlined into '
+  - Caller:          'mine(unsigned int const*, unsigned int const*, unsigned int, unsigned int, unsigned int*, int*)'
+    DebugLoc:        { File: dylan-hls/mine.cpp, Line: 437, Column: 0 }
+  - String:          ' because it should never be inlined (cost=never)'
+...
+--- !Missed
+Pass:            inline
+Name:            NeverInline
+DebugLoc:        { File: dylan-hls/mine.cpp, Line: 480, Column: 9 }
+Function:        _Z4minePKjS0_jjPjPi
+Args:            
+  - Callee:          'sha256d_from_midstate(unsigned int const*, unsigned int const*, unsigned char*)'
+    DebugLoc:        { File: dylan-hls/mine.cpp, Line: 250, Column: 0 }
+  - String:          ' not inlined into '
+  - Caller:          'mine(unsigned int const*, unsigned int const*, unsigned int, unsigned int, unsigned int*, int*)'
+    DebugLoc:        { File: dylan-hls/mine.cpp, Line: 437, Column: 0 }
+  - String:          ' because it should never be inlined (cost=never)'
+...

@@ -1,0 +1,130 @@
+/home/cse/Documents/WorkSpaces/vaddWS/dylan-hls/mine.cpp:41:1: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=array_partition_XLX_SEP_ PragmaContext=hls_XLX_SEP_ PragmaFunction=sha256_compress_compact_XLX_SEP_ PragmaOptions=variable=w complete_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS ARRAY_PARTITION variable=w complete
+^
+/home/cse/Documents/WorkSpaces/vaddWS/dylan-hls/mine.cpp:45:1: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=pipeline_XLX_SEP_ PragmaContext=hls_XLX_SEP_ PragmaFunction=sha256_compress_compact_XLX_SEP_ PragmaOptions=II=1_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS PIPELINE II=1
+^
+/home/cse/Documents/WorkSpaces/vaddWS/dylan-hls/mine.cpp:63:1: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=pipeline_XLX_SEP_ PragmaContext=hls_XLX_SEP_ PragmaFunction=sha256_compress_compact_XLX_SEP_ PragmaOptions=II=1_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS PIPELINE II=1
+^
+/home/cse/Documents/WorkSpaces/vaddWS/dylan-hls/mine.cpp:112:1: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=inline_XLX_SEP_ PragmaContext=hls_XLX_SEP_ PragmaFunction=sha256_compress_words_XLX_SEP_ PragmaOptions=off_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS INLINE off
+^
+/home/cse/Documents/WorkSpaces/vaddWS/dylan-hls/mine.cpp:115:1: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=array_partition_XLX_SEP_ PragmaContext=hls_XLX_SEP_ PragmaFunction=sha256_compress_words_XLX_SEP_ PragmaOptions=variable=w complete_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS ARRAY_PARTITION variable=w complete
+^
+/home/cse/Documents/WorkSpaces/vaddWS/dylan-hls/mine.cpp:119:1: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=pipeline_XLX_SEP_ PragmaContext=hls_XLX_SEP_ PragmaFunction=sha256_compress_words_XLX_SEP_ PragmaOptions=II=1_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS PIPELINE II=1
+^
+/home/cse/Documents/WorkSpaces/vaddWS/dylan-hls/mine.cpp:134:1: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=pipeline_XLX_SEP_ PragmaContext=hls_XLX_SEP_ PragmaFunction=sha256_compress_words_XLX_SEP_ PragmaOptions=II=1_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS PIPELINE II=1
+^
+/home/cse/Documents/WorkSpaces/vaddWS/dylan-hls/mine.cpp:209:1: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=inline_XLX_SEP_ PragmaContext=hls_XLX_SEP_ PragmaFunction=bswap32_XLX_SEP_ PragmaOptions=_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS INLINE
+^
+/home/cse/Documents/WorkSpaces/vaddWS/dylan-hls/mine.cpp:225:1: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=array_partition_XLX_SEP_ PragmaContext=hls_XLX_SEP_ PragmaFunction=compute_midstate_XLX_SEP_ PragmaOptions=variable=block_words complete_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS ARRAY_PARTITION variable=block_words complete
+^
+/home/cse/Documents/WorkSpaces/vaddWS/dylan-hls/mine.cpp:229:1: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=unroll_XLX_SEP_ PragmaContext=hls_XLX_SEP_ PragmaFunction=compute_midstate_XLX_SEP_ PragmaOptions=_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS UNROLL
+^
+/home/cse/Documents/WorkSpaces/vaddWS/dylan-hls/mine.cpp:235:1: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=pipeline_XLX_SEP_ PragmaContext=hls_XLX_SEP_ PragmaFunction=compute_midstate_XLX_SEP_ PragmaOptions=II=1_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS PIPELINE II=1
+^
+/home/cse/Documents/WorkSpaces/vaddWS/dylan-hls/mine.cpp:251:1: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=inline_XLX_SEP_ PragmaContext=hls_XLX_SEP_ PragmaFunction=sha256d_from_midstate_XLX_SEP_ PragmaOptions=off_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS INLINE off
+^
+/home/cse/Documents/WorkSpaces/vaddWS/dylan-hls/mine.cpp:252:1: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=allocation_XLX_SEP_ PragmaContext=hls_XLX_SEP_ PragmaFunction=sha256d_from_midstate_XLX_SEP_ PragmaOptions=function instances=sha256_compress_words limit=1_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS ALLOCATION function instances=sha256_compress_words limit=1
+^
+/home/cse/Documents/WorkSpaces/vaddWS/dylan-hls/mine.cpp:255:1: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=array_partition_XLX_SEP_ PragmaContext=hls_XLX_SEP_ PragmaFunction=sha256d_from_midstate_XLX_SEP_ PragmaOptions=variable=block_words complete_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS ARRAY_PARTITION variable=block_words complete
+^
+/home/cse/Documents/WorkSpaces/vaddWS/dylan-hls/mine.cpp:258:1: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=array_partition_XLX_SEP_ PragmaContext=hls_XLX_SEP_ PragmaFunction=sha256d_from_midstate_XLX_SEP_ PragmaOptions=variable=s complete_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS ARRAY_PARTITION variable=s complete
+^
+/home/cse/Documents/WorkSpaces/vaddWS/dylan-hls/mine.cpp:262:1: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=unroll_XLX_SEP_ PragmaContext=hls_XLX_SEP_ PragmaFunction=sha256d_from_midstate_XLX_SEP_ PragmaOptions=_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS UNROLL
+^
+/home/cse/Documents/WorkSpaces/vaddWS/dylan-hls/mine.cpp:269:1: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=unroll_XLX_SEP_ PragmaContext=hls_XLX_SEP_ PragmaFunction=sha256d_from_midstate_XLX_SEP_ PragmaOptions=_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS UNROLL
+^
+/home/cse/Documents/WorkSpaces/vaddWS/dylan-hls/mine.cpp:277:1: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=unroll_XLX_SEP_ PragmaContext=hls_XLX_SEP_ PragmaFunction=sha256d_from_midstate_XLX_SEP_ PragmaOptions=_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS UNROLL
+^
+/home/cse/Documents/WorkSpaces/vaddWS/dylan-hls/mine.cpp:294:1: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=unroll_XLX_SEP_ PragmaContext=hls_XLX_SEP_ PragmaFunction=sha256d_from_midstate_XLX_SEP_ PragmaOptions=_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS UNROLL
+^
+/home/cse/Documents/WorkSpaces/vaddWS/dylan-hls/mine.cpp:302:1: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=unroll_XLX_SEP_ PragmaContext=hls_XLX_SEP_ PragmaFunction=sha256d_from_midstate_XLX_SEP_ PragmaOptions=_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS UNROLL
+^
+/home/cse/Documents/WorkSpaces/vaddWS/dylan-hls/mine.cpp:311:1: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=unroll_XLX_SEP_ PragmaContext=hls_XLX_SEP_ PragmaFunction=sha256d_from_midstate_XLX_SEP_ PragmaOptions=_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS UNROLL
+^
+/home/cse/Documents/WorkSpaces/vaddWS/dylan-hls/mine.cpp:319:1: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=unroll_XLX_SEP_ PragmaContext=hls_XLX_SEP_ PragmaFunction=sha256d_from_midstate_XLX_SEP_ PragmaOptions=_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS UNROLL
+^
+/home/cse/Documents/WorkSpaces/vaddWS/dylan-hls/mine.cpp:332:1: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=array_partition_XLX_SEP_ PragmaContext=hls_XLX_SEP_ PragmaFunction=sha256d_80_XLX_SEP_ PragmaOptions=variable=block_words complete_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS ARRAY_PARTITION variable=block_words complete
+^
+/home/cse/Documents/WorkSpaces/vaddWS/dylan-hls/mine.cpp:335:1: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=array_partition_XLX_SEP_ PragmaContext=hls_XLX_SEP_ PragmaFunction=sha256d_80_XLX_SEP_ PragmaOptions=variable=s complete_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS ARRAY_PARTITION variable=s complete
+^
+/home/cse/Documents/WorkSpaces/vaddWS/dylan-hls/mine.cpp:339:1: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=unroll_XLX_SEP_ PragmaContext=hls_XLX_SEP_ PragmaFunction=sha256d_80_XLX_SEP_ PragmaOptions=_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS UNROLL
+^
+/home/cse/Documents/WorkSpaces/vaddWS/dylan-hls/mine.cpp:345:1: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=pipeline_XLX_SEP_ PragmaContext=hls_XLX_SEP_ PragmaFunction=sha256d_80_XLX_SEP_ PragmaOptions=II=1_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS PIPELINE II=1
+^
+/home/cse/Documents/WorkSpaces/vaddWS/dylan-hls/mine.cpp:353:1: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=unroll_XLX_SEP_ PragmaContext=hls_XLX_SEP_ PragmaFunction=sha256d_80_XLX_SEP_ PragmaOptions=_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS UNROLL
+^
+/home/cse/Documents/WorkSpaces/vaddWS/dylan-hls/mine.cpp:361:1: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=unroll_XLX_SEP_ PragmaContext=hls_XLX_SEP_ PragmaFunction=sha256d_80_XLX_SEP_ PragmaOptions=_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS UNROLL
+^
+/home/cse/Documents/WorkSpaces/vaddWS/dylan-hls/mine.cpp:371:1: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=unroll_XLX_SEP_ PragmaContext=hls_XLX_SEP_ PragmaFunction=sha256d_80_XLX_SEP_ PragmaOptions=_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS UNROLL
+^
+/home/cse/Documents/WorkSpaces/vaddWS/dylan-hls/mine.cpp:379:1: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=unroll_XLX_SEP_ PragmaContext=hls_XLX_SEP_ PragmaFunction=sha256d_80_XLX_SEP_ PragmaOptions=_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS UNROLL
+^
+/home/cse/Documents/WorkSpaces/vaddWS/dylan-hls/mine.cpp:387:1: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=unroll_XLX_SEP_ PragmaContext=hls_XLX_SEP_ PragmaFunction=sha256d_80_XLX_SEP_ PragmaOptions=_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS UNROLL
+^
+/home/cse/Documents/WorkSpaces/vaddWS/dylan-hls/mine.cpp:395:1: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=unroll_XLX_SEP_ PragmaContext=hls_XLX_SEP_ PragmaFunction=sha256d_80_XLX_SEP_ PragmaOptions=_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS UNROLL
+^
+/home/cse/Documents/WorkSpaces/vaddWS/dylan-hls/mine.cpp:407:1: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=inline_XLX_SEP_ PragmaContext=hls_XLX_SEP_ PragmaFunction=hash_below_target_XLX_SEP_ PragmaOptions=_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS INLINE
+^
+directive:1:1: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=top_XLX_SEP_ PragmaContext=directive_XLX_SEP_ PragmaFunction=mine_XLX_SEP_ PragmaOptions=name=mine_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLSDIRECTIVE TOP name=mine
+^
+/home/cse/Documents/WorkSpaces/vaddWS/dylan-hls/mine.cpp:438:1: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=interface_XLX_SEP_ PragmaContext=hls_XLX_SEP_ PragmaFunction=mine_XLX_SEP_ PragmaOptions=m_axi port=header bundle=gmem0 depth=20_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS interface m_axi port=header bundle=gmem0 depth=20
+^
+/home/cse/Documents/WorkSpaces/vaddWS/dylan-hls/mine.cpp:439:1: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=interface_XLX_SEP_ PragmaContext=hls_XLX_SEP_ PragmaFunction=mine_XLX_SEP_ PragmaOptions=m_axi port=target bundle=gmem1 depth=8_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS interface m_axi port=target bundle=gmem1 depth=8
+^
+/home/cse/Documents/WorkSpaces/vaddWS/dylan-hls/mine.cpp:440:1: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=interface_XLX_SEP_ PragmaContext=hls_XLX_SEP_ PragmaFunction=mine_XLX_SEP_ PragmaOptions=m_axi port=found_nonce bundle=gmem2 depth=1_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS interface m_axi port=found_nonce bundle=gmem2 depth=1
+^
+/home/cse/Documents/WorkSpaces/vaddWS/dylan-hls/mine.cpp:441:1: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=interface_XLX_SEP_ PragmaContext=hls_XLX_SEP_ PragmaFunction=mine_XLX_SEP_ PragmaOptions=m_axi port=found bundle=gmem2 depth=1_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS interface m_axi port=found bundle=gmem2 depth=1
+^
+/home/cse/Documents/WorkSpaces/vaddWS/dylan-hls/mine.cpp:442:1: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=interface_XLX_SEP_ PragmaContext=hls_XLX_SEP_ PragmaFunction=mine_XLX_SEP_ PragmaOptions=s_axilite port=nonce_start_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS interface s_axilite port=nonce_start
+^
+/home/cse/Documents/WorkSpaces/vaddWS/dylan-hls/mine.cpp:443:1: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=interface_XLX_SEP_ PragmaContext=hls_XLX_SEP_ PragmaFunction=mine_XLX_SEP_ PragmaOptions=s_axilite port=nonce_count_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS interface s_axilite port=nonce_count
+^
+/home/cse/Documents/WorkSpaces/vaddWS/dylan-hls/mine.cpp:444:1: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=interface_XLX_SEP_ PragmaContext=hls_XLX_SEP_ PragmaFunction=mine_XLX_SEP_ PragmaOptions=s_axilite port=return_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS interface s_axilite port=return
+^
+/home/cse/Documents/WorkSpaces/vaddWS/dylan-hls/mine.cpp:449:1: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=pipeline_XLX_SEP_ PragmaContext=hls_XLX_SEP_ PragmaFunction=mine_XLX_SEP_ PragmaOptions=II=1_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS PIPELINE II=1
+^
+/home/cse/Documents/WorkSpaces/vaddWS/dylan-hls/mine.cpp:454:1: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=pipeline_XLX_SEP_ PragmaContext=hls_XLX_SEP_ PragmaFunction=mine_XLX_SEP_ PragmaOptions=II=1_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS PIPELINE II=1
+^
+43 warnings generated.
