@@ -207,9 +207,9 @@ static void sha256_compress_words_ii1(
             uint32_t sched_sum1;
             uint32_t sched_sum2;
 
-#pragma HLS BIND_OP variable=sched_sum0 op=add impl=dsp
-#pragma HLS BIND_OP variable=sched_sum1 op=add impl=dsp
-#pragma HLS BIND_OP variable=sched_sum2 op=add impl=dsp
+#pragma HLS BIND_OP variable=sched_sum0 op=add impl=fabric
+#pragma HLS BIND_OP variable=sched_sum1 op=add impl=fabric
+#pragma HLS BIND_OP variable=sched_sum2 op=add impl=fabric
 
             sched_sum0 = w[j] + s0;
             sched_sum1 = w[(j + 9) & 15] + s1;
@@ -229,7 +229,7 @@ static void sha256_compress_words_ii1(
 #pragma HLS BIND_OP variable=t1_sum0 op=add impl=dsp
 #pragma HLS BIND_OP variable=t1_sum1 op=add impl=dsp
 #pragma HLS BIND_OP variable=t1_sum2 op=add impl=dsp
-#pragma HLS BIND_OP variable=t1      op=add impl=dsp
+#pragma HLS BIND_OP variable=t1      op=add impl=fabric
 
         t1_sum0 = h + S1;
         t1_sum1 = ch + K[i];
