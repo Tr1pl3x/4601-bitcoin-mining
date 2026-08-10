@@ -1,0 +1,4 @@
+all:
+{
+    bitcoin-miner.bit
+}
