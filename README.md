@@ -1,5 +1,5 @@
 # Bitcoin Mining
-Last updated: 23/7/2026
+Last updated: 11/8/2026
 
 This is an educational project only, **NOT** a profitable miner, and no mining-pool / network code (per the project brief).*
 
@@ -15,3 +15,9 @@ This is an educational project only, **NOT** a profitable miner, and no mining-p
 
 ## Group Plan / Initial Investigation
 The documentation can be found [here](./group-investigation.pdf)
+
+## Project Presentation & Demonstration
+The slides for final presentation can be found [here](./COMP4601_final_presentation_slides.pdf).
+
+The team has demonstrated in person on 10/08/2026 and you can find the brief plan of the demonstration in this [document](./COMP4601_Project_Demo_Plan.pdf).
+
