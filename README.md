@@ -1,5 +1,5 @@
 # Bitcoin Mining
-Last updated: 11/8/2026
+Last updated: 14/8/2026
 
 This is an educational project only, **NOT** a profitable miner, and no mining-pool / network code (per the project brief).*
 
