@@ -21,3 +21,18 @@ The ppt slides for final presentation can be found [here](./COMP4601_final_prese
 
 The team has demonstrated in person on 10/08/2026 and you can find the brief plan of the demonstration in this [document](./COMP4601_Project_Demo_Plan.pdf).
 
+## Vitis Binary Linker Configuration
+
+The linker configuration link.cfg was used when building the Bitcoin mining accelerator in Vitis.
+
+In the Vitis Unified IDE:
+
+1. Open the project workspace.
+2. Select the **Binary Container** used for the hardware build.
+3. Open its linker configuration file, typically named something similar to binary_container_1.cfg. 
+
+Then replace the default configuration with the given link.cfg.
+
+## Submission
+
+The final code repository is zipped and placed under final_submission.zip
